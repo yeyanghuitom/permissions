@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>index_资源</title>
+
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link href="../css/bootstrap.min.css?v=3.3.5" rel="stylesheet">
+    <link href="../css/font-awesome.min.css?v=4.4.0" rel="stylesheet">
+    <!-- bootstrap-table.css -->
+    <link href="../css/plugins/bootstrap-table/bootstrap-table.min.css" rel="stylesheet">
+    <link href="../css/animate.min.css" rel="stylesheet">
+    <link href="../css/style.min.css?v=4.0.0" rel="stylesheet">
+    <!-- awesome-bootstrap-checkbox -->
+    <link href="../css/plugins/awesome-bootstrap-checkbox/awesome-bootstrap-checkbox.css" rel="stylesheet">
+
+    <!-- sweetalert -->
+    <link rel="stylesheet" type="text/css" href="../css/plugins/sweetalert/sweetalert.css">
+
+    <script src="../js/ajaxBaseURL.js"></script>
+    <script>
+        //const ajaxBaseURL = "http://10.0.78.158:8080/permissions",baseField = 'resources';
+        //const ajaxBaseURL = "http://localhost:8080/permissions",baseField = 'organization';
+        const baseField = 'organization';
+    </script>
+</head>
+<body class="gray-bg">
+
+<!-- Panel Other -->
+<div class="container-fluid">
+    <div class="wrapper-content">
+        <div class="row row-lg" id="rolesBindResourcesOfTable">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5> CEM 组织信息配置页面 </h5>
+                    <div class="ibox-tools">
+                        <a class="collapse-link">
+                            <i class="fa fa-chevron-up"></i>
+                        </a>
+                        <!--<a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                            <i class="fa fa-wrench"></i>
+                        </a>
+                        <a class="close-link">
+                            <i class="fa fa-times"></i>
+                        </a>
+                        <a id="closeRolesBindResourcesOfTable">
+                            <i class="fa fa-times"></i>
+                        </a>-->
+                    </div>
+                </div>
+
+                <div class="ibox-content">
+
+
+                    <div class="row row-lg">
+
+                        <div class="col-sm-12">
+                            <!-- Example Pagination -->
+
+                            <div class="example">
+                                <button class="btn btn-group fa fa-file-excel-o exportExcel"> 一键导出</button>
+                                <button class="btn btn-group fa fa-user-plus " data-toggle="modal" data-target="#userPlus" id="plusMsg"> 新增</button>
+
+                                <table id="theBootstraptable" name="/organization/getOrganizationAll" class="table bootstrapTable_demo1">
+                                    <!-- <thead>
+                                        <th data-field="state" data-checkbox="true"></th>
+                                        <th data-field="USER_ID" class="text-center" data-sortable="true">用户ID</th>
+                                        <th data-field="USER_NAME" data-sortable="true">用户名</th>
+                                        <th data-field="ACCOUNT" data-sortable="true">账号</th>
+                                        <th data-field="EMAIL" data-sortable="true">邮箱</th>
+                                        <th data-field="PASSWORD" data-sortable="true">密码</th>
+                                        <th data-field="REGISTER_DATE" data-sortable="true">注册时间</th>
+                                        <th data-field="STATUS" data-sortable="true">状态</th>
+                                        <th data-field="actions" class="td-actions text-right" data-events="operateEvents" data-formatter="operateFormatter">Actions</th>
+                                    </thead> -->
+                                </table>
+                            </div>
+                        </div>
+                        <!-- End Example Pagination -->
+
+
+                        <!--  modal window start -->
+
+                        <!-- 新增一条数据 start -->
+                        <div class="modal inmodal" id="userPlus" tabindex="-1" role="dialog" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <!-- 此处控制展示样式 -->
+                                <div class="modal-content animated bounceIn">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                                        <h4 class="modal-title"> organization - 新增一条数据 </h4>
+                                        <small class="font-bold">模态窗副标题</small>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form class="form-horizontal" id="userPlus_from">
+
+                                        </form>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-white" data-dismiss="modal">关闭</button>
+                                        <button type="button" class="btn btn-primary" id="userPlus_submit">保存</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- End 新增一条数据 -->
+                        <!-- 查一条数据 -->
+                        <div class="modal inmodal" id="getMsg" tabindex="-1" role="dialog" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <!-- 此处控制展示样式 -->
+                                <div class="modal-content animated flipInY">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                                        <h4 class="modal-title"> organization - 查看一条数据 </h4>
+                                        <small class="font-bold">模态窗副标题</small>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form class="form-horizontal" id="getMsg_from">
+                                        </form>
+                                        <h3></h3>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-white" data-dismiss="modal">关闭</button>
+                                        <!-- <button type="button" class="btn btn-primary">保存</button>-->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- End 查一条数据 -->
+                        <!-- 改一条数据 -->
+                        <div class="modal inmodal" id="setMsg" tabindex="-1" role="dialog" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <!-- 此处控制展示样式 -->
+                                <div class="modal-content animated flipInX">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                                        <h4 class="modal-title"> organization - 修改一条数据 </h4>
+                                        <small class="font-bold">模态窗副标题</small>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form class="form-horizontal"  id="setMsg_from">
+
+                                        </form>
+                                        <h3></h3>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-white" data-dismiss="modal">关闭</button>
+                                        <button type="button" class="btn btn-primary" id="setMsg_submit">保存</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- End 改一条数据 -->
+
+                        <!-- End modal window -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- End Panel Other -->
+<script src="../js/jquery.min.js"></script>
+<script src="../js/bootstrap.min.js"></script>
+<script src="../js/content.min.js?v=1.0.0"></script>
+<script src="../js/plugins/bootstrap-table/bootstrap-table.min.js"></script>
+<!--<script src="js/plugins/bootstrap-table/bootstrap-table-mobile.min.js"></script>-->
+<script src="../js/plugins/bootstrap-table/locale/bootstrap-table-zh-CN.min.js"></script>
+
+<script src="../js/tableExport.js"></script>
+<script src="../js/jquery.base64.js"></script>
+<!-- JsonExportExcel -->
+<script src="../js/JsonExportExcel.min.js"></script>
+<!-- sweetalert -->
+<script src="../js/plugins/sweetalert/sweetalert.min.js"></script>
+<!--<script src="js/receiveBootstrapTable.js"></script>-->
+<!--<script src="../js/bootstrapTableBase.js"></script>-->
+<script src="../js/organization.js"></script>
+
+<script>
+
+</script>
+</body>
+</html>

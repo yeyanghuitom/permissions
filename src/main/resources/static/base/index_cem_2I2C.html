@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>index_资源</title>
+
+    <link rel="shortcut icon" href="favicon.ico">
+    <link href="css/bootstrap.min.css?v=3.3.5" rel="stylesheet">
+    <link href="css/font-awesome.min.css?v=4.4.0" rel="stylesheet">
+    <!-- bootstrap-table.css -->
+    <link href="css/plugins/bootstrap-table/bootstrap-table.min.css" rel="stylesheet">
+    <link href="css/animate.min.css" rel="stylesheet">
+    <link href="css/style.min.css?v=4.0.0" rel="stylesheet">
+</head>
+<body>
+<!-- Panel Other -->
+<div class="container">
+    <div class="ibox-content">
+        <div class="row row-lg">
+
+            <div class="col-sm-12">
+                <!-- Example Pagination -->
+                <div class="example-wrap">
+                    <h4 class="example-title"> 2I2C 产品统计</h4>
+
+                    <div class="example ">
+                        <button class="btn btn-group fa fa-file-excel-o exportExcel"> 一键导出</button>
+                        <button class="btn btn-group fa fa-user-plus " data-toggle="modal" data-target="#userPlus"> 新增一条</button>
+
+                        <table id="theBootstraptable" name="/roles/getRolesAll" class="table table-bordered bootstrapTable_demo1">
+                            <thead>
+                            <th data-field="state" data-checkbox="true"></th>
+                            <th data-field="provideName" class="text-center" data-sortable="true">省份名称</th>
+                            <th data-field="cityName" class="text-center" data-sortable="true">城市名称</th>
+                            <th data-field="cityLevel_mobileNetwork" class="text-center" data-sortable="true">是否出账 </th>
+                            <th data-field="cityLevel_Broadband" class="text-center" data-sortable="true"> 2I2C 套餐名称 </th>
+                            <th data-field="cityQuota_mobileNetwork" data-sortable="true">用户数量</th>
+                            <!--<th data-field="actions" class="td-actions text-nowrap text-right text-overflow" data-events="operateEvents" data-formatter="operateFormatter">操作</th>-->
+                            </thead>
+                        </table>
+                    </div>
+                </div>
+                <!-- End Example Pagination -->
+
+
+                <!--  modal window start -->
+
+                <!-- 新增一条数据 start -->
+                <div class="modal inmodal" id="userPlus" tabindex="-1" role="dialog" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <!-- 此处控制展示样式 -->
+                        <div class="modal-content animated flipInY">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                                <h4 class="modal-title"> user 新增一条数据 </h4>
+                                <small class="font-bold">模态窗副标题</small>
+                            </div>
+                            <div class="modal-body">
+                                <form class="form-horizontal" id="userPlus_from">
+
+                                </form>
+                                <h3></h3>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-white" data-dismiss="modal">关闭</button>
+                                <button type="button" class="btn btn-primary"  id="userPlus_submit">保存</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- End 新增一条数据 -->
+                <!-- 查一条数据 -->
+                <div class="modal inmodal" id="getMsg" tabindex="-1" role="dialog" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <!-- 此处控制展示样式 -->
+                        <div class="modal-content animated flipInY">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                                <h4 class="modal-title"> User - 查看一条数据 </h4>
+                                <small class="font-bold">模态窗副标题</small>
+                            </div>
+                            <div class="modal-body">
+                                <form class="form-horizontal" id="getMsg_from">
+                                </form>
+                                <h3></h3>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-white" data-dismiss="modal">关闭</button>
+                                <!-- 查看没有保存 -->
+                                <!--<button type="button" class="btn btn-primary">保存</button>-->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- End 查一条数据 -->
+                <!-- 修改一条数据 -->
+                <div class="modal inmodal" id="setMsg" tabindex="-1" role="dialog" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <!-- 此处控制展示样式 -->
+                        <div class="modal-content animated flipInX">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                                <h4 class="modal-title"> User -- 修改一条数据 </h4>
+                                <small class="font-bold">模态窗副标题</small>
+                            </div>
+                            <div class="modal-body">
+                                <form class="form-horizontal"  id="setMsg_from">
+
+                                </form>
+                                <h3></h3>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-white" data-dismiss="modal">关闭</button>
+                                <button type="button" class="btn btn-primary"  id="setMsg_submit">保存</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- End 改一条数据 -->
+
+                <!-- End modal window -->
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End Panel Other -->
+<script src="js/jquery.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/content.min.js?v=1.0.0"></script>
+<script src="js/plugins/bootstrap-table/bootstrap-table.min.js"></script>
+<!--<script src="js/plugins/bootstrap-table/bootstrap-table-mobile.min.js"></script>-->
+<script src="js/plugins/bootstrap-table/locale/bootstrap-table-zh-CN.min.js"></script>
+
+<script src="http://127.0.0.1:81/tableExport/tableExport.js"></script>
+<script src="http://127.0.0.1:81/tableExport/jquery.base64.js"></script>
+<!-- JsonExportExcel -->
+<script src="js/JsonExportExcel.min.js"></script>
+<!--<script src="js/receiveBootstrapTable.js"></script>-->
+
+
+<script>
+    //const ajaxBaseURL = "http://10.0.78.158:8080/permissions";
+    const ajaxBaseURL = "http://10.0.78.134:8080/permissions",
+        baseStr = "roles";
+
+
+    //增加一条信息的方法 * 绑定点击按钮事件
+    $("#userPlus_submit").on("click",function (){
+        clearChildrenPage({id:"userPlus"});
+        $.ajax({
+            type:'post',
+            url: ajaxBaseURL + "/"+ baseStr +"/insert" + baseStr[0].toUpperCase() + baseStr.slice("1") + "ById",
+            data:"",
+            success:function(data){
+                try{
+                    console.log(data);
+                    alert(data);
+
+                }catch(error){
+                    console.log("【 bootstrapTable - 返回结果 - 报错 】");
+                    console.log( error );
+                }
+
+            },
+            error:function(){
+                console.log("【 bootstrapTable - 报错 】");
+                console.log(error);
+            }
+        });
+    });
+    //
+    $("#setMsg_submit").on("click",function (){
+        var str,data = $table.setMsg_data,rowData = $table.rowData;
+        for( var k in data ){
+            rowData[k] = $("#setMsg_" + k ).val();
+        }
+        console.log(rowData);
+        str = ajaxData(rowData);
+        console.log(str);
+        /*$.ajax({
+         type:'post',
+         url:  ajaxBaseURL + "/"+ baseStr +"/updata" + baseStr[0].toUpperCase() + baseStr.slice("1") + "ById",
+         data:"",
+         success:function(data){
+         try{
+         console.log(data);
+         alert(data);
+
+         }catch(error){
+         console.log("【 bootstrapTable - 返回结果 - 报错 】");
+         console.log( error );
+         }
+
+         },
+         error:function(){
+         console.log("【 bootstrapTable -【 setMsg_submit 】 - 报错 】");
+         console.log(error);
+         }
+         });*/
+    });
+    //action 的 页面操作 按钮样式
+    function operateFormatter(value, row,USER_ID ) {
+        return [
+            '<a rel="tooltip" title="查看信息" class="btn btn-simple btn-info btn-icon table-action getMsg" data-toggle="modal" data-target="#getMsg">',
+            '<i class="fa fa-search"></i>',
+            '</a> ',
+
+            '<a rel="tooltip" title="修改信息" class="btn btn-simple btn-warning btn-icon table-action setMsg" data-toggle="modal" data-target="#setMsg">',
+            '<i class="fa fa-pencil"></i>',
+            '</a> ',
+
+            '<a rel="tooltip" title="删除信息" class="btn btn-simple btn-danger btn-icon table-action remove">',
+            '<i class="fa fa-trash"></i>',
+            '</a>'
+        ].join('');
+    }
+    //clear 页面信息
+    function clearChildrenPage(data){
+        var id = data.id;
+        var obj = $table[ data.id + "_data"] ;
+        for(var k in obj ){
+            console.log("#" + id + "_" + k );
+            $( "#" + id + "_" + k ).val("");
+        }
+    }
+
+    //action 的 页面操作 事件绑定
+    $().ready(function(){
+        function setOrGetShowMsg (data){
+            var obj = {},str="",id=data.id ,rowData = data.obj ;
+            if( id == "setMsg"){
+                obj = $table.setMsg_data;
+                str = "setMsg";
+            }else if( id == "getMsg"){
+                obj = $table.getMsg_data;
+                str = "getMsg";
+            }
+            for(var k in obj){
+                console.log( str + k );
+                $("#" + str + "_" + k ).val( rowData[k] );
+
+            }
+        }
+        var operateEvents = {
+            //查看一条
+            'click .getMsg': function (e, value, row, RESOURCE_ID) {
+
+                clearChildrenPage({id:"getMsg"});
+
+                setOrGetShowMsg ("setMsg");
+                console.log(row);
+                console.log("####打印 e:");
+                console.log(e);
+                console.log(value);
+
+                setOrGetShowMsg ({id:"getMsg",obj:row});
+
+                $.ajax({
+                    type:'post',
+                    url: ajaxBaseURL + "/roles/getOneRolesById",
+                    data: $table.key + "=" + row[$table.key],
+                    success:function(data){
+                        try{
+                            console.log(data);
+                            window.str = JSON.stringify(data);
+                            var objData = $table["getMsg_data"],value = data.value ;
+                            for(var k in objData ){
+                                $( "#getMsg_data_" + objData[k] ).val(value[k]);
+                            }
+                            /*
+                             //回传json
+                             //"{"msg":"查询单条成功！","code":"000","value":{"QQ":"222","ACCOUNT":"jiale","STATUS":"0","PASSWORD":"111111","USER_ID":"001","USER_NAME":"jiale","REGISTER_DATE":1516809600000,"EMAIL":"847748755@qq.com","DESCRIBTION":"admin"}}"
+                             //alert(data);
+                             */
+
+                        }catch(error){
+                            console.log("【 bootstrapTable - 返回结果 - 报错 】");
+                            console.log( error );
+                        }
+
+                    },
+                    error:function(){
+                        console.log("【 bootstrapTable - 报错 】");
+                        console.log(error);
+                    }
+                });
+                //info = JSON.stringify(row);
+                //swal('You click view icon, row: ', info);
+                //console.log(info);
+            },
+            //修改一条
+            'click .setMsg': function (e, value, row, index) {
+                clearChildrenPage({id:"setMsg"});
+                console.log( JSON.stringify(row) ) ;
+                console.log(row);
+                console.log("点击 .setMsg -- 修改按钮");
+                setOrGetShowMsg ({id:"setMsg",obj:row});
+                $table.rowData = row;
+
+                //swal('You click edit icon, row: ', info);
+                //console.log(info);
+            },
+            //删除
+            'click .remove': function (e, value, row, RESOURCE_ID) {
+                //console.log(row);
+                //console.log("");
+                alert("点击删除按钮");
+                $.ajax({
+                    type:'post',
+                    url: ajaxBaseURL + "/roles/deleteRolesById",
+                    data: $table.key + "=" + row[$table.key],
+                    success:function(data){
+                        try{
+                            console.log(data);
+                            //alert(data);
+
+                        }catch(error){
+                            console.log("【 bootstrapTable - 返回结果 - 报错 】");
+                            console.log( error );
+                        }
+
+                    },
+                    error:function(){
+                        console.log("【 bootstrapTable - 报错 】");
+                        console.log(error);
+                    }
+                });
+                $table.bootstrapTable('remove', {
+                    field: 'id',
+                    values: [row.id]
+                });
+            }
+        };
+
+
+        bootTable( {id:'theBootstraptable'} );
+
+
+        //activate the tooltips after the data table is initialized
+        $('[rel="tooltip"]').tooltip();
+
+        /**/
+
+        window.operateEvents = operateEvents
+    });
+
+
+
+    //清屏方法：
+    //$table.bootstrapTable('removeAll')
+    // 替换列表
+    /*******
+     * $table.bootstrapTable('load', [
+     {
+     id: 1,
+     name: 'Item 1',
+     price: '$1'
+     },{
+                     id: 2,
+                     name: 'Item 2',
+                     price: '$2'
+                     },{
+                     id: 3,
+                     name: 'Item 3',
+                     price: '$3'
+                     },{
+                     id: 4,
+                     name: 'Item 4',
+                     price: '$4'
+                     }, {
+                     id: 5,
+                     name: 'Item 5',
+                     price: '$5'
+                     }]);
+     */
+    //
+    /**************
+     *   增加一个或多个数据
+     * $table.bootstrapTable('prepend',[{
+                        id:9,
+                        index: 'cache1',
+                        name: 'Item 1',
+                        price: '$1',
+                        actions : ''
+                    },{
+                        id:10,
+                        index: 'cache1',
+                        name: 'Item 1',
+                        price: '$1',
+                        actions : ''
+                    }]);
+     *
+     * *************/
+
+    // 删
+    //$table.bootstrapTable('remove', {field: 'index', values: ["cache3",'cache2']});
+    // 改
+    // 先删，后增
+    /********
+     * function updata(){
+         *      $table.bootstrapTable('remove', {field: 'index', values: ["cache3",'cache2']});
+         *      $table.bootstrapTable('prepend',[object,object])
+         * }
+     *
+     * ******/
+    /*****
+     * 获取项目数据
+     * $table.bootstrapTable('getOptions').data
+     *
+     *
+     * ***/
+    //获得（所有）所选行
+    // $table.bootstrapTable('getAllSelections');
+    // 返回值   '[{"id":2,"index":"cache2","name":"Item 2","price":"$2","actions":"","state":true},{"id":3,"index":"cache3","name":"Item 3","price":"$3","actions":"","state":true}]'
+
+</script>
+<script>
+
+    //日期格式
+    Date.prototype.Format = function(fmt) { //author: meizz
+        var o = {
+            "M+" : this.getMonth()+1,                 //月份
+            "d+" : this.getDate(),                    //日
+            "h+" : this.getHours(),                   //小时
+            "m+" : this.getMinutes(),                 //分
+            "s+" : this.getSeconds(),                 //秒
+            "q+" : Math.floor((this.getMonth()+3)/3), //季度
+            "S"  : this.getMilliseconds()             //毫秒
+        };
+        if(/(y+)/.test(fmt))
+            fmt=fmt.replace(RegExp.$1, (this.getFullYear()+"").substr(4 - RegExp.$1.length));
+        for(var k in o)
+            if(new RegExp("("+ k +")").test(fmt))
+                fmt = fmt.replace(RegExp.$1, (RegExp.$1.length==1) ? (o[k]) : (("00"+ o[k]).substr((""+ o[k]).length)));
+        return fmt;
+    };
+    function ajaxData (obj){
+        var str = "";
+        for(var k in obj ){
+            if( k == "state" ){
+
+            }else{
+                str += k + "=" + obj[k] + "&";
+            }
+        }
+        //cosnole.log(str);
+        return str.slice(0,-1);
+    }
+
+    function bootTable( d ){
+        //var thead = d.thead;
+
+        //excel随机命名字段
+        function randomString(){
+            var string = "ABCDEFGHIGKLMNOPQRSTUVWXYZabcdefghijklmnopqrstquwxyz";
+            var s ="";
+            for(var i=0;i<10;i++){
+                s += string[parseInt( string.length * Math.random() )]
+            }
+            return s;
+        }
+        //导出Excel文件
+        function exportExcel(list){
+            //导出文件的字段还需要更改
+
+            var option={},dataList = list,thead =$table.headData;
+
+            option.fileName = (new Date()).Format("yyyy-MM-dd") + "-" + (new Date()).valueOf();
+
+            option.datas=[];
+            option.datas[0]={};
+            option.datas[0].sheetHeader=[];
+            option.datas[0].sheetName= 'sheet' + randomString();
+            option.datas[0].sheetFilter = [];
+            for(var k in thead){
+                option.datas[0].sheetHeader.push( thead[k] );
+                option.datas[0].sheetFilter.push( k );
+            }
+            option.datas[0].sheetData = dataList;
+            //console.log("############打印:option" );
+            //console.log(option);
+            //console.log(thead);
+            var toExcel=new ExportJsonExcel(option);
+            toExcel.saveExcel();
+        }
+        //挂载子页面的方法
+        function allDataProcessing(data){
+            var fragment = document.createDocumentFragment(),
+                head = data.obj,
+                pageId= data.pageId,
+                id = pageId.split("_")[0];
+            //var head={"USER_ID":"用户ID","USER_NAME":"用户名","ACCOUNT":"账号","PASSWORD":"密码","EMAIL":"邮箱","REGISTER_DATE":"注册时间","STATUS":"状态"}
+
+            for(var k in head){
+                //console.log(k);
+                let v = head[k];
+                var str='<div class="form-group"><label for="' + id + '_'+ k +'" class="col-sm-3 control-label">' + v + '：</label><div class="col-sm-9"><input type="text" class="form-control" id="' + id + '_'+ k +'" placeholder="请输入'+ v +'"></div></div>';
+                $( fragment ).append(str);
+            }
+            //console.log(fragment);
+            $( "#" + pageId ).append( fragment );
+
+        }
+        //数据处理后调用挂载子页面的方法
+        function transferAllDataProcessing ( head ){
+            /*****
+             * 此处需要数据处理，将处理后的数据挂载到增删改查的子页面中
+             * 处理后的数据分为  {"USER_ID":"用户ID,1-1-1-0"}
+             * 1、 主页面table全部的数据展示；
+             * 2、 子页面 - 查询单个数据展示；
+             * 3、 子页面 -增加单个数据展示；
+             * 4、 子页面 - 修改单个数据的展示；
+             * 5、 功能 - excel导出的 head 字段；
+             *  调用示例
+             *      allDataProcessing({ pageId : "要加载数据页面的ID", obj : "加载数据传参"})
+             * ****/
+                //获得全量 head :{"USER_ID":"用户ID,1-1-1-0","USER_NAME":"用户名,1-1-1-0","ACCOUNT":"账号,1-1-1-0","PASSWORD":"密码,1-1-1-0","EMAIL":"邮箱,1-1-1-0","REGISTER_DATE":"注册时间,1-1-1-0","STATUS":"状态,1-1-1-0"}
+                ///var head = {"USER_ID":"用户ID,1-1-1-0","USER_NAME":"用户名,1-1-1-0","ACCOUNT":"账号,1-1-1-0","PASSWORD":"密码,1-1-1-0","EMAIL":"邮箱,1-1-1-0","REGISTER_DATE":"注册时间,1-1-1-0","STATUS":"状态,1-1-1-0"};
+            var userPlus_data = {},getMsg_data = {},setMsg_data = {},main_data={},excel_data={};
+            for(var k in head){
+                //console.log(head.k);
+                let s = head[k].split(",")[1];
+                head[k] = head[k].split(",")[0];
+                s = s.split("-");
+                //console.log(k);
+                if( s[0] == "1"){
+                    main_data[k] = head[k];
+                }
+                if( s[1] == "1" ){  //查询
+                    //console.log("1");
+                    getMsg_data[k] = head[k];
+                }
+                if( s[2] == "1" ){  //增加
+                    //console.log("2");
+                    userPlus_data[k] = head[k];
+                }
+                if( s[3] == "1" ){  //修改
+                    //console.log("3");
+                    setMsg_data[k] = head[k];
+                }
+            }
+            //console.log(getMsg_data);
+            //console.log(userPlus_data);
+            //console.log(setMsg_data);
+            //userPlus   //增加一条 userPlus_from
+            allDataProcessing({ pageId : "userPlus_from", obj : userPlus_data});
+            $table.userPlus_data = userPlus_data;
+            //getMsg     //查询单个数据
+            allDataProcessing({ pageId : "getMsg_from", obj : getMsg_data});
+            $table.getMsg_data = getMsg_data;
+            //setMsg     //修改一条数据
+            allDataProcessing({ pageId : "setMsg_from", obj : setMsg_data});
+            $table.setMsg_data = setMsg_data;
+            $table.excel_data = excel_data;
+            $table.main_data = main_data;
+            return main_data;
+        }
+
+
+        var $table = $( '#' + d.id );
+        var dataUrl = $table.attr("name");
+        $( $( '#' + d.id ).parent().children(".exportExcel")[0] ).on("click",function(){
+            //console.log("点击导出");
+            exportExcel( $table.bootstrapTable('getOptions').data );
+        });
+
+        // 请求服务器 allData 加载插件
+        $.ajax({
+            type:'post',
+            //url:  ajaxBaseURL + dataUrl,
+            url:  "./php/demo_2018-02-02.php",
+            success:function(data){
+                try{
+                    //打印ajax 之后 allData
+                    //console.log( JSON.stringify( data));
+                    var str1 = '{"head":{"provideName":"省份名称,1-1-1-1","cityName":"城市名称,1-1-1-1","cityLevel_mobileNetwork":"是否出账,1-1-1-1","cityLevel_Broadband":"2I2C 套餐名称,1-0-1-0","cityQuota_mobileNetwork":"用户数量,1-0-1-0","cityQuota_Broadband":"城市配额 - 宽带配额,0-0-1-1","cityEnlargeRatio_mobileNetwork":"城市放大比例 - 移网放大比例,0-1-1-1","cityEnlargeRatio_Broadband":"城市放大比例 - 宽带放大比例,0-1-1-1"},"msg":"查询全部成功！","code":"000","value":[{"provideName":"黑龙江省","cityName":"哈尔滨市","cityLevel_mobileNetwork":"是","cityLevel_Broadband":"腾讯大王卡","cityQuota_mobileNetwork":"12356465","cityQuota_Broadband":"1111","cityEnlargeRatio_mobileNetwork":"城市 - 移网 - 放大比例1:1000","cityEnlargeRatio_Broadband":"城市 - 宽带 - 放大比例1:1000"},{"provideName":"山西省","cityName":"太原市","cityLevel_mobileNetwork":"是","cityLevel_Broadband":"腾讯大王卡","cityQuota_mobileNetwork":"546652","cityQuota_Broadband":"2222","cityEnlargeRatio_mobileNetwork":"城市 - 移网 - 放大比例1:1000","cityEnlargeRatio_Broadband":"城市 - 宽带 - 放大比例1:1000"},{"provideName":"山西省","cityName":"孝义市","cityLevel_mobileNetwork":"是","cityLevel_Broadband":"腾讯大王卡","cityQuota_mobileNetwork":"6547","cityQuota_Broadband":"1111","cityEnlargeRatio_mobileNetwork":"城市 - 移网 - 放大比例1:1000","cityEnlargeRatio_Broadband":"城市 - 宽带 - 放大比例1:1000"},{"provideName":"黑龙江省","cityName":"齐齐哈尔市","cityLevel_mobileNetwork":"是","cityLevel_Broadband":"腾讯大王卡","cityQuota_mobileNetwork":"12356465","cityQuota_Broadband":"1111","cityEnlargeRatio_mobileNetwork":"城市 - 移网 - 放大比例1:1000","cityEnlargeRatio_Broadband":"城市 - 宽带 - 放大比例1:1000"},{"provideName":"山西省","cityName":"太原市","cityLevel_mobileNetwork":"否","cityLevel_Broadband":"...","cityQuota_mobileNetwork":"5455262","cityQuota_Broadband":"2222","cityEnlargeRatio_mobileNetwork":"城市 - 移网 - 放大比例1:1000","cityEnlargeRatio_Broadband":"城市 - 宽带 - 放大比例1:1000"},{"provideName":"山西省","cityName":"孝义市","cityLevel_mobileNetwork":"是","cityLevel_Broadband":"腾讯大王卡","cityQuota_mobileNetwork":"6547","cityQuota_Broadband":"1111","cityEnlargeRatio_mobileNetwork":"城市 - 移网 - 放大比例1:1000","cityEnlargeRatio_Broadband":"城市 - 宽带 - 放大比例1:1000"},{"provideName":"山东省","cityName":"济南市","cityLevel_mobileNetwork":"是","cityLevel_Broadband":"...","cityQuota_mobileNetwork":"123","cityQuota_Broadband":"2222","cityEnlargeRatio_mobileNetwork":"城市 - 移网 - 放大比例1:1000","cityEnlargeRatio_Broadband":"城市 - 宽带 - 放大比例1:1000"},{"provideName":"山东省","cityName":"青岛市","ORDER_STATUS":"待排产","cityLevel_mobileNetwork":"否","cityLevel_Broadband":"腾讯大王卡","cityQuota_mobileNetwork":"10000","cityQuota_Broadband":"1111","cityEnlargeRatio_mobileNetwork":"城市 - 移网 - 放大比例1:1000","cityEnlargeRatio_Broadband":"城市 - 宽带 - 放大比例1:1000"},{"provideName":"山东省","cityName":"烟台市","ORDER_STATUS":"待排产","cityLevel_mobileNetwork":"否","cityLevel_Broadband":"腾讯大王卡","cityQuota_mobileNetwork":"20000","cityQuota_Broadband":"2222","cityEnlargeRatio_mobileNetwork":"城市 - 移网 - 放大比例1:1000","cityEnlargeRatio_Broadband":"城市 - 宽带 - 放大比例1:1000"},{"provideName":"浙江省","cityName":"杭州市","ORDER_STATUS":"已删除","cityLevel_mobileNetwork":"是","cityLevel_Broadband":"...","cityQuota_mobileNetwork":"30000","cityQuota_Broadband":"1111","cityEnlargeRatio_mobileNetwork":"城市 - 移网 - 放大比例1:1000","cityEnlargeRatio_Broadband":"城市 - 宽带 - 放大比例1:1000"},{"provideName":"江苏省","cityName":"南京市","cityLevel_mobileNetwork":"否","cityLevel_Broadband":"...","cityQuota_mobileNetwork":"2000","cityQuota_Broadband":"2222","cityEnlargeRatio_mobileNetwork":"城市 - 移网 - 放大比例1:1000","cityEnlargeRatio_Broadband":"城市 - 宽带 - 放大比例1:1000"},{"provideName":"黑龙江省","cityName":"大庆市","cityLevel_mobileNetwork":"否","cityLevel_Broadband":"...","cityQuota_mobileNetwork":"3000","cityQuota_Broadband":"1111","cityEnlargeRatio_mobileNetwork":"城市 - 移网 - 放大比例1:1000","cityEnlargeRatio_Broadband":"城市 - 宽带 - 放大比例1:1000"},{"provideName":"辽宁省","cityName":"沈阳市","ORDER_STATUS":"已删除","cityLevel_mobileNetwork":"是","cityLevel_Broadband":"...","cityQuota_mobileNetwork":"23654","cityQuota_Broadband":"2222","cityEnlargeRatio_mobileNetwork":"城市 - 移网 - 放大比例1:1000","cityEnlargeRatio_Broadband":"城市 - 宽带 - 放大比例1:1000"},{"provideName":"辽宁省","cityName":"大连市","ORDER_STATUS":"已删除","cityLevel_mobileNetwork":"是","cityLevel_Broadband":"...","cityQuota_mobileNetwork":"25648","cityQuota_Broadband":"333说如果下班后如果不是个vser格式二十个而是如果二十日vfef挖坟饿啊我分发v额撒日本个人同时的投入那好吧各通电话你ehtdynj的人喜欢上的认同和就srgsrgegaergseg能让她户输入合同srhsrthtrsh收入还是然后让他官方v给不给人头公司如srthrthbrsgbzxv何他合同让给别人erzswb5sgregbse吧 输入格式trshstrh如果二十日二十日srthrtdhtjs个死人格式额不各色人stjrsrthstrh不打你有校验有今天已djdtjtyfj经淘汰还是然后 是华人社团和 sovreiuvm,givjgbrsbjseoipbheprugho3","cityEnlargeRatio_mobileNetwork":"城市 - 移网 - 放大比例1:1000","cityEnlargeRatio_Broadband":"城市 - 宽带 - 放大比例1:1000"}],"key":"ROLE_ID"}';
+
+
+                    //window.str = data;
+                    var obj = eval( "(" + str1 + ")" ); //data;//eval( "(" + data + ")" );
+                    //window.allStr = JSON.stringify(data);
+                    var list = obj.value,
+                        //headList = list.unshift({
+                        headList = [],
+                        headData = transferAllDataProcessing(obj.head);
+                    $table.headData = headData;
+
+                    headList.push({
+
+                        checkbox : true,
+                        fieId : 'state',
+                        title : 'checkBox'
+                    });
+
+                    for(var k in headData ){
+                        headList.push({
+                            field: k,
+                            sortable : true,
+                            title: headData[k]
+                        });
+                    }
+
+
+                    headList.push({
+                        field: 'action',
+                        title: '操作',
+                        halign : "center",
+                        align : 'right',
+                        formatter : "operateFormatter",
+                        events : 'operateEvents'
+                    });
+                    //主页面table - bootstrapTable插件加载数据
+                    /***
+                     * [{
+
+                             checkbox : true,
+                             fieId : 'checkBox',
+                             title : 'checkBox'
+                         },
+                     {
+                         field: 'id',
+                         title: 'Item ID'
+                     }, {
+                             field: 'name',
+                             title: 'Item Name'
+                         }, {
+                             field: 'price',
+                             title: 'Item Price'
+                         }, {
+                             field: 'action',
+                             title: '操作',
+                             halign : "center",
+                             align : 'right',
+                             formatter : "operateFormatter",
+                             events : 'operateEvents'
+                         }
+                     ],
+                     * **/
+
+                    //all数据
+                    $table.bootstrapTable({
+                        //head
+                        //columns: headList,
+                        //body
+                        data : list,
+                        toolbar: ".toolbar",
+                        //clickToSelect: true,        //是否启用点击选中行
+                        //showRefresh: true,
+                        striped: true,
+                        search: true,
+                        showToggle: true,
+                        showColumns: true,
+                        pagination: true,
+                        uniqueId: obj.key,              //每一行的唯一标识，一般为主键列
+                        pageSize: 5,  //每一页展示的信息数量
+                        //clickToSelect: false,
+                        searchAlign: 'left',
+                        idField: "RESOURCE_ID",
+                        pageList: [5,10,25,50,100],
+                        rowStyle: function (row, index) {
+                            //这里有5个取值代表5中颜色['active', 'success', 'info', 'warning', 'danger'];
+                            var strclass = "";
+                            if (row.ORDER_STATUS == "待排产") {
+                                strclass = 'success';//还有一个active
+                            }
+                            else if (row.ORDER_STATUS == "已删除") {
+                                strclass = 'danger';
+                            }
+                            else {
+                                return {};
+                            }
+                            return { classes: strclass }
+                        },
+                        icons: {
+                            refresh: 'fa fa-refresh',
+                            toggle: 'fa fa-th-list',
+                            columns: 'fa fa-columns',
+                            detailOpen: 'fa fa-plus-circle',
+                            detailClose: 'fa fa-minus-circle'
+                        }
+                    });
+
+
+                    //$table.bootstrapTable('load', list );
+                    window.$table = $table;
+                    window.$table.key = obj.key;
+
+
+                    /*****
+                     * 此处需要数据处理，将处理后的数据挂载到增删改查的子页面中
+                     * 处理后的数据分为
+                     * 1、 主页面table全部的数据展示；
+                     * 2、 子页面 - 查询单个数据展示；
+                     * 3、 子页面 -增加单个数据展示；
+                     * 4、 子页面 - 修改单个数据的展示；
+                     *  调用示例 : 挂载子页面的方法
+                     *      allDataProcessing({ pageId : "要加载数据页面的ID", obj : "加载数据传参"})
+                     *  示例 ：
+                     * ****/
+                    //获得全量 head :{"USER_ID":"用户ID,1-1-1-0","USER_NAME":"用户名,1-1-1-0","ACCOUNT":"账号,1-1-1-0","PASSWORD":"密码,1-1-1-0","EMAIL":"邮箱,1-1-1-0","REGISTER_DATE":"注册时间,1-1-1-0","STATUS":"状态,1-1-1-0"}
+                    //var head = {"USER_ID":"用户ID,1-1-1-0","USER_NAME":"用户名,1-1-1-0","ACCOUNT":"账号,1-1-1-0","PASSWORD":"密码,1-1-1-0","EMAIL":"邮箱,1-1-1-0","REGISTER_DATE":"注册时间,1-1-1-0","STATUS":"状态,1-1-1-0"};
+                    //userPlus   //增加一条 userPlus_from
+                    //allDataProcessing({ pageId : "userPlus_from", obj : ""});
+                    //getMsg     //查询单个数据
+                    //allDataProcessing({ pageId : "getMsg_from", obj : ""});
+                    //setMsg     //修改一条数据
+                    //allDataProcessing({ pageId : "setMsg_from", obj : ""});
+
+
+                    /**
+                     * {
+                     * "head":{"USER_ID":"用户ID,1-1-1-0","USER_NAME":"用户名,1-1-1-0","ACCOUNT":"账号,1-1-1-0","PASSWORD":"密码,1-1-1-0","EMAIL":"邮箱,1-1-1-0","REGISTER_DATE":"注册时间,1-1-1-0","STATUS":"状态,1-1-1-0"},
+                     * "msg":"查询全部成功！",
+                     * "code":"000",
+                     * "value":[{"QQ":"222","ACCOUNT":"jiale","STATUS":"0","PASSWORD":"111111","USER_ID":"001","USER_NAME":"jiale","REGISTER_DATE":1516809600000,"EMAIL":"847748755@qq.com","DESCRIBTION":"admin"},{"QQ":"222","ACCOUNT":"yale","STATUS":"0","PASSWORD":"222222","USER_ID":"002","USER_NAME":"yale","REGISTER_DATE":1516809600000,"EMAIL":"2@qq.com","DESCRIBTION":"users"},{"ACCOUNT":"lele","STATUS":"0","PASSWORD":"lele","USER_ID":"003","USER_NAME":"lele"}],"key":"USER_ID"}
+                     * */
+                }catch(error){
+                    console.log("【 bootstrapTable - 返回结果 - 报错 】");
+                    console.log( error );
+                }
+
+            },
+            error:function(error){
+                console.log("【 bootstrapTable - 报错 】");
+                console.log(error);
+            }
+        });
+
+
+        $(window).resize(function () {
+            $table.bootstrapTable('resetView');
+
+
+        });
+        //window.transferAllDataProcessing = transferAllDataProcessing;
+
+    }
+
+</script>
+</body>
+</html>

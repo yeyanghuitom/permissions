@@ -1,0 +1,92 @@
+* {
+    margin: 0;
+    padding: 0;
+  }
+  body {
+    background-color: #0A0A2D;
+    color: #fff;
+    height: 100%;
+    min-width: 1000px;
+  }
+
+  #con2 {
+      display: none;
+  }
+  #con3 {
+      display: none;
+  }
+  .clearfix:after{
+    content:"";
+    height:0;
+    line-height:0;
+    display:block;
+    clear:both;
+    visibility:hidden;
+    }
+  .top img {
+    width: 100%;
+  }
+  .toptitle {
+    color: #25D8ED;
+    font-size: 20px;
+    position: absolute;
+    top: 20px;
+    left: 50%;
+  transform: translateX(-50%)
+  }
+  .enter1 {
+    position: absolute;
+    top: 34px;
+    right: 40px;
+    color: #2AE0ED;
+    cursor: pointer;
+  }
+  .img {
+    width: 300px;
+    margin: 20px;
+  }
+  .img img {
+      width: 100%;
+  }
+  .img2 {
+      display: none;
+  }
+  .img3 {
+      display: none;
+  }
+  .tablemx {
+    width: 800px;
+    margin: 20px auto;
+}
+  
+  .tablemx table {
+    width:100%;
+    text-align: center;
+    color: #6989db;
+    
+  }
+  #Template_listZ tr:hover {
+    background-color: #091C3D;
+  }
+  #tplWrapper_TemplateZ {
+    background-color: #010826;
+  }
+  .tablemx .th {
+    height: 30px;
+    line-height: 30px;
+    background-color: #031C5E;
+    color: #7496cd;
+  }
+  
+  .tablemx th {
+    text-align: center;
+  }
+  #chart1 {
+      margin: 20px auto;
+  }
+  #chart3 {
+    margin: 20px auto;
+}
+#chart5 {
+    margin: 20px auto;
+}

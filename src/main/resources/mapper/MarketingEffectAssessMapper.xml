@@ -1,0 +1,371 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.unicom.tancms.mapper.MarketingEffectAssessMapper" >
+  <resultMap id="BaseResultMap" type="com.unicom.tancms.pojo.MarketingEffectAssess" >
+    <id column="MES_ACTIVITY_ID" property="mesActivityId" jdbcType="VARCHAR" />
+    <result column="MES_ACTIVITY_NAME" property="mesActivityName" jdbcType="VARCHAR" />
+    <result column="MES_CREATE_TIME" property="mesCreateTime" jdbcType="TIMESTAMP" />
+    <result column="MES_KEYWORDS" property="mesKeywords" jdbcType="VARCHAR" />
+    <result column="MES_EXCLUDE" property="mesExclude" jdbcType="VARCHAR" />
+    <result column="MES_FINISH_TIME" property="mesFinishTime" jdbcType="TIMESTAMP" />
+    <result column="MES_ANALYZ_STATUS" property="mesAnalyzStatus" jdbcType="CHAR" />
+    <result column="MES_START_TIME" property="mesStartTime" jdbcType="TIMESTAMP" />
+    <result column="MES_END_TIME" property="mesEndTime" jdbcType="TIMESTAMP" />
+    <result column="IS_DELETE" property="isDelete" jdbcType="CHAR" />
+    <result column="MES_CREATE_USER" property="mesCreateUser" jdbcType="VARCHAR" />
+    <result column="MES_PATH_WORD" property="mesPathWord" jdbcType="VARCHAR" />
+    <result column="MES_PATH_PDF" property="mesPathPdf" jdbcType="VARCHAR" />
+    <result column="MES_UPDATE_TIME" property="mesUpdateTime" jdbcType="TIMESTAMP" />
+    <result column="MES_UPDATE_USER" property="mesUpdateUser" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    MES_ACTIVITY_ID, MES_ACTIVITY_NAME, MES_CREATE_TIME, MES_KEYWORDS, MES_EXCLUDE, MES_FINISH_TIME, 
+    MES_ANALYZ_STATUS, MES_START_TIME, MES_END_TIME, IS_DELETE, MES_CREATE_USER, MES_PATH_WORD, 
+    MES_PATH_PDF, MES_UPDATE_TIME, MES_UPDATE_USER
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.unicom.tancms.pojo.MarketingEffectAssessExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from marketing_effect_assess
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from marketing_effect_assess
+    where MES_ACTIVITY_ID = #{mesActivityId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from marketing_effect_assess
+    where MES_ACTIVITY_ID = #{mesActivityId,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.unicom.tancms.pojo.MarketingEffectAssessExample" >
+    delete from marketing_effect_assess
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.unicom.tancms.pojo.MarketingEffectAssess" >
+    insert into marketing_effect_assess (MES_ACTIVITY_ID, MES_ACTIVITY_NAME, MES_CREATE_TIME, 
+      MES_KEYWORDS, MES_EXCLUDE, MES_FINISH_TIME, 
+      MES_ANALYZ_STATUS, MES_START_TIME, MES_END_TIME, 
+      IS_DELETE, MES_CREATE_USER, MES_PATH_WORD, 
+      MES_PATH_PDF, MES_UPDATE_TIME, MES_UPDATE_USER
+      )
+    values (#{mesActivityId,jdbcType=VARCHAR}, #{mesActivityName,jdbcType=VARCHAR}, #{mesCreateTime,jdbcType=TIMESTAMP}, 
+      #{mesKeywords,jdbcType=VARCHAR}, #{mesExclude,jdbcType=VARCHAR}, #{mesFinishTime,jdbcType=TIMESTAMP}, 
+      #{mesAnalyzStatus,jdbcType=CHAR}, #{mesStartTime,jdbcType=TIMESTAMP}, #{mesEndTime,jdbcType=TIMESTAMP}, 
+      #{isDelete,jdbcType=CHAR}, #{mesCreateUser,jdbcType=VARCHAR}, #{mesPathWord,jdbcType=VARCHAR}, 
+      #{mesPathPdf,jdbcType=VARCHAR}, #{mesUpdateTime,jdbcType=TIMESTAMP}, #{mesUpdateUser,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.unicom.tancms.pojo.MarketingEffectAssess" >
+    insert into marketing_effect_assess
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="mesActivityId != null" >
+        MES_ACTIVITY_ID,
+      </if>
+      <if test="mesActivityName != null" >
+        MES_ACTIVITY_NAME,
+      </if>
+      <if test="mesCreateTime != null" >
+        MES_CREATE_TIME,
+      </if>
+      <if test="mesKeywords != null" >
+        MES_KEYWORDS,
+      </if>
+      <if test="mesExclude != null" >
+        MES_EXCLUDE,
+      </if>
+      <if test="mesFinishTime != null" >
+        MES_FINISH_TIME,
+      </if>
+      <if test="mesAnalyzStatus != null" >
+        MES_ANALYZ_STATUS,
+      </if>
+      <if test="mesStartTime != null" >
+        MES_START_TIME,
+      </if>
+      <if test="mesEndTime != null" >
+        MES_END_TIME,
+      </if>
+      <if test="isDelete != null" >
+        IS_DELETE,
+      </if>
+      <if test="mesCreateUser != null" >
+        MES_CREATE_USER,
+      </if>
+      <if test="mesPathWord != null" >
+        MES_PATH_WORD,
+      </if>
+      <if test="mesPathPdf != null" >
+        MES_PATH_PDF,
+      </if>
+      <if test="mesUpdateTime != null" >
+        MES_UPDATE_TIME,
+      </if>
+      <if test="mesUpdateUser != null" >
+        MES_UPDATE_USER,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="mesActivityId != null" >
+        #{mesActivityId,jdbcType=VARCHAR},
+      </if>
+      <if test="mesActivityName != null" >
+        #{mesActivityName,jdbcType=VARCHAR},
+      </if>
+      <if test="mesCreateTime != null" >
+        #{mesCreateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="mesKeywords != null" >
+        #{mesKeywords,jdbcType=VARCHAR},
+      </if>
+      <if test="mesExclude != null" >
+        #{mesExclude,jdbcType=VARCHAR},
+      </if>
+      <if test="mesFinishTime != null" >
+        #{mesFinishTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="mesAnalyzStatus != null" >
+        #{mesAnalyzStatus,jdbcType=CHAR},
+      </if>
+      <if test="mesStartTime != null" >
+        #{mesStartTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="mesEndTime != null" >
+        #{mesEndTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isDelete != null" >
+        #{isDelete,jdbcType=CHAR},
+      </if>
+      <if test="mesCreateUser != null" >
+        #{mesCreateUser,jdbcType=VARCHAR},
+      </if>
+      <if test="mesPathWord != null" >
+        #{mesPathWord,jdbcType=VARCHAR},
+      </if>
+      <if test="mesPathPdf != null" >
+        #{mesPathPdf,jdbcType=VARCHAR},
+      </if>
+      <if test="mesUpdateTime != null" >
+        #{mesUpdateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="mesUpdateUser != null" >
+        #{mesUpdateUser,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.unicom.tancms.pojo.MarketingEffectAssessExample" resultType="java.lang.Integer" >
+    select count(*) from marketing_effect_assess
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update marketing_effect_assess
+    <set >
+      <if test="record.mesActivityId != null" >
+        MES_ACTIVITY_ID = #{record.mesActivityId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.mesActivityName != null" >
+        MES_ACTIVITY_NAME = #{record.mesActivityName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.mesCreateTime != null" >
+        MES_CREATE_TIME = #{record.mesCreateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.mesKeywords != null" >
+        MES_KEYWORDS = #{record.mesKeywords,jdbcType=VARCHAR},
+      </if>
+      <if test="record.mesExclude != null" >
+        MES_EXCLUDE = #{record.mesExclude,jdbcType=VARCHAR},
+      </if>
+      <if test="record.mesFinishTime != null" >
+        MES_FINISH_TIME = #{record.mesFinishTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.mesAnalyzStatus != null" >
+        MES_ANALYZ_STATUS = #{record.mesAnalyzStatus,jdbcType=CHAR},
+      </if>
+      <if test="record.mesStartTime != null" >
+        MES_START_TIME = #{record.mesStartTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.mesEndTime != null" >
+        MES_END_TIME = #{record.mesEndTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.isDelete != null" >
+        IS_DELETE = #{record.isDelete,jdbcType=CHAR},
+      </if>
+      <if test="record.mesCreateUser != null" >
+        MES_CREATE_USER = #{record.mesCreateUser,jdbcType=VARCHAR},
+      </if>
+      <if test="record.mesPathWord != null" >
+        MES_PATH_WORD = #{record.mesPathWord,jdbcType=VARCHAR},
+      </if>
+      <if test="record.mesPathPdf != null" >
+        MES_PATH_PDF = #{record.mesPathPdf,jdbcType=VARCHAR},
+      </if>
+      <if test="record.mesUpdateTime != null" >
+        MES_UPDATE_TIME = #{record.mesUpdateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.mesUpdateUser != null" >
+        MES_UPDATE_USER = #{record.mesUpdateUser,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update marketing_effect_assess
+    set MES_ACTIVITY_ID = #{record.mesActivityId,jdbcType=VARCHAR},
+      MES_ACTIVITY_NAME = #{record.mesActivityName,jdbcType=VARCHAR},
+      MES_CREATE_TIME = #{record.mesCreateTime,jdbcType=TIMESTAMP},
+      MES_KEYWORDS = #{record.mesKeywords,jdbcType=VARCHAR},
+      MES_EXCLUDE = #{record.mesExclude,jdbcType=VARCHAR},
+      MES_FINISH_TIME = #{record.mesFinishTime,jdbcType=TIMESTAMP},
+      MES_ANALYZ_STATUS = #{record.mesAnalyzStatus,jdbcType=CHAR},
+      MES_START_TIME = #{record.mesStartTime,jdbcType=TIMESTAMP},
+      MES_END_TIME = #{record.mesEndTime,jdbcType=TIMESTAMP},
+      IS_DELETE = #{record.isDelete,jdbcType=CHAR},
+      MES_CREATE_USER = #{record.mesCreateUser,jdbcType=VARCHAR},
+      MES_PATH_WORD = #{record.mesPathWord,jdbcType=VARCHAR},
+      MES_PATH_PDF = #{record.mesPathPdf,jdbcType=VARCHAR},
+      MES_UPDATE_TIME = #{record.mesUpdateTime,jdbcType=TIMESTAMP},
+      MES_UPDATE_USER = #{record.mesUpdateUser,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.unicom.tancms.pojo.MarketingEffectAssess" >
+    update marketing_effect_assess
+    <set >
+      <if test="mesActivityName != null" >
+        MES_ACTIVITY_NAME = #{mesActivityName,jdbcType=VARCHAR},
+      </if>
+      <if test="mesCreateTime != null" >
+        MES_CREATE_TIME = #{mesCreateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="mesKeywords != null" >
+        MES_KEYWORDS = #{mesKeywords,jdbcType=VARCHAR},
+      </if>
+      <if test="mesExclude != null" >
+        MES_EXCLUDE = #{mesExclude,jdbcType=VARCHAR},
+      </if>
+      <if test="mesFinishTime != null" >
+        MES_FINISH_TIME = #{mesFinishTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="mesAnalyzStatus != null" >
+        MES_ANALYZ_STATUS = #{mesAnalyzStatus,jdbcType=CHAR},
+      </if>
+      <if test="mesStartTime != null" >
+        MES_START_TIME = #{mesStartTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="mesEndTime != null" >
+        MES_END_TIME = #{mesEndTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isDelete != null" >
+        IS_DELETE = #{isDelete,jdbcType=CHAR},
+      </if>
+      <if test="mesCreateUser != null" >
+        MES_CREATE_USER = #{mesCreateUser,jdbcType=VARCHAR},
+      </if>
+      <if test="mesPathWord != null" >
+        MES_PATH_WORD = #{mesPathWord,jdbcType=VARCHAR},
+      </if>
+      <if test="mesPathPdf != null" >
+        MES_PATH_PDF = #{mesPathPdf,jdbcType=VARCHAR},
+      </if>
+      <if test="mesUpdateTime != null" >
+        MES_UPDATE_TIME = #{mesUpdateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="mesUpdateUser != null" >
+        MES_UPDATE_USER = #{mesUpdateUser,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where MES_ACTIVITY_ID = #{mesActivityId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.unicom.tancms.pojo.MarketingEffectAssess" >
+    update marketing_effect_assess
+    set MES_ACTIVITY_NAME = #{mesActivityName,jdbcType=VARCHAR},
+      MES_CREATE_TIME = #{mesCreateTime,jdbcType=TIMESTAMP},
+      MES_KEYWORDS = #{mesKeywords,jdbcType=VARCHAR},
+      MES_EXCLUDE = #{mesExclude,jdbcType=VARCHAR},
+      MES_FINISH_TIME = #{mesFinishTime,jdbcType=TIMESTAMP},
+      MES_ANALYZ_STATUS = #{mesAnalyzStatus,jdbcType=CHAR},
+      MES_START_TIME = #{mesStartTime,jdbcType=TIMESTAMP},
+      MES_END_TIME = #{mesEndTime,jdbcType=TIMESTAMP},
+      IS_DELETE = #{isDelete,jdbcType=CHAR},
+      MES_CREATE_USER = #{mesCreateUser,jdbcType=VARCHAR},
+      MES_PATH_WORD = #{mesPathWord,jdbcType=VARCHAR},
+      MES_PATH_PDF = #{mesPathPdf,jdbcType=VARCHAR},
+      MES_UPDATE_TIME = #{mesUpdateTime,jdbcType=TIMESTAMP},
+      MES_UPDATE_USER = #{mesUpdateUser,jdbcType=VARCHAR}
+    where MES_ACTIVITY_ID = #{mesActivityId,jdbcType=VARCHAR}
+  </update>
+</mapper>

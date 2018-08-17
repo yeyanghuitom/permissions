@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.unicom.tancms.mapper.RoleMenuMapper" >
+  <resultMap id="BaseResultMap" type="com.unicom.tancms.pojo.RoleMenu" >
+    <id column="ROLE_MENU_ID" property="roleMenuId" jdbcType="BIGINT" />
+    <result column="ROLE_ID" property="roleId" jdbcType="BIGINT" />
+    <result column="MENU_ID" property="menuId" jdbcType="BIGINT" />
+    <result column="CRUD_OPERATION" property="crudOperation" jdbcType="BIGINT" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    ROLE_MENU_ID, ROLE_ID, MENU_ID, CRUD_OPERATION
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.unicom.tancms.pojo.RoleMenuExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from role_menu
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from role_menu
+    where ROLE_MENU_ID = #{roleMenuId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from role_menu
+    where ROLE_MENU_ID = #{roleMenuId,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.unicom.tancms.pojo.RoleMenuExample" >
+    delete from role_menu
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.unicom.tancms.pojo.RoleMenu" >
+    insert into role_menu (ROLE_MENU_ID, ROLE_ID, MENU_ID, 
+      CRUD_OPERATION)
+    values (#{roleMenuId,jdbcType=BIGINT}, #{roleId,jdbcType=BIGINT}, #{menuId,jdbcType=BIGINT}, 
+      #{crudOperation,jdbcType=BIGINT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.unicom.tancms.pojo.RoleMenu" >
+    insert into role_menu
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="roleMenuId != null" >
+        ROLE_MENU_ID,
+      </if>
+      <if test="roleId != null" >
+        ROLE_ID,
+      </if>
+      <if test="menuId != null" >
+        MENU_ID,
+      </if>
+      <if test="crudOperation != null" >
+        CRUD_OPERATION,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="roleMenuId != null" >
+        #{roleMenuId,jdbcType=BIGINT},
+      </if>
+      <if test="roleId != null" >
+        #{roleId,jdbcType=BIGINT},
+      </if>
+      <if test="menuId != null" >
+        #{menuId,jdbcType=BIGINT},
+      </if>
+      <if test="crudOperation != null" >
+        #{crudOperation,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.unicom.tancms.pojo.RoleMenuExample" resultType="java.lang.Integer" >
+    select count(*) from role_menu
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update role_menu
+    <set >
+      <if test="record.roleMenuId != null" >
+        ROLE_MENU_ID = #{record.roleMenuId,jdbcType=BIGINT},
+      </if>
+      <if test="record.roleId != null" >
+        ROLE_ID = #{record.roleId,jdbcType=BIGINT},
+      </if>
+      <if test="record.menuId != null" >
+        MENU_ID = #{record.menuId,jdbcType=BIGINT},
+      </if>
+      <if test="record.crudOperation != null" >
+        CRUD_OPERATION = #{record.crudOperation,jdbcType=BIGINT},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update role_menu
+    set ROLE_MENU_ID = #{record.roleMenuId,jdbcType=BIGINT},
+      ROLE_ID = #{record.roleId,jdbcType=BIGINT},
+      MENU_ID = #{record.menuId,jdbcType=BIGINT},
+      CRUD_OPERATION = #{record.crudOperation,jdbcType=BIGINT}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.unicom.tancms.pojo.RoleMenu" >
+    update role_menu
+    <set >
+      <if test="roleId != null" >
+        ROLE_ID = #{roleId,jdbcType=BIGINT},
+      </if>
+      <if test="menuId != null" >
+        MENU_ID = #{menuId,jdbcType=BIGINT},
+      </if>
+      <if test="crudOperation != null" >
+        CRUD_OPERATION = #{crudOperation,jdbcType=BIGINT},
+      </if>
+    </set>
+    where ROLE_MENU_ID = #{roleMenuId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.unicom.tancms.pojo.RoleMenu" >
+    update role_menu
+    set ROLE_ID = #{roleId,jdbcType=BIGINT},
+      MENU_ID = #{menuId,jdbcType=BIGINT},
+      CRUD_OPERATION = #{crudOperation,jdbcType=BIGINT}
+    where ROLE_MENU_ID = #{roleMenuId,jdbcType=BIGINT}
+  </update>
+</mapper>

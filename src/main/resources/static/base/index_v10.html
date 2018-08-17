@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html style="height: 100%">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>nps-中国地图</title>
+
+    <link rel="shortcut icon" href="favicon.ico"> <link href="css/bootstrap.min.css?v=3.3.5" rel="stylesheet">
+    <link href="css/font-awesome.min.css?v=4.4.0" rel="stylesheet">
+    <link href="css/animate.min.css" rel="stylesheet">
+    <link href="css/style.min.css?v=4.0.0" rel="stylesheet"><base target="_blank">
+</head>
+<body style="height: 100%; margin: 0">
+<div id="container" style="height: 100%"></div>
+<script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/echarts-all-3.js"></script>
+<script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts-stat/ecStat.min.js"></script>
+<script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/extension/dataTool.min.js"></script>
+<script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/map/js/china.js"></script>
+<script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/map/js/world.js"></script>
+<!--<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=ZUONbpqGBsYGXNIYHicvbAbM"></script>-->
+<script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/extension/bmap.min.js"></script>
+<script type="text/javascript">
+    var dom = document.getElementById("container");
+    var myChart = echarts.init(dom);
+    var app = {};
+    option = null;
+
+
+    option = {
+        title : {
+            text: 'CEM 系统数据统计饼状图（维度： 年）',
+            subtext: '时间：2013-2018    单位：年  \n',
+            x:'center'
+        },
+        tooltip : {
+            trigger: 'item',
+            formatter: "{a} {b} :{d}%",
+            textStyle: {
+                fontSize:14
+            }
+        },
+        legend: {
+            orient: 'vertical',
+            left: 'left',
+            data: ['满意','一般','投诉']
+        },
+        toolbox: {
+            show: true,
+            orient: 'vertical',
+            left: 'right',
+            top: 'center',
+            feature: {
+                dataView: {readOnly: false},
+                restore: {},
+                saveAsImage: {}
+            }
+        },
+        grid: [
+            {x: '7.5%',y: '65%', width: '88%', height: '30%'},
+        ],
+        xAxis: [
+            {gridIndex: 0,
+                type: 'category',
+                axisTick: {
+                    alignWithLabel: true
+                },
+                data: ['2013全年','2014全年','2015全年','2016全年','2017全年','2018全年']},
+        ],
+        yAxis: [
+            {gridIndex: 0,name:'年',show:false},
+        ],
+        series : [
+            {
+                name: '2017年 舆情 统计平台',
+                type: 'pie',
+                //roseType:'radius',
+                radius : '33%',
+                center: ['25%', '30%'],
+                data:[
+                    {value:12, name:'满意'},
+                    {value:67-12-4, name:'一般'},
+                    {value:4, name:'投诉'},
+                    /*{value:335, name:'3'},
+                     {value:1548, name:'4'},
+                     {value:1548, name:'5'}*/
+                ],
+                label: {
+                    normal: {
+                        position: 'outside',
+                        formatter: '{a}\n{b}\n{c}万份',
+                        textStyle: {
+                            color: '',
+                            fontSize: 14
+                        }
+                    }
+                },
+                itemStyle: {
+                    emphasis: {
+                        shadowBlur: 10,
+                        shadowOffsetX: 0,
+                        shadowColor: 'rgba(0, 0, 0, 0.5)'
+                    }
+                }
+            },
+            /* {
+             name: '一年级语文',
+             type: 'pie',
+             roseType:'radius',
+             radius : '33%',
+             center: ['50%', '30%'],
+             data:[
+             {value:335, name:'优秀'},
+             {value:335, name:'通过'},
+             {value:335, name:'建议修改'},
+             /*{value:335, name:'3'},
+             {value:1548, name:'4'},
+             {value:1548, name:'5'}
+             ],
+             label: {
+             normal: {
+             position: 'inner',
+             formatter: '{a}\n{b}\n{c}份',
+             textStyle: {
+             color: '',
+             fontSize: 14
+             }
+             }
+             },
+             itemStyle: {
+             emphasis: {
+             shadowBlur: 10,
+             shadowOffsetX: 0,
+             shadowColor: 'rgba(0, 0, 0, 0.5)'
+             }
+             }
+             },*/
+            {
+                name: '2017年 NPS 统计平台',
+                type: 'pie',
+                //roseType:'radius',
+                radius : '33%',
+                center: ['75%', '30%'],
+                data:[
+                    {value:2, name:'满意'},
+                    {value:49-2-1, name:'一般'},
+                    {value:1, name:'投诉'},
+                    /*{value:335, name:'3'},
+                     {value:1548, name:'4'},
+                     {value:1548, name:'5'}*/
+                ],
+                label: {
+                    normal: {
+                        position: 'outside',
+                        formatter: '{a}\n{b}\n{c}万份',
+                        textStyle: {
+                            color: '',
+                            fontSize: 14
+                        }
+                    }
+                },
+                itemStyle: {
+                    emphasis: {
+                        shadowBlur: 10,
+                        shadowOffsetX: 0,
+                        shadowColor: 'rgba(0, 0, 0, 0.5)'
+                    }
+                }
+            },
+            {
+                name: '',
+                type: 'pie',
+                //roseType:'radius',
+                radius : '22%',
+                center: ['15%', '81%'],
+                data:[
+                    {value:7, name:'满意'},
+                    {value:115-7, name:'一般'},
+                    {value:0, name:'投诉'},
+                    /*{value:335, name:'3'},
+                     {value:1548, name:'4'},
+                     {value:1548, name:'5'}*/
+                ],
+                label: {
+                    normal: {
+                        position: 'outside',
+                        formatter: '{c}万份',
+                        textStyle: {
+                            color: '',
+                            fontSize: 14
+                        }
+                    }
+                },
+                itemStyle: {
+                    emphasis: {
+                        shadowBlur: 10,
+                        shadowOffsetX: 0,
+                        shadowColor: 'rgba(0, 0, 0, 0.5)'
+                    }
+                }
+            },
+            {
+                name: '',
+                type: 'pie',
+                radius : '22%',
+                center: ['29.5%', '81%'],
+                data:[
+                    {value:34, name:'满意'},
+                    {value:112-34, name:'一般'},
+                    {value:0, name:'投诉'},
+                    /*{value:335, name:'3'},
+                     {value:1548, name:'4'}*/
+                ],
+                label: {
+                    normal: {
+                        position: 'inner',
+                        formatter: '{c}万份',
+                        offset: [,100],
+                        textStyle: {
+                            color: '#ffffff',
+                            fontSize: 14
+                        }
+                    }
+                },
+                itemStyle: {
+                    emphasis: {
+                        shadowBlur: 10,
+                        shadowOffsetX: 0,
+                        shadowColor: 'rgba(0, 0, 0, 0.5)'
+                    }
+                }
+            },
+            {
+                name: '',
+                type: 'pie',
+                //roseType:'radius',
+                radius : '22%',
+                center: ['44%', '81%'],
+                data:[
+                    {value:33, name:'满意'},
+                    {value:126-33-4, name:'一般'},
+                    {value:4, name:'投诉'},
+                    /*{value:335, name:'3'},
+                     {value:1548, name:'4'},
+                     {value:1548, name:'5'}*/
+                ],
+                label: {
+                    normal: {
+                        position: 'inner',
+                        formatter: '{c}万份',
+                        textStyle: {
+                            color: '#ffffff',
+                            fontSize: 14
+                        }
+                    }
+                },
+                itemStyle: {
+                    emphasis: {
+                        shadowBlur: 10,
+                        shadowOffsetX: 0,
+                        shadowColor: 'rgba(0, 0, 0, 0.5)'
+                    }
+                }
+            },
+            {
+                name: '',
+                type: 'pie',
+                //roseType:'radius',
+                radius : '22%',
+                center: ['58.5%', '81%'],
+                data:[
+                    {value:31, name:'满意'},
+                    {value:132-31-4, name:'一般'},
+                    {value:4, name:'投诉'},
+                    /*{value:335, name:'3'},
+                     {value:1548, name:'4'},
+                     {value:1548, name:'5'}*/
+                ],
+                label: {
+                    normal: {
+                        position: 'inner',
+                        formatter: '{c}万份',
+                        textStyle: {
+                            color: '#ffffff',
+                            fontSize: 14
+                        }
+                    }
+                },
+                itemStyle: {
+                    emphasis: {
+                        shadowBlur: 10,
+                        shadowOffsetX: 0,
+                        shadowColor: 'rgba(0, 0, 0, 0.5)'
+                    }
+                }
+            },
+            {
+                name: '',
+                type: 'pie',
+                radius : '22%',
+                center: ['73.5%', '81%'],
+                data:[
+                    {value:36, name:'满意'},
+                    {value:129-36-4, name:'一般'},
+                    {value:4, name:'投诉'},
+                    /*{value:335, name:'3'},
+                     {value:1548, name:'4'}*/
+                ],
+                label: {
+                    normal: {
+                        position: 'inner',
+                        formatter: '{c}万份',
+                        offset: [,100],
+                        textStyle: {
+                            color: '#ffffff',
+                            fontSize: 14
+                        }
+                    }
+                },
+                itemStyle: {
+                    emphasis: {
+                        shadowBlur: 10,
+                        shadowOffsetX: 0,
+                        shadowColor: 'rgba(0, 0, 0, 0.5)'
+                    }
+                }
+            },
+            {
+                name: '',
+                type: 'pie',
+                //roseType:'radius',
+                radius : '22%',
+                center: ['88%', '81%'],
+                data:[
+                    {value:14, name:'满意'},
+                    {value:114-14-5, name:'一般'},
+                    {value:5, name:'投诉'},
+                    /*{value:335, name:'3'},
+                     {value:1548, name:'4'},
+                     {value:1548, name:'5'}*/
+                ],
+                label: {
+                    normal: {
+                        position: 'outside',
+                        formatter: '{c}万份',
+                        textStyle: {
+                            color: '',
+                            fontSize: 14
+                        }
+                    }
+                },
+                itemStyle: {
+                    emphasis: {
+                        shadowBlur: 10,
+                        shadowOffsetX: 0,
+                        shadowColor: 'rgba(0, 0, 0, 0.5)'
+                    }
+                }
+            },
+
+        ]
+    };
+
+
+
+    if (option && typeof option === "object") {
+        myChart.setOption(option, true);
+    }
+</script>
+</body>
+</html>

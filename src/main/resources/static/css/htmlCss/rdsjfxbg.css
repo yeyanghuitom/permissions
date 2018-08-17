@@ -1,0 +1,274 @@
+/*内容*/
+.navResult {
+    position: relative;
+}
+
+.navResult-content {
+    padding: 0 80px;
+    position: absolute;
+    left: 80px;
+    right: 80px;
+}
+
+.navResult-left {
+    width: 200px;
+    position: absolute;
+    left: 0;
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    top: 10px;
+    border-right: none;
+    height: 390px;
+}
+
+.navResult-left p {
+    font-size: 16px;
+    font-weight: bold;
+    background-color: #f13d3c;
+    margin: 0;
+    color: #ffffff;
+    padding: 4px;
+}
+
+#navResult-leftBtn li {
+    margin: 2px;
+}
+#navResult-leftBtn li a {
+    display: inline-block;
+    width: 100%;
+    padding: 6px 6px 6px 30px;
+    font-size: 14px;
+    cursor: pointer;
+    color: #333333;
+}
+
+#navResult-leftBtn li a:hover {
+    background-color: #f13d3c;
+    color: #ffffff;
+}
+
+#navResult-leftBtn .libg {
+    background-color: #f13d3c;
+    color: #ffffff;
+}
+
+.navResult-right {
+    position: absolute;
+    left: 200px;
+    border: 1px solid #ddd;
+    right: 0;
+    top: 10px;
+    padding: 30px;
+    background-color: #ffffff;
+}
+
+/*高频词汇*/
+.zmgpch p, .fmgpch p {
+    background-color: #d9534f;
+    text-align: center;
+    color: #ffffff;
+    margin: 0;
+    padding: 6px 0;
+    font-weight: bold;
+    border: 1px solid #dddddd;
+    border-bottom: none;
+}
+.chdb:last-child p{
+    background-color:#2f4554;
+}
+
+.zmgpch .zmgpchContent, .fmgpch .fmgpchContent {
+    border: 1px solid #dddddd;
+    border-top: none;
+    overflow: hidden;
+}
+
+.zmgpch .zmgpchContent li, .fmgpch .fmgpchContent li {
+    margin: 10px 0;
+}
+
+.zmgpch .zmgpchContent li span, .fmgpch .fmgpchContent li span {
+    display: inline-block;
+    background-color: #337ab7;
+    width: 100%;
+    text-align: center;
+    padding: 10px 0;
+    border-radius: 20px;
+    color: #f9f9f9;
+}
+
+.fmgpch .fmgpchContent li span {
+    background-color: #f0ad4e;
+}
+
+.chdb {
+    overflow: hidden;
+    margin-top: 20px;
+}
+#dyfxTable table{
+    border: 1px solid #dddddd;
+    width: 100%;
+}
+#dyfxTable th{
+    padding: 4px 8px;
+    text-align: center;
+    background-color: #e10111;
+    color: #ffffff;
+}
+#dyfxTable td{
+    padding: 4px 8px;text-align: center;
+    border-top: 1px solid #dddddd;
+}
+#dyfxTable table tr:nth-child(even){
+    background: #f7efe5;
+}
+/*热门信息*/
+#rmxx table{
+    border: 1px solid #dddddd;
+    width: 80%;
+    margin-left: 10%;
+    border-collapse: collapse;
+}
+#rmxx table td,#rmxx table th{
+    padding: 4px 8px;
+    text-align: center;
+    border-top: 1px solid #dddddd;
+}
+#rmxx table tr:nth-child(odd){
+    background: #f7efe5;
+}
+/*标题*/
+.titleR {
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.downloadR {
+    text-align: right;
+}
+
+.downloadR img {
+    width: 20px;
+    height: 20px;
+    margin: 0 2px;
+}
+
+.smR {
+    margin-bottom: 30px;
+}
+.smR li{
+    margin-bottom: 15px;
+}
+.smTitle {
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.smTime,.jjsm {
+    font-weight: bold;
+    font-size: 15px;
+}
+
+.smTime span,.jjsm span {
+    font-size: 14px;
+    font-weight: 100;
+    line-height: 26px;
+}
+ .contentTitle {
+     font-size: 18px;
+     font-weight: bold;
+     margin-top: 30px;
+     padding: 4px 0;
+ }
+
+.sjzsTable {
+    width: 95%;
+    margin-left: 5%;
+}
+
+.sjzsTable td {
+    padding: 20px 0;
+    position: relative;
+}
+
+.timet {
+    width: 60px;
+    height: 60px;
+    background-color: #e10111;
+    display: inline-block;
+    border-radius: 50px;
+    text-align: center;
+    line-height: 60px;
+    color: #ffffff;
+    margin-left: -66px;
+}
+
+.timew {
+    width: 60px;
+    height: 40px;
+    display: inline-block;
+    border-radius: 50px;
+    text-align: center;
+    line-height: 40px;
+    color: #ffffff;
+    margin-left: -66px;
+}
+.timew span{
+    width: 40px;
+    height: 40px;
+    background-color: #e10111;
+    display: inline-block;
+    border-radius: 50px;
+    text-align: center;
+    line-height: 40px;
+    color: #ffffff;
+}
+
+.timec {
+    width: 60px;
+    height: 60px;
+    display: inline-block;
+    border-radius: 50px;
+    text-align: center;
+    line-height: 60px;
+    color: #ffffff;
+    margin-left: -66px;
+}
+.timec span{
+    width: 20px;
+    height: 20px;
+    background-color: #ffffff;
+    display: inline-block;
+    border: 6px solid #e10111;
+    border-radius: 50%;
+}
+
+.timtLine {
+    width: 45px;
+    text-align: center;
+    border-left: 2px solid #e10111;
+}
+
+.sjzsTable .timtLine:first-child {
+    width: 65px;
+    text-align: center;
+    padding: 0;
+}
+
+.timtContent p {
+    padding: 4px 6px;
+    background-color: #dddddd;
+    border-radius: 4px;
+}
+
+.timejt span {
+    position: absolute;
+    width: 0;
+    height: 0;
+    left: -10px;
+    margin-top: -12px;
+    border-top: 6px solid transparent;
+    border-bottom: 6px solid transparent;
+    border-right: 10px solid #dddddd;
+}

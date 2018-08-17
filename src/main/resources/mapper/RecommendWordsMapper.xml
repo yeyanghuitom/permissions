@@ -1,0 +1,324 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.unicom.tancms.mapper.RecommendWordsMapper" >
+  <resultMap id="BaseResultMap" type="com.unicom.tancms.pojo.RecommendWords" >
+    <id column="WORDS_CLASS_ID" property="wordsClassId" jdbcType="VARCHAR" />
+    <result column="WORDS_CLASS_NAME" property="wordsClassName" jdbcType="VARCHAR" />
+    <result column="CREATE_TIME" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="CREATE_USER" property="createUser" jdbcType="VARCHAR" />
+    <result column="UPDATE_TIME" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="UPDATE_USER" property="updateUser" jdbcType="VARCHAR" />
+    <result column="RECOMMAND_START_DATE" property="recommandStartDate" jdbcType="TIMESTAMP" />
+    <result column="RECOMMAND_END_DATE" property="recommandEndDate" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.unicom.tancms.pojo.RecommendWords" extends="BaseResultMap" >
+    <result column="RECOMMAND_WORDS" property="recommandWords" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    WORDS_CLASS_ID, WORDS_CLASS_NAME, CREATE_TIME, CREATE_USER, UPDATE_TIME, UPDATE_USER, 
+    RECOMMAND_START_DATE, RECOMMAND_END_DATE
+  </sql>
+  <sql id="Blob_Column_List" >
+    RECOMMAND_WORDS
+  </sql>
+  <select id="selectByExampleWithBLOBs" resultMap="ResultMapWithBLOBs" parameterType="com.unicom.tancms.pojo.RecommendWordsExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from recommend_words
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.unicom.tancms.pojo.RecommendWordsExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from recommend_words
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from recommend_words
+    where WORDS_CLASS_ID = #{wordsClassId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from recommend_words
+    where WORDS_CLASS_ID = #{wordsClassId,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.unicom.tancms.pojo.RecommendWordsExample" >
+    delete from recommend_words
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.unicom.tancms.pojo.RecommendWords" >
+    insert into recommend_words (WORDS_CLASS_ID, WORDS_CLASS_NAME, CREATE_TIME, 
+      CREATE_USER, UPDATE_TIME, UPDATE_USER, 
+      RECOMMAND_START_DATE, RECOMMAND_END_DATE, 
+      RECOMMAND_WORDS)
+    values (#{wordsClassId,jdbcType=VARCHAR}, #{wordsClassName,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{createUser,jdbcType=VARCHAR}, #{updateTime,jdbcType=TIMESTAMP}, #{updateUser,jdbcType=VARCHAR}, 
+      #{recommandStartDate,jdbcType=TIMESTAMP}, #{recommandEndDate,jdbcType=TIMESTAMP}, 
+      #{recommandWords,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.unicom.tancms.pojo.RecommendWords" >
+    insert into recommend_words
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="wordsClassId != null" >
+        WORDS_CLASS_ID,
+      </if>
+      <if test="wordsClassName != null" >
+        WORDS_CLASS_NAME,
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME,
+      </if>
+      <if test="createUser != null" >
+        CREATE_USER,
+      </if>
+      <if test="updateTime != null" >
+        UPDATE_TIME,
+      </if>
+      <if test="updateUser != null" >
+        UPDATE_USER,
+      </if>
+      <if test="recommandStartDate != null" >
+        RECOMMAND_START_DATE,
+      </if>
+      <if test="recommandEndDate != null" >
+        RECOMMAND_END_DATE,
+      </if>
+      <if test="recommandWords != null" >
+        RECOMMAND_WORDS,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="wordsClassId != null" >
+        #{wordsClassId,jdbcType=VARCHAR},
+      </if>
+      <if test="wordsClassName != null" >
+        #{wordsClassName,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createUser != null" >
+        #{createUser,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateUser != null" >
+        #{updateUser,jdbcType=VARCHAR},
+      </if>
+      <if test="recommandStartDate != null" >
+        #{recommandStartDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="recommandEndDate != null" >
+        #{recommandEndDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="recommandWords != null" >
+        #{recommandWords,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.unicom.tancms.pojo.RecommendWordsExample" resultType="java.lang.Integer" >
+    select count(*) from recommend_words
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update recommend_words
+    <set >
+      <if test="record.wordsClassId != null" >
+        WORDS_CLASS_ID = #{record.wordsClassId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.wordsClassName != null" >
+        WORDS_CLASS_NAME = #{record.wordsClassName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.createTime != null" >
+        CREATE_TIME = #{record.createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.createUser != null" >
+        CREATE_USER = #{record.createUser,jdbcType=VARCHAR},
+      </if>
+      <if test="record.updateTime != null" >
+        UPDATE_TIME = #{record.updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.updateUser != null" >
+        UPDATE_USER = #{record.updateUser,jdbcType=VARCHAR},
+      </if>
+      <if test="record.recommandStartDate != null" >
+        RECOMMAND_START_DATE = #{record.recommandStartDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.recommandEndDate != null" >
+        RECOMMAND_END_DATE = #{record.recommandEndDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.recommandWords != null" >
+        RECOMMAND_WORDS = #{record.recommandWords,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExampleWithBLOBs" parameterType="map" >
+    update recommend_words
+    set WORDS_CLASS_ID = #{record.wordsClassId,jdbcType=VARCHAR},
+      WORDS_CLASS_NAME = #{record.wordsClassName,jdbcType=VARCHAR},
+      CREATE_TIME = #{record.createTime,jdbcType=TIMESTAMP},
+      CREATE_USER = #{record.createUser,jdbcType=VARCHAR},
+      UPDATE_TIME = #{record.updateTime,jdbcType=TIMESTAMP},
+      UPDATE_USER = #{record.updateUser,jdbcType=VARCHAR},
+      RECOMMAND_START_DATE = #{record.recommandStartDate,jdbcType=TIMESTAMP},
+      RECOMMAND_END_DATE = #{record.recommandEndDate,jdbcType=TIMESTAMP},
+      RECOMMAND_WORDS = #{record.recommandWords,jdbcType=LONGVARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update recommend_words
+    set WORDS_CLASS_ID = #{record.wordsClassId,jdbcType=VARCHAR},
+      WORDS_CLASS_NAME = #{record.wordsClassName,jdbcType=VARCHAR},
+      CREATE_TIME = #{record.createTime,jdbcType=TIMESTAMP},
+      CREATE_USER = #{record.createUser,jdbcType=VARCHAR},
+      UPDATE_TIME = #{record.updateTime,jdbcType=TIMESTAMP},
+      UPDATE_USER = #{record.updateUser,jdbcType=VARCHAR},
+      RECOMMAND_START_DATE = #{record.recommandStartDate,jdbcType=TIMESTAMP},
+      RECOMMAND_END_DATE = #{record.recommandEndDate,jdbcType=TIMESTAMP}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.unicom.tancms.pojo.RecommendWords" >
+    update recommend_words
+    <set >
+      <if test="wordsClassName != null" >
+        WORDS_CLASS_NAME = #{wordsClassName,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createUser != null" >
+        CREATE_USER = #{createUser,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null" >
+        UPDATE_TIME = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateUser != null" >
+        UPDATE_USER = #{updateUser,jdbcType=VARCHAR},
+      </if>
+      <if test="recommandStartDate != null" >
+        RECOMMAND_START_DATE = #{recommandStartDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="recommandEndDate != null" >
+        RECOMMAND_END_DATE = #{recommandEndDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="recommandWords != null" >
+        RECOMMAND_WORDS = #{recommandWords,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where WORDS_CLASS_ID = #{wordsClassId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.unicom.tancms.pojo.RecommendWords" >
+    update recommend_words
+    set WORDS_CLASS_NAME = #{wordsClassName,jdbcType=VARCHAR},
+      CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      CREATE_USER = #{createUser,jdbcType=VARCHAR},
+      UPDATE_TIME = #{updateTime,jdbcType=TIMESTAMP},
+      UPDATE_USER = #{updateUser,jdbcType=VARCHAR},
+      RECOMMAND_START_DATE = #{recommandStartDate,jdbcType=TIMESTAMP},
+      RECOMMAND_END_DATE = #{recommandEndDate,jdbcType=TIMESTAMP},
+      RECOMMAND_WORDS = #{recommandWords,jdbcType=LONGVARCHAR}
+    where WORDS_CLASS_ID = #{wordsClassId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.unicom.tancms.pojo.RecommendWords" >
+    update recommend_words
+    set WORDS_CLASS_NAME = #{wordsClassName,jdbcType=VARCHAR},
+      CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      CREATE_USER = #{createUser,jdbcType=VARCHAR},
+      UPDATE_TIME = #{updateTime,jdbcType=TIMESTAMP},
+      UPDATE_USER = #{updateUser,jdbcType=VARCHAR},
+      RECOMMAND_START_DATE = #{recommandStartDate,jdbcType=TIMESTAMP},
+      RECOMMAND_END_DATE = #{recommandEndDate,jdbcType=TIMESTAMP}
+    where WORDS_CLASS_ID = #{wordsClassId,jdbcType=VARCHAR}
+  </update>
+</mapper>

@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+
+    <title>CEM - 登录</title>
+    <link rel="shortcut icon" href="base/favicon.ico">
+    <link href="base/css/bootstrap.min.css?v=3.3.5" rel="stylesheet">
+    <link href="base/css/font-awesome.min.css?v=4.4.0" rel="stylesheet">
+    <!-- login CSS -->
+    <link href="base/css/loginCss.css" rel="stylesheet">
+    <link href="base/css/animate.min.css" rel="stylesheet">
+    <link href="base/css/style.min.css?v=4.0.0" rel="stylesheet"><base target="_blank">
+    <!--[if lt IE 8]>
+    <meta http-equiv="refresh" content="base/0;ie.html" />
+    <![endif]-->
+    <!-- sweetalert -->
+    <link rel="stylesheet" type="text/css" href="base/css/plugins/sweetalert/sweetalert.css">
+    <!-- ajaxBaseURL -->
+    <script src="base/js/ajaxBaseURL.js"></script>
+    <script>if(window.top !== window.self){ window.top.location = window.location;}</script>
+</head>
+
+<body id="body">
+    <div class="container-fluid">
+        <div class="top">
+            <div class="row">
+                <div class="toplogo ">
+                    <!--<img src="base/img/login_unicomLogoS.png">
+                    <p> 中国联通 CEM 管理平台</p>-->
+                </div>
+                <div class="topMainlogo col-md-offset-2 col-xs-offset-2 col-md-3">
+                    <img src="base/img/login_unicomLogoB.png">
+                </div>
+            </div>
+            <div class="stars"></div>
+        </div>
+
+        <div class="main row">
+            <div class="col-md-6 col-sm-6">
+                <form class="login_form" role="">
+                    <div class="form-group">
+                        <span class="fa fa-user fa-2x"></span>
+                        <input type="text" class="form-control" id="userName" placeholder="用户名" required="">
+                        <p class="clearInput" value="userName"> &times; </p>
+                    </div>
+                    <div class="form-group">
+                        <span class="fa fa-lock fa-2x"></span>
+                        <input type="password" class="form-control" id="userPassword" placeholder="密码" required="">
+                        <p class="clearInput" value="password"> &times; </p>
+                    </div>
+                    <h5 id="promptMsg"></h5>
+                    <button id="loginSubmit" class="btn block full-width">登 录</button>
+                </form>
+            </div>
+            <div class="col-md-6 hidden-xs" id="logoRight">
+                <div>
+
+                    <img src="base/img/login_logoRight.png">
+                   <!-- <img src="base/img/login_logoRight1.gif">-->
+
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+
+            <div class="row tip hidden-xs">
+                <div class="col-md-6 col-md-offset-1">
+                    <p class="col-md-2">
+                        温馨提示：
+                    </p>
+                    <p class="col-md-10">
+                        登录进入中国联通 CEM 管理平台后，如长时间未操作，可能出现某些应用或待办页面无法打开的情况，需要您退出并重新登录中国联通 CEM 管理平台
+                    </p>
+                </div>
+
+                <div class="col-md-offset-1 col-md-4">
+                    <p> &copy; 版权所有 中国联合网络通信有限公司</p>
+                    <!--<p> &copy; 版权所有 中国联通客户服务部 - 信息化部数据中心</p>
+                    <p> 主办方：中国联通客户服务部 - 客户感知评价处 </p>-->
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <script src="base/js/jquery.min.js?v=2.1.4"></script>
+    <!-- 星空效果 -->
+    <script src="base/js/prefixfree.min.js"></script>
+    <script src='base/js/stopExecutionOnTimeout.js'></script>
+    <script src="base/js/bootstrap.min.js?v=3.3.5"></script>
+
+
+    <script type="text/javascript">
+        $("#loginSubmit").on("click",function(e){
+            // todo 防止多次点击（加锁）
+            // $("#loginSubmit").attr("disabled","disabled");
+            e.preventDefault();//取消默认行为
+            $("#promptMsg").empty();
+            LoginController($("#userName").val(),$("#userPassword").val());
+
+        });
+
+        function LoginController (a,b){
+            // todo 防止多次点击 （解锁）
+            // $("#loginSubmit").removeAttrs("disabled");
+            $.ajax({
+                type:'post',
+                url: ajaxBaseURL + "/logins ",
+
+                data: 'userName='+a+'&password='+b,
+                success:function(data){
+                    console.log(data);
+                    // alert("成功");
+                    if(data.code == "000"){
+                        $("#promptMsg").css("color","#359af0");
+                        $("#promptMsg").html("验证成功，正在跳转");
+                        // console.log(data.token);
+                        window.sessionStorage.userMassage=JSON.stringify({userName:a,password:b});
+                        window.sessionStorage.userMsg = JSON.stringify({ user:a ,"password":b });
+                        window.location.href="index";
+                    }else{
+                       // swal("登录失败！",data.msg,"error");
+                        //alert(data.code);
+                        $("#promptMsg").html(data.msg);
+                    }
+                    //alert(data);
+
+                },
+                error:function(error){
+                    console.log("【 bootstrapTable - 报错 】");
+                    console.log(error);
+                }
+            });
+        }
+        /* * clearInput ***/
+        $(document).on("ready", function() {
+            $(".clearInput").on("click",function(){
+                var strValue = $(this).attr("value"),strId = ""
+                console.log(strValue);
+                if( strValue == "userName" ){
+                    strId = 'userName'
+                }else if( strValue == 'password'){
+                    strId = "userPassword"
+                }
+                $("#" + strId ).val("")
+            });
+
+            /*** 星空效果 ***/
+            var stars = 800;
+            var $stars = $('.stars');
+            var r = 1000;
+            for (var i = 0; i < stars; i++) {
+                if (window.CP.shouldStopExecution(1)) {
+                    break;
+                }
+                var $star = $('<div/>').addClass('star');
+                //var $span = $('<span><span/>');
+                $stars.append($star);
+            }
+            window.CP.exitedLoop(1);
+            $('.star').each(function () {
+                var cur = $(this);
+                var s = 0.2 + Math.random() * 1;
+                var curR = r + Math.random() * 300;
+                cur.css({
+                    transformOrigin: '0 0 ' + curR + 'px',
+                    transform: ' translate3d(0,0,-' + curR + 'px) rotateY(' + Math.random() * 360 + 'deg) rotateX(' + Math.random() * -50 + 'deg) scale(' + s + ',' + s + ')'
+                }).css("borderRadius","50%");
+            })
+        })
+    </script>
+
+</body>
+
+</html>

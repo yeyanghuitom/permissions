@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="cache-control" content="no-cache,no-store, must-revalidate"/>
+    <meta http-equiv="pragma" content="no-cache"/>
+    <meta http-equiv="Expires" content="0"/>
+    <title>竞品对比分析</title>
+    <link rel="stylesheet" href="lib/bootstrap-3.3.7-dist/css/bootstrap.css">
+    <link rel="stylesheet" href="lib/bootstrap-3.3.7-dist/table/bootstrap-table.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link href="lib/bootstrap-3.3.7-dist/time/bootstrap-datetimepicker.min.css" rel="stylesheet" media="screen">
+    <link rel="stylesheet" href="css/htmlCss/jpdbfx.css">
+    <link rel="stylesheet" href="css/styleTable.css">
+    <!--zTree-->
+    <link rel="stylesheet" href="lib/ztree/zTreeStyle/zTreeStyle.css">
+
+    <!--[if lt IE 9]>
+    <script src="lib/bootstrap-3.3.7-dist/js/html5shiv.min.js"></script>
+    <script src="lib/bootstrap-3.3.7-dist/js/respond.min.js"></script>
+    <![endif]-->
+    <!--[if IE 6]>
+    <script type="text/javascript" src="lib/bootstrap-3.3.7-dist/js/DD_belatedPNG_0.0.8a-min.js"></script>
+    <script>DD_belatedPNG.fix('*');</script>
+    <![endif]-->
+    <style type="">
+        .ztree * {
+            font-size: 10pt;
+            font-family: "Microsoft Yahei", Verdana, Simsun, "Segoe UI Web Light", "Segoe UI Light", "Segoe UI Web Regular", "Segoe UI", "Segoe UI Symbol", "Helvetica Neue", Arial
+        }
+
+        .ztree li ul {
+            margin: 0;
+            padding: 0
+        }
+
+        .ztree li {
+            line-height: 30px;
+        }
+
+        .ztree li a {
+            width: 100%;
+            height: 30px;
+            padding-top: 0px;
+        }
+
+        .ztree li a:hover {
+            text-decoration: none;
+            background-color: #E7E7E7;
+        }
+
+        .ztree li a span.button.switch {
+            visibility: hidden
+        }
+
+        .ztree.showIcon li a span.button.switch {
+            visibility: visible
+        }
+
+        .ztree li a.curSelectedNode {
+            background-color: #dddddd;
+            border: 0;
+            height: 30px;
+        }
+
+        .ztree li span {
+            line-height: 30px;
+        }
+
+        .ztree li span.button {
+            margin-top: -7px;
+        }
+
+        .ztree li span.button.switch {
+            width: 16px;
+            height: 16px;
+        }
+
+        .ztree li a.level0 span {
+            font-size: 110%;
+            font-weight: bold;
+        }
+
+        .ztree li span.button {
+            background-image: url("lib/ztree/zTreeStyle/img/left_menuForOutLook.png");
+            *background-image: url("lib/ztree/zTreeStyle/img/left_menuForOutLook.gif")
+        }
+
+        .ztree li span.button.switch.level0 {
+            width: 20px;
+            height: 20px
+        }
+
+        .ztree li span.button.switch.level1 {
+            width: 20px;
+            height: 20px
+        }
+
+        .ztree li span.button.noline_open {
+            background-position: 0 0;
+        }
+
+        .ztree li span.button.noline_close {
+            background-position: -18px 0;
+        }
+
+        .ztree li span.button.noline_open.level0 {
+            background-position: 0 -18px;
+        }
+
+        .ztree li span.button.noline_close.level0 {
+            background-position: -18px -18px;
+        }
+
+        #xgjpForm .jcfaTable td {
+            position: relative;
+            padding: 10px 0;
+        }
+        #xgjpForm .jcfaTable td label{
+            margin-top: 9px;
+        }
+    </style>
+
+</head>
+<body>
+<div id="yyfa" class="yyfa">
+    <p class="faTitle">方案<span style="float: right" onclick="closeSjcy()" class="glyphicon glyphicon-remove"
+                               aria-hidden="true"></span></p>
+    <ul id="treeDemo" class="ztree"></ul>
+</div>
+<div class="header">
+    <div class="header-content" id="header-content">
+
+    </div>
+</div>
+<div class="nav">
+    <div class="nav-content">
+        <ul class="nav-ul" id="navUrl">
+
+        </ul>
+    </div>
+</div>
+<div class="navResult">
+    <div class="navResult-content">
+        <div class="navResult-left">
+            <p>竞品对比分析</p>
+            <ul id="navResult-leftBtn">
+                <li class="libg">竞品任务创建</li>
+                <li>竞品任务管理</li>
+            </ul>
+        </div>
+        <div class="navResult-right">
+            <div class="right-nav-content ">
+                <p>竞品任务创建</p>
+                <form id="jprwcjForm" class="form-horizontal">
+                    <table class="jbrwcjcx">
+                        <tr>
+                            <td class="timeSpan" align="center">分析时间范围</td>
+                            <td class="jbrwcjcxTime">
+                                <div id="datetimeStartF" style="width: 250px;float: left"
+                                     class="input-group date form_datetime col-md-5"
+                                     data-link-field="dtp_input1">
+                                    <input class="form-control" name="timeStart" size="16" type="text" value="" readonly
+                                           placeholder="开始时间">
+                                    <span class="input-group-addon"><span class="glyphicon glyphicon-th"></span></span>
+                                </div>
+                                <span class="timeSpan" style="float: left">—</span>
+                                <div id="datetimeEndF" style="width: 250px;float: left"
+                                     class="input-group date form_datetime col-md-5"
+                                     data-link-field="dtp_input1">
+                                    <input class="form-control" name="timeEnd" size="16" type="text" value="" readonly
+                                           placeholder="结束时间">
+                                    <span class="input-group-addon"><span class="glyphicon glyphicon-th"></span></span>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="timeSpan" align="center">竞品任务名称</td>
+                            <td>
+                                <div style="width: 600px;position: relative">
+                                    <input id="jprwmc" name="jprwmc" type="text" class="form-control">
+                                </div>
+                            </td>
+                        </tr>
+
+                    </table>
+                    <ul id="jp">
+                        <li><p>竞品<span class="jpid">1</span><span class="glyphicon glyphicon-trash del_jp"
+                                                                  aria-hidden="true"></span></p>
+                            <table style="width: 100%">
+                                <tbody>
+                                <tr>
+                                    <td>竞品名称</td>
+                                    <td><input type="text" name="jpmc1" class="form-control jpmc"></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>关键词语</td>
+                                    <td><textarea name="gjcy1" class="form-control gjcy" rows="4"></textarea></td>
+                                    <td>
+                                        <button type="button" class="btn btn-default btn-sm tjfaBtn">引用方案</button>
+                                        <p></p>
+                                        <button type="button" class="btn btn-default btn-sm tjcyBtn" dataItem="1">推荐词语
+                                        </button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>排除关键词</td>
+                                    <td><input name="pcgjc1" type="text" class="form-control pcgjc"></td>
+                                    <td></td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </li>
+                        <li><p>竞品<span class="jpid">2</span><span class="glyphicon glyphicon-trash del_jp"
+                                                                  aria-hidden="true"></span></p>
+                            <table style="width: 100%">
+                                <tbody>
+                                <tr>
+                                    <td>竞品名称</td>
+                                    <td><input type="text" name="jpmc2" class="form-control jpmc"></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>关键词语</td>
+                                    <td><textarea name="gjcy2" class="form-control gjcy" rows="4"></textarea></td>
+                                    <td>
+                                        <button type="button" class="btn btn-default btn-sm tjfaBtn">引用方案</button>
+                                        <p></p>
+                                        <button type="button" class="btn btn-default btn-sm tjcyBtn" dataItem="2">推荐词语
+                                        </button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>排除关键词</td>
+                                    <td><input name="pcgjc2" type="text" class="form-control pcgjc"></td>
+                                    <td></td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </li>
+                    </ul>
+                    <input type="submit" id="cjjp_btn" hidden value="提交">
+                </form>
+                <div class="modal-footer" style="border-top: none">
+                    <button type="button" class="btn btn-default btn-sm" onclick="zjjp_btn()">增加竞品</button>
+                    <button type="button" class="btn btn-danger redBtn btn-sm" onclick="cjjp_btn()">创建</button>
+                </div>
+            </div>
+            <div class="right-nav-content hideMes">
+                <p>竞品任务管理</p>
+                <table class="jbrwcjcx">
+                    <tr>
+                        <td align="center">创建时间范围</td>
+                        <td class="jbrwcjcxTime">
+                            <div id="datetimeStartC" style="width: 250px;float: left"
+                                 class="input-group date form_datetime col-md-5"
+                                 data-link-field="dtp_input1">
+                                <input class="form-control" size="16" type="text" value="" readonly placeholder="开始时间">
+                                <span class="input-group-addon"><span class="glyphicon glyphicon-th"></span></span>
+                            </div>
+                            <span class="timeSpan" style="float: left">—</span>
+                            <div id="datetimeEndC" style="width: 250px;float: left"
+                                 class="input-group date form_datetime col-md-5"
+                                 data-link-field="dtp_input1">
+                                <input class="form-control" size="16" type="text" value="" readonly placeholder="结束时间">
+                                <span class="input-group-addon"><span class="glyphicon glyphicon-th"></span></span>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="center">竞品任务名称</td>
+                        <td>
+                            <input id="jprwmcG" style="width: 600px" type="text" class="form-control">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="center">竞品任务状态</td>
+                        <td id="jprwztG">
+                            <span style="margin: 0 10px"><label><input type="checkbox" value="全部"> 全部</label></span>
+                            <span style="margin: 0 10px"><label><input type="checkbox" value="分析中"> 分析中</label></span>
+                            <span style="margin: 0 10px"><label><input type="checkbox" value="分析成功"> 分析成功</label></span>
+                            <span style="margin: 0 10px"><label><input type="checkbox" value="分析失败"> 分析失败</label></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td align="right">
+                            <button type="button" class="btn btn-danger redBtn btn-sm" style="margin-right: 20px"
+                                    onclick="jpgl_btn()">查询
+                            </button>
+                        </td>
+                    </tr>
+                </table>
+                <div style="background-color: #ffffff;padding: 20px 20px">
+                    <table id="table"></table>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+<!--删除竞品-->
+<div class="modal fade" id="deljp" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title" id="myModalLabel">提示信息</h4>
+            </div>
+            <div class="modal-body">
+                最多只能添加5个竞品！
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default  btn-sm" data-dismiss="modal">关闭</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--修改弹出层-->
+<div class="modal fade bs-example-modal-lg" id="updataModal" tabindex="-1" role="dialog"
+     aria-labelledby="myLargeModalLabel">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title">修改竞品</h4>
+            </div>
+            <form id="xgjpForm" class="form-horizontal">
+                <div class="modal-body">
+                    <table class="jcfaTable" style="width: 100%">
+                        <tr>
+                            <td style="width: 16%;">分析报告名称</td>
+                            <td>
+                                <input type="text" class="form-control" id="fxbgmc" name="fxbgmc">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="width: 16%;">分析时间范围</td>
+                            <td>
+                                <input type="text" class="form-control" id="fxsjfw" name="fxsjfw">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="width: 16%;">状态</td>
+                            <td>
+                                <input type="text" class="form-control" id="zt" name="zt">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="width: 16%;">完成时间</td>
+                            <td>
+                                <input type="text" class="form-control" id="wcfj" name="wcfj">
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">关闭</button>
+                    <button type="submit" class="btn btn-danger redBtn btn-sm">修改</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<script src="js/jquery-3.2.1.min.js"></script>
+<script src="js/hintModal.js"></script>
+<script type="text/javascript" src="js/pageNav.js"></script>
+<script src="lib/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+<script src="lib/echarts/echarts.min.js"></script>
+<script type="text/javascript" src="lib/echarts/china.js"></script>
+<script src="lib/ztree/jquery.ztree.core.min.js"></script>
+<!--table-->
+<script src="lib/bootstrap-3.3.7-dist/table/bootstrap-table.js"></script>
+<script src="lib/bootstrap-3.3.7-dist/table/bootstrap-table-zh-CN.js"></script>
+<script src="js/tableData.js"></script>
+<!--表单验证-->
+<script type="text/javascript" src="lib/validation/1.14.0/jquery.validate.js"></script>
+<script type="text/javascript" src="lib/validation/1.14.0/validate-methods.js"></script>
+<script type="text/javascript" src="lib/validation/1.14.0/messages_zh.js"></script>
+<!--time-->
+<script type="text/javascript" src="lib/bootstrap-3.3.7-dist/time/bootstrap-datetimepicker.min.js"
+        charset="UTF-8"></script>
+<script type="text/javascript" src="lib/bootstrap-3.3.7-dist/time/bootstrap-datetimepicker.zh-CN.js"
+        charset="UTF-8"></script>
+<script type="text/javascript" src="js/style.js"></script>
+<script>
+    $("#navUrl .jpdbfx").addClass("menucur");
+</script>
+<script type="text/javascript" src="js/htmlJs/jpdbfx.js"></script>
+</body>
+</html>

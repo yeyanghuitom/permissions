@@ -1,0 +1,108 @@
+body {
+    color: #000;
+    background-color: #f6f6f6;
+    min-width: 1000px;
+}
+
+.hideMes {
+    display: none;
+}
+
+ul, li {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.menucur {
+    background-color: #d6000f !important;
+    color: #ffffff;
+}
+
+a:link {
+    text-decoration: none;
+}
+
+/* 指正常的未被访问过的链接*/
+
+a:visited {
+    text-decoration: none;
+}
+
+/*指已经访问过的链接*/
+
+a:hover {
+    text-decoration: none;
+}
+
+/*指鼠标在链接*/
+
+a:active {
+    text-decoration: none;
+}
+
+/* 指正在点的链接*/
+/*头部*/
+.header {
+    height: 80px;
+    margin-top: 4px;
+    background-color: #ffffff;
+}
+
+.header-content {
+    border-bottom: 2px solid #f6f6f6;
+    height: 80px;
+    line-height: 80px;
+    padding: 0 80px;
+}
+
+.header-user {
+    float: right;
+    font-size: 16px;
+}
+
+#username {
+    margin-right: 10px;
+    font-weight: bold;
+}
+
+.redBtn {
+    background-color: #f13d3c;
+}
+
+#userLogin {
+    margin-right: 10px;
+}
+
+/*导航*/
+.nav {
+    background-color: #f13d3c;
+}
+
+.nav-content {
+    padding: 0 80px;
+}
+
+.nav-ul {
+    height: 40px;
+    border-left: 1px solid #e10111;
+}
+
+.nav-ul li {
+    float: left;
+    text-align: center;
+    font-size: 16px;
+    line-height: 40px;
+}
+
+.nav-ul li a {
+    height: 40px;
+    color: #ffffff;
+    display: inline-block;
+    padding: 0 20px;
+    border-right: 1px solid #e10111;
+}
+
+.nav-ul li a:hover {
+    background-color: #e10111;
+}

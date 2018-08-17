@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>index_角色</title>
+
+    <link rel="shortcut icon" href="favicon.ico">
+    <link href="css/bootstrap.min.css?v=3.3.5" rel="stylesheet">
+    <link href="css/font-awesome.min.css?v=4.4.0" rel="stylesheet">
+    <!-- bootstrap-table.css -->
+    <link href="css/plugins/bootstrap-table/bootstrap-table.min.css" rel="stylesheet">
+    <link href="css/animate.min.css" rel="stylesheet">
+    <link href="css/style.min.css?v=4.0.0" rel="stylesheet">
+</head>
+<body>
+<!-- Panel Other -->
+<div class="container">
+    <div class="ibox-content">
+        <div class="row row-lg">
+
+            <div class="col-sm-12">
+                <!-- Example Pagination -->
+                <div class="example-wrap">
+                    <h4 class="example-title">分页：客户端</h4>
+
+                    <div class="example">
+                        <button class="btn btn-group fa fa-file-excel-o exportExcel">一键导出</button>
+
+                        <!--
+                                                <table id="theBootstraptable" name="http://192.168.1.110:8080/permissions/main/getResourcesAll" class="table bootstrapTable_demo1">
+                        -->
+                        <table id="theBootstraptable" name="http://127.0.0.1:81/new_2018-01/php/demoReturnSuccess.php" class="table bootstrapTable_demo1">
+                            <thead>
+                            <th data-field="state" data-checkbox="true"></th>
+                            <th data-field="id" class="text-center" data-sortable="true">组织ID</th>
+                            <th data-field="CREATE_DATE" data-sortable="true">组织名称</th>
+                            <th data-field="DESCRIBTION" data-sortable="true">所属部门</th>
+                            <th data-field="PARENT_ID" data-sortable="true">其他</th>
+                            <!--<th data-field="action">操作</th>-->
+                            <th data-field="actions" class="td-actions text-right" data-events="operateEvents" data-formatter="operateFormatter">Actions</th>
+                            </thead>
+                        </table>
+                    </div>
+                </div>
+                <!-- End Example Pagination -->
+
+                <!-- modal window start -->
+                <!-- 模态框信息展示 -->
+                <div class="modal inmodal" id="myModal2" tabindex="-1" role="dialog" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <!-- 此处控制展示样式 -->
+                        <div class="modal-content animated flipInY">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                                <h4 class="modal-title">模态窗口标题 -- 增 </h4>
+                                <small class="font-bold">模态窗副标题</small>
+                            </div>
+                            <div class="modal-body">
+                                <form class="form-horizontal">
+                                    <div class="form-group">
+                                        <label for="" class="col-sm-3 control-label">姓名：</label>
+                                        <div class="col-sm-9">
+                                            <input type="email" class="form-control" id="" placeholder="请输入姓名">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="" class="col-sm-3 control-label">所属部门：</label>
+                                        <div class="col-sm-9">
+                                            <input type="email" class="form-control" id="" placeholder="请输入所属部门">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="" class="col-sm-3 control-label">Tel：</label>
+                                        <div class="col-sm-9">
+                                            <input type="email" class="form-control" id="" placeholder="请输入电话">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="inputEmail3" class="col-sm-3 control-label">Email：</label>
+                                        <div class="col-sm-9">
+                                            <input type="email" class="form-control" id="inputEmail3" placeholder="Email">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="inputPassword3" class="col-sm-3 control-label">Password</label>
+                                        <div class="col-sm-9">
+                                            <input type="password" class="form-control" id="inputPassword3" placeholder="Password">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="col-sm-offset-3 col-sm-9">
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox"> Remember me
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="col-sm-offset-2 col-sm-10">
+                                            <button type="submit" class="btn btn-default">Sign in</button>
+                                        </div>
+                                    </div>
+                                </form>
+                                <!--<p><strong>H+</strong> 是一个完全响应式，基于Bootstrap3.3.5最新版本开发的扁平化主题，她采用了主流的左右两栏式布局，使用了Html5+CSS3等现代技术，她提供了诸多的强大的可以重新组合的UI组件，并集成了最新的jQuery版本(v2.1.1)，当然，也集成了很多功能强大，用途广泛的jQuery插件，她可以用于所有的Web应用程序，如网站管理后台，网站会员中心，CMS，CRM，OA等等，当然，您也可以对她进行深度定制，以做出更强系统。</p>-->
+                                <h3></h3>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-white" data-dismiss="modal">关闭</button>
+                                <button type="button" class="btn btn-primary">保存</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- End modal window -->
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End Panel Other -->
+<script src="js/jquery.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/content.min.js?v=1.0.0"></script>
+<script src="http://127.0.0.1:81/newjzyx_10_17/js/bootstrap-table.js"></script>
+<!--<script src="js/plugins/bootstrap-table/bootstrap-table-mobile.min.js"></script>-->
+<script src="js/plugins/bootstrap-table/locale/bootstrap-table-zh-CN.min.js"></script>
+
+<script src="http://127.0.0.1:81/tableExport/tableExport.js"></script>
+<script src="http://127.0.0.1:81/tableExport/jquery.base64.js"></script>
+<!-- JsonExportExcel -->
+<script src="js/JsonExportExcel.min.js"></script>
+<!--<script src="js/receiveBootstrapTable.js"></script>-->
+
+
+<script>
+    //var $table = $('#exampleTablePagination');
+
+    //action 的 页面操作 按钮样式
+    function operateFormatter(value, row, RESOURCE_ID) {
+        return [
+            '<a rel="tooltip" title="一键设置" class="btn btn-simple btn-info btn-icon table-action view" href="javascript:void(0)">',
+            '<i class="fa fa-asterisk"></i>',
+            '</a>',
+
+            '<a rel="tooltip" title="修改信息" class="btn btn-simple btn-warning btn-icon table-action plus" data-toggle="modal" data-target="#myModal2" href="javascript:void(0)">',
+            '<i class="fa fa-plus"></i>',
+            '</a>',
+
+            '<a rel="tooltip" title="删除" class="btn btn-simple btn-danger btn-icon table-action remove" href="javascript:void(0)">',
+            '<i class="fa fa-remove"></i>',
+            '</a>'
+        ].join('');
+    }
+
+
+    //action 的 页面操作 事件绑定
+    $().ready(function(){
+        window.operateEvents = {
+            'click .view': function (e, value, row, RESOURCE_ID) {
+                info = JSON.stringify(row);
+
+                swal('You click view icon, row: ', info);
+                console.log(info);
+            },
+            'click .plus': function (e, value, row, index) {
+                //info = JSON.stringify(row);
+                console.log(row);
+                console.log("点击 .plus");
+
+                //swal('You click edit icon, row: ', info);
+                //console.log(info);
+            },
+            'click .remove': function (e, value, row, RESOURCE_ID) {
+                console.log(row);
+                //console.log("");
+                alert("点击红色按钮");
+                $.ajax({
+                    type:'post',
+                    url:"http://192.168.1.110:8080/permissions/main/getOneResources",
+                    data:"RESOURCE_ID=1",
+                    success:function(data){
+                        try{
+                            console.log(data);
+                            alert(data);
+
+                        }catch(error){
+                            console.log("【 bootstrapTable - 返回结果 - 报错 】");
+                            console.log( error );
+                        }
+
+                    },
+                    error:function(){
+                        console.log("【 bootstrapTable - 报错 】");
+                        console.log(error);
+                    }
+                });
+                $table.bootstrapTable('remove', {
+                    field: 'id',
+                    values: [row.id]
+                });
+            }
+        };
+
+
+        bootTable( {id:'theBootstraptable',list:'',url:'',thead:{"id":"组织ID","name":"组织名称","department":"所属部门","message":"其他"}} );
+        //activate the tooltips after the data table is initialized
+        $('[rel="tooltip"]').tooltip();
+
+        /**/
+
+
+    });
+
+
+
+    //清屏方法：
+    //$table.bootstrapTable('removeAll')
+    // 替换列表
+    /*******
+     * $table.bootstrapTable('load', [
+     {
+     id: 1,
+     name: 'Item 1',
+     price: '$1'
+     },{
+                     id: 2,
+                     name: 'Item 2',
+                     price: '$2'
+                     },{
+                     id: 3,
+                     name: 'Item 3',
+                     price: '$3'
+                     },{
+                     id: 4,
+                     name: 'Item 4',
+                     price: '$4'
+                     }, {
+                     id: 5,
+                     name: 'Item 5',
+                     price: '$5'
+                     }]);
+     */
+    //
+    /**************
+     *   增加一个或多个数据
+     * $table.bootstrapTable('prepend',[{
+                        id:9,
+                        index: 'cache1',
+                        name: 'Item 1',
+                        price: '$1',
+                        actions : ''
+                    },{
+                        id:10,
+                        index: 'cache1',
+                        name: 'Item 1',
+                        price: '$1',
+                        actions : ''
+                    }]);
+     *
+     * *************/
+
+    // 删
+    //$table.bootstrapTable('remove', {field: 'index', values: ["cache3",'cache2']});
+    // 改
+    // 先删，后增
+    /********
+     * function updata(){
+         *      $table.bootstrapTable('remove', {field: 'index', values: ["cache3",'cache2']});
+         *      $table.bootstrapTable('prepend',[object,object])
+         * }
+     *
+     * ******/
+    /*****
+     * 获取项目数据
+     * $table.bootstrapTable('getOptions').data
+     *
+     *
+     * ***/
+    //获得（所有）所选行
+    // $table.bootstrapTable('getAllSelections');
+    // 返回值   '[{"id":2,"index":"cache2","name":"Item 2","price":"$2","actions":"","state":true},{"id":3,"index":"cache3","name":"Item 3","price":"$3","actions":"","state":true}]'
+
+</script>
+<script>
+
+    //日期格式
+    Date.prototype.Format = function(fmt) { //author: meizz
+        var o = {
+            "M+" : this.getMonth()+1,                 //月份
+            "d+" : this.getDate(),                    //日
+            "h+" : this.getHours(),                   //小时
+            "m+" : this.getMinutes(),                 //分
+            "s+" : this.getSeconds(),                 //秒
+            "q+" : Math.floor((this.getMonth()+3)/3), //季度
+            "S"  : this.getMilliseconds()             //毫秒
+        };
+        if(/(y+)/.test(fmt))
+            fmt=fmt.replace(RegExp.$1, (this.getFullYear()+"").substr(4 - RegExp.$1.length));
+        for(var k in o)
+            if(new RegExp("("+ k +")").test(fmt))
+                fmt = fmt.replace(RegExp.$1, (RegExp.$1.length==1) ? (o[k]) : (("00"+ o[k]).substr((""+ o[k]).length)));
+        return fmt;
+    };
+
+    function bootTable( d ){
+        var thead = d.thead;
+        function randomString(){
+            var string = "ABCDEFGHIGKLMNOPQRSTUVWXYZabcdefghijklmnopqrstquwxyz";
+            var s ="";
+            for(var i=0;i<10;i++){
+                s += string[parseInt( string.length * Math.random() )]
+            }
+            return s;
+        }
+        //导出Excel文件
+        function exportExcel(list){
+            var option={},dataList = list;
+
+            option.fileName = (new Date()).Format("yyyy-MM-dd") + "-" + randomString();
+
+            option.datas=[];
+            option.datas[0]={};
+            option.datas[0].sheetHeader=[];
+            option.datas[0].sheetName= 'sheet' + randomString();
+            option.datas[0].sheetFilter = [];
+            for(var k in thead){
+                option.datas[0].sheetHeader.push( thead[k] );
+                option.datas[0].sheetFilter.push( k );
+            }
+            option.datas[0].sheetData = dataList;
+            //console.log("############打印:option" );
+            //console.log(option);
+            //console.log(thead);
+            var toExcel=new ExportJsonExcel(option);
+            toExcel.saveExcel();
+        }
+
+
+        var $table = $( '#' + d.id );
+        var dataUrl = $table.attr("name");
+        $( $( '#' + d.id ).parent().children(".exportExcel")[0] ).on("click",function(){
+            //console.log("点击导出");
+            exportExcel( $table.bootstrapTable('getOptions').data );
+        });
+
+        $table.bootstrapTable({
+            /*columns: [
+             {
+
+             checkbox : true,
+             fieId : 'checkBox',
+             title : 'checkBox'
+             },
+             {
+             field: 'id',
+             title: 'Item ID'
+             }, {
+             field: 'name',
+             title: 'Item Name'
+             }, {
+             field: 'price',
+             title: 'Item Price'
+             }, {
+             field: 'action',
+             title: '操作',
+             halign : "center",
+             align : 'right',
+             formatter : "operateFormatter",
+             events : 'operateEvents'
+             }
+             ],*/
+            toolbar: ".toolbar",
+            //clickToSelect: true,        //是否启用点击选中行
+            //showRefresh: true,
+            search: true,
+            showToggle: true,
+            showColumns: true,
+            pagination: true,
+            uniqueId: "RESOURCE_ID",              //每一行的唯一标识，一般为主键列
+            //pageSize: 8,  //每一页展示的信息数量
+            //clickToSelect: false,
+            searchAlign: 'left',
+            idField: "RESOURCE_ID",
+            pageList: [10,25,50,100],
+            icons: {
+                refresh: 'fa fa-refresh',
+                toggle: 'fa fa-th-list',
+                columns: 'fa fa-columns',
+                detailOpen: 'fa fa-plus-circle',
+                detailClose: 'fa fa-minus-circle'
+            }
+        });
+        $.ajax({
+            type:'post',
+            url:dataUrl,
+            success:function(data){
+                try{
+                    console.log(data);
+                    //window.str = data;
+                    var obj =  eval( "(" + data + ")" );// data;//eval( "(" + data + ")" );
+                    var list = obj.value;
+                    $table.bootstrapTable('load', list );
+                    window.$table = $table;
+
+                }catch(error){
+                    console.log("【 bootstrapTable - 返回结果 - 报错 】");
+                    console.log( error );
+                }
+
+            },
+            error:function(){
+                console.log("【 bootstrapTable - 报错 】");
+                console.log(error);
+            }
+        });
+
+
+        $(window).resize(function () {
+            $table.bootstrapTable('resetView');
+
+
+        });
+
+
+    }
+
+</script>
+</body>
+</html>

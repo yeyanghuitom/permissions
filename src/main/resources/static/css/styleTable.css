@@ -1,0 +1,33 @@
+/*关于表格*/
+#table, #table tr, #table tr td, #table tr th, .fixed-table-container {
+    border: none;
+}
+
+#table tr th {
+    background-color: #f13d3c;
+    color: #ffffff;
+}
+
+.pull-left {
+    display: none !important;
+}
+
+.pull-right .pagination li a {
+    border: none;
+}
+#table .table_data .aUrl {
+    font-size: 16px !important;
+    font-weight: bold !important;
+    color: #000000;
+}
+#table .aUrl:hover {
+    color: #e10111;
+}
+#table .aUrl {
+    font-size: 14px !important;
+    font-weight: bold !important;
+    color: #000000;
+}
+.table-striped > tbody > tr:nth-of-type(odd) {
+    /*background-color: #f7efe5 !important;*/
+}

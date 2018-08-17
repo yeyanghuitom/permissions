@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="cache-control" content="no-cache,no-store, must-revalidate"/>
+    <meta http-equiv="pragma" content="no-cache"/>
+    <meta http-equiv="Expires" content="0"/>
+    <title>全网舆情监测</title>
+    <link rel="stylesheet" href="../lib/bootstrap-3.3.7-dist/css/bootstrap.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <link href="../lib/bootstrap-3.3.7-dist/time/bootstrap-datetimepicker.min.css" rel="stylesheet" media="screen">
+
+    <!--[if lt IE 9]>
+    <script src="../lib/bootstrap-3.3.7-dist/js/html5shiv.min.js"></script>
+    <script src="../lib/bootstrap-3.3.7-dist/js/respond.min.js"></script>
+    <![endif]-->
+    <!--[if IE 6]>
+    <script type="text/javascript" src="../lib/bootstrap-3.3.7-dist/js/DD_belatedPNG_0.0.8a-min.js"></script>
+    <script>DD_belatedPNG.fix('*');</script>
+    <![endif]-->
+    <style>
+        /*内容*/
+        .navResult {
+            position: relative;
+        }
+
+        .navResult-content {
+            position: absolute;
+            left: 80px;
+            right: 80px;
+        }
+
+        .navResult-right {
+            border: 1px solid #ddd;
+            margin-top: 10px;
+            padding: 30px;
+            background-color: #ffffff;
+        }
+
+        .jbrwcjcx {
+            width: 100%;
+        }
+
+        .jbrwcjcx td {
+            padding: 10px 0;
+        }
+
+        .jbrwcjcxTime .timeSpan {
+            margin: 5px 10px 0;
+        }
+
+        /*舆情地域分布统计表*/
+        #yqtj p {
+            font-size: 18px;
+            font-weight: bold;
+        }
+        #yqtj table {
+            width: 100%;
+        }
+        #yqtj table td {
+            padding: 4px 8px;
+            text-align: center;
+            border: 1px solid #dddddd;
+        }
+        #yqtj table tr:nth-child(even) {
+            background: #f7efe5;
+        }
+
+
+    </style>
+</head>
+<body>
+<div class="header">
+    <div class="header-content" id="header-content">
+
+    </div>
+</div>
+<div class="nav">
+    <div class="nav-content">
+        <ul class="nav-ul" id="navUrl">
+
+        </ul>
+    </div>
+</div>
+<div class="navResult">
+    <div class="navResult-content">
+        <div class="navResult-right">
+            <table class="jbrwcjcx">
+                <tr>
+                    <td>时间范围</td>
+                    <td class="jbrwcjcxTime">
+                        <div id="datetimeStart" style="width: 250px;float: left"
+                             class="input-group date form_datetime col-md-5"
+                             data-link-field="dtp_input1">
+                            <input class="form-control" size="16" type="text" value="" readonly placeholder="开始时间">
+                            <span class="input-group-addon"><span class="glyphicon glyphicon-th"></span></span>
+                        </div>
+                        <span class="timeSpan" style="float: left">—</span>
+                        <div id="datetimeEnd" style="width: 250px;float: left"
+                             class="input-group date form_datetime col-md-5"
+                             data-link-field="dtp_input1">
+                            <input class="form-control" size="16" type="text" value="" readonly placeholder="结束时间">
+                            <span class="input-group-addon"><span class="glyphicon glyphicon-th"></span></span>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>运营商</td>
+                    <td>
+                        <span style="margin: 0 10px"><label><input type="checkbox" value="联通"> 联通</label></span>
+                        <span style="margin: 0 10px"><label><input type="checkbox" value="电信"> 电信</label></span>
+                        <span style="margin: 0 10px"><label><input type="checkbox" value="移动"> 移动</label></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>调性属性</td>
+                    <td>
+                        <span style="margin: 0 10px"><label><input type="checkbox" value="全向"> 全向</label></span>
+                        <span style="margin: 0 10px"><label><input type="checkbox" value="正向"> 正向</label></span>
+                        <span style="margin: 0 10px"><label><input type="checkbox" value="中立"> 中立</label></span>
+                        <span style="margin: 0 10px"><label><input type="checkbox" value="负向"> 负向</label></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>渠道类型</td>
+                    <td>
+                        <span style="margin: 0 10px"><label><input type="checkbox" value="全部"> 全部</label></span>
+                        <span style="margin: 0 10px"><label><input type="checkbox" value="微信"> 微信</label></span>
+                        <span style="margin: 0 10px"><label><input type="checkbox" value="微博"> 微博</label></span>
+                        <span style="margin: 0 10px"><label><input type="checkbox" value="新闻"> 新闻</label></span>
+                        <span style="margin: 0 10px"><label><input type="checkbox" value="论坛"> 论坛</label></span>
+                        <span style="margin: 0 10px"><label><input type="checkbox" value="博客"> 博客</label></span>
+                        <span style="margin: 0 10px"><label><input type="checkbox" value="纸媒"> 纸媒</label></span>
+                        <span style="margin: 0 10px"><label><input type="checkbox" value="APP"> APP</label></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td align="right">
+                        <button type="button" class="btn btn-danger redBtn btn-sm" onclick="cx_btn()">查询</button>
+                        <button type="button" class="btn btn-danger redBtn btn-sm" onclick="dc_btn()">导出</button>
+                    </td>
+                </tr>
+            </table>
+            <div style="background-color: #ffffff;padding: 20px 0px">
+                <div id="yqdyfb" style="min-width:400px;height: 800px;"></div>
+            </div>
+            <div id="yqtj" style="margin-top: 30px">
+                <p>舆情地域分布统计表</p>
+                <table>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td colspan="4">联通</td>
+                        <td colspan="4">移动</td>
+                        <td colspan="4">电信</td>
+                    </tr>
+                    <tr>
+                        <td>序号</td>
+                        <td>省份</td>
+                        <td>总声量</td>
+                        <td>正</td>
+                        <td>中</td>
+                        <td>负</td>
+                        <td>总声量</td>
+                        <td>正</td>
+                        <td>中</td>
+                        <td>负</td>
+                        <td>总声量</td>
+                        <td>正</td>
+                        <td>中</td>
+                        <td>负</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="../js/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" src="../js/pageNav.js"></script>
+<script src="../lib/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+<script src="../lib/echarts/echarts.min.js"></script>
+<script type="text/javascript" src="../lib/echarts/china.js"></script>
+<!--time-->
+<script type="text/javascript" src="../lib/bootstrap-3.3.7-dist/time/bootstrap-datetimepicker.min.js"
+        charset="UTF-8"></script>
+<script type="text/javascript" src="../lib/bootstrap-3.3.7-dist/time/bootstrap-datetimepicker.zh-CN.js"
+        charset="UTF-8"></script>
+<script>
+    $("#navUrl .qwyqjc").addClass("menucur");
+</script>
+<script>
+    /*自定义时间*/
+    DatePicker("#datetimeStart", "#datetimeEnd");
+    function DatePicker(beginSelector, endSelector) {
+        // 仅选择日期
+        $(beginSelector).datetimepicker(
+            {
+                format: "yyyy-mm-dd",
+                autoclose: true,
+                todayBtn: true,
+                language: "zh-CN",
+                startView: 2,
+                minView: 'year',
+                maxView: 'decade',
+                endDate: new Date(),
+                pickerPosition: "bottom-left"
+            }).on('changeDate', function (ev) {
+            if (ev.date) {
+                $(endSelector).datetimepicker('setStartDate', new Date(ev.date.valueOf()))
+            } else {
+                $(endSelector).datetimepicker('setStartDate', null);
+            }
+        });
+
+        $(endSelector).datetimepicker(
+            {
+                format: "yyyy-mm-dd",
+                autoclose: true,
+                todayBtn: true,
+                language: "zh-CN",
+                startView: 2,
+                minView: 'year',
+                maxView: 'decade',
+                endDate: new Date(),
+                pickerPosition: "bottom-left"
+            }).on('changeDate', function (ev) {
+            if (ev.date) {
+                $(beginSelector).datetimepicker('setEndDate', new Date(ev.date.valueOf()))
+            } else {
+                $(beginSelector).datetimepicker('setEndDate', new Date());
+            }
+        })
+    }
+    /*舆情地域分布*/
+    function randomData() {
+        return "3000";
+    }
+    var rand = "34000";
+    var mydata = [
+        {name: '北京', value: rand}, {name: '天津', value: randomData()},
+        {name: '上海', value: rand}, {name: '重庆', value: randomData()},
+        {name: '河北', value: randomData()}, {name: '河南', value: randomData()},
+        {name: '云南', value: randomData()}, {name: '辽宁', value: randomData()},
+        {name: '黑龙江', value: randomData()}, {name: '湖南', value: randomData()},
+        {name: '安徽', value: randomData()}, {name: '山东', value: randomData()},
+        {name: '新疆', value: randomData()}, {name: '江苏', value: randomData()},
+        {name: '浙江', value: randomData()}, {name: '江西', value: randomData()},
+        {name: '湖北', value: randomData()}, {name: '广西', value: randomData()},
+        {name: '甘肃', value: randomData()}, {name: '山西', value: randomData()},
+        {name: '内蒙古', value: randomData()}, {name: '陕西', value: randomData()},
+        {name: '吉林', value: randomData()}, {name: '福建', value: randomData()},
+        {name: '贵州', value: randomData()}, {name: '广东', value: rand},
+        {name: '青海', value: randomData()}, {name: '西藏', value: randomData()},
+        {name: '四川', value: randomData()}, {name: '宁夏', value: randomData()},
+        {name: '海南', value: randomData()}, {name: '台湾', value: randomData()},
+        {name: '香港', value: randomData()}, {name: '澳门', value: randomData()}
+    ];
+    var dataName = [];
+    var dataSeriesZ = [];
+    var dataSeriesF = [];
+    var dataSeriesQ = [];
+    for (var i = 0; i < mydata.length; i++) {
+        var obj = mydata[i];
+        dataName.push(obj.name);
+        dataSeriesZ.push(obj.value);
+        dataSeriesF.push(obj.value);
+        dataSeriesQ.push(obj.value);
+    }
+    var yqdyfb = echarts.init(document.getElementById("yqdyfb"));
+    var yqdyfb_option = {
+        title: {
+            text: '舆情地域分布'
+        },
+        tooltip: {
+            trigger: 'axis',
+            axisPointer: {
+                type: 'shadow'
+            }
+        },
+        legend: {
+            data: ['负向', '正向', '中向']
+        },
+        grid: {
+            left: '3%',
+            right: '4%',
+            bottom: '3%',
+            containLabel: true
+        },
+        xAxis: {
+            type: 'value',
+            boundaryGap: [0, 0.01]
+        },
+        yAxis: {
+            type: 'category',
+            data: dataName
+        },
+        series: [
+            {
+                name: '负向',
+                type: 'bar',
+                data: dataSeriesF
+            },
+            {
+                name: '正向',
+                type: 'bar',
+                data: dataSeriesZ
+            },
+            {
+                name: '中向',
+                type: 'bar',
+                data: dataSeriesQ
+            }
+        ]
+    };
+    yqdyfb.setOption(yqdyfb_option);
+    /*舆情地域分布统计表*/
+    for (var i = 0; i < 6; i++) {
+        var obj = mydata[i];
+        $("#yqtj table").append('<tr><td></td><td>'+obj.name+'</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>')
+    }
+</script>
+</body>
+</html>

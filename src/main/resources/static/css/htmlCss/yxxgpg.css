@@ -1,0 +1,122 @@
+/*内容*/
+.navResult {
+    position: relative;
+}
+
+.navResult-content {
+    padding: 0 80px;
+    position: absolute;
+    left: 80px;
+    right: 80px;
+}
+
+.navResult-left {
+    width: 200px;
+    position: absolute;
+    left: 0;
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    top: 10px;
+    border-right: none;
+    height: 390px;
+}
+
+.navResult-left p {
+    font-size: 16px;
+    font-weight: bold;
+    background-color: #f13d3c;
+    margin: 0;
+    color: #ffffff;
+    padding: 4px;
+}
+
+#navResult-leftBtn li {
+    padding: 6px 6px 6px 30px;
+    font-size: 14px;
+    margin: 2px;
+    cursor: pointer;
+}
+
+#navResult-leftBtn li:hover {
+    background-color: #f13d3c;
+    color: #ffffff;
+}
+
+#navResult-leftBtn .libg {
+    background-color: #f13d3c;
+    color: #ffffff;
+}
+
+.navResult-right {
+    position: absolute;
+    left: 200px;
+    border: 1px solid #ddd;
+    right: 0;
+    top: 10px;
+    padding: 30px;
+    background-color: #ffffff;
+}
+
+.navResult-right p {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.pgbgcj td:first-child, .jbrwcjcx td:first-child {
+    width: 12%;
+}
+
+.pgbgcj td {
+    padding: 15px 5px;
+}
+
+.jbrwcjcx td {
+    padding: 15px 5px;
+}
+
+/*关于表格*/
+#table, #table tr, #table tr td, #table tr th, .fixed-table-container {
+    border: none;
+}
+#table td{
+    position: relative;
+}
+.idfor{
+    border: 1px solid #dddddd;
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    line-height: 30px;
+    border-radius: 50%;
+}
+#table .table_data{
+    text-align: left;
+}
+
+.pull-left {
+    display: none !important;
+}
+
+.pull-right .pagination li a {
+    border: none;
+}
+
+.tableBtn {
+    padding: 0 8px;
+}
+
+.tableBtn:hover {
+    color: #f13d3c;
+}
+
+#datetimeStart .error, #datetimeEnd .error {
+    z-index: 1000;
+    margin-right: 30px;
+}
+
+#datetimeStart input.error, #datetimeEnd input.error {
+    background-color: #fbe2e2;
+    border-color: #c66161 !important;
+    color: #c00;
+}

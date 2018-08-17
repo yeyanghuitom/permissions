@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.unicom.tancms.mapper.ProfessionalLabelMapper" >
+  <resultMap id="BaseResultMap" type="com.unicom.tancms.pojo.ProfessionalLabel" >
+    <id column="LABEL1_ID" property="label1Id" jdbcType="CHAR" />
+    <result column="LABEL1_NAME" property="label1Name" jdbcType="CHAR" />
+    <result column="LABEL2_ID" property="label2Id" jdbcType="CHAR" />
+    <result column="LABEL2_NAME" property="label2Name" jdbcType="VARCHAR" />
+    <result column="LABEL2_WORDS" property="label2Words" jdbcType="VARCHAR" />
+    <result column="LABEL2_UPDATE_USER" property="label2UpdateUser" jdbcType="VARCHAR" />
+    <result column="LABEL2_UPDATE_TIME" property="label2UpdateTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    LABEL1_ID, LABEL1_NAME, LABEL2_ID, LABEL2_NAME, LABEL2_WORDS, LABEL2_UPDATE_USER, 
+    LABEL2_UPDATE_TIME
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.unicom.tancms.pojo.ProfessionalLabelExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from professional_label
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from professional_label
+    where LABEL1_ID = #{label1Id,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from professional_label
+    where LABEL1_ID = #{label1Id,jdbcType=CHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.unicom.tancms.pojo.ProfessionalLabelExample" >
+    delete from professional_label
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.unicom.tancms.pojo.ProfessionalLabel" >
+    insert into professional_label (LABEL1_ID, LABEL1_NAME, LABEL2_ID, 
+      LABEL2_NAME, LABEL2_WORDS, LABEL2_UPDATE_USER, 
+      LABEL2_UPDATE_TIME)
+    values (#{label1Id,jdbcType=CHAR}, #{label1Name,jdbcType=CHAR}, #{label2Id,jdbcType=CHAR}, 
+      #{label2Name,jdbcType=VARCHAR}, #{label2Words,jdbcType=VARCHAR}, #{label2UpdateUser,jdbcType=VARCHAR}, 
+      #{label2UpdateTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.unicom.tancms.pojo.ProfessionalLabel" >
+    insert into professional_label
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="label1Id != null" >
+        LABEL1_ID,
+      </if>
+      <if test="label1Name != null" >
+        LABEL1_NAME,
+      </if>
+      <if test="label2Id != null" >
+        LABEL2_ID,
+      </if>
+      <if test="label2Name != null" >
+        LABEL2_NAME,
+      </if>
+      <if test="label2Words != null" >
+        LABEL2_WORDS,
+      </if>
+      <if test="label2UpdateUser != null" >
+        LABEL2_UPDATE_USER,
+      </if>
+      <if test="label2UpdateTime != null" >
+        LABEL2_UPDATE_TIME,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="label1Id != null" >
+        #{label1Id,jdbcType=CHAR},
+      </if>
+      <if test="label1Name != null" >
+        #{label1Name,jdbcType=CHAR},
+      </if>
+      <if test="label2Id != null" >
+        #{label2Id,jdbcType=CHAR},
+      </if>
+      <if test="label2Name != null" >
+        #{label2Name,jdbcType=VARCHAR},
+      </if>
+      <if test="label2Words != null" >
+        #{label2Words,jdbcType=VARCHAR},
+      </if>
+      <if test="label2UpdateUser != null" >
+        #{label2UpdateUser,jdbcType=VARCHAR},
+      </if>
+      <if test="label2UpdateTime != null" >
+        #{label2UpdateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.unicom.tancms.pojo.ProfessionalLabelExample" resultType="java.lang.Integer" >
+    select count(*) from professional_label
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update professional_label
+    <set >
+      <if test="record.label1Id != null" >
+        LABEL1_ID = #{record.label1Id,jdbcType=CHAR},
+      </if>
+      <if test="record.label1Name != null" >
+        LABEL1_NAME = #{record.label1Name,jdbcType=CHAR},
+      </if>
+      <if test="record.label2Id != null" >
+        LABEL2_ID = #{record.label2Id,jdbcType=CHAR},
+      </if>
+      <if test="record.label2Name != null" >
+        LABEL2_NAME = #{record.label2Name,jdbcType=VARCHAR},
+      </if>
+      <if test="record.label2Words != null" >
+        LABEL2_WORDS = #{record.label2Words,jdbcType=VARCHAR},
+      </if>
+      <if test="record.label2UpdateUser != null" >
+        LABEL2_UPDATE_USER = #{record.label2UpdateUser,jdbcType=VARCHAR},
+      </if>
+      <if test="record.label2UpdateTime != null" >
+        LABEL2_UPDATE_TIME = #{record.label2UpdateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update professional_label
+    set LABEL1_ID = #{record.label1Id,jdbcType=CHAR},
+      LABEL1_NAME = #{record.label1Name,jdbcType=CHAR},
+      LABEL2_ID = #{record.label2Id,jdbcType=CHAR},
+      LABEL2_NAME = #{record.label2Name,jdbcType=VARCHAR},
+      LABEL2_WORDS = #{record.label2Words,jdbcType=VARCHAR},
+      LABEL2_UPDATE_USER = #{record.label2UpdateUser,jdbcType=VARCHAR},
+      LABEL2_UPDATE_TIME = #{record.label2UpdateTime,jdbcType=TIMESTAMP}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.unicom.tancms.pojo.ProfessionalLabel" >
+    update professional_label
+    <set >
+      <if test="label1Name != null" >
+        LABEL1_NAME = #{label1Name,jdbcType=CHAR},
+      </if>
+      <if test="label2Id != null" >
+        LABEL2_ID = #{label2Id,jdbcType=CHAR},
+      </if>
+      <if test="label2Name != null" >
+        LABEL2_NAME = #{label2Name,jdbcType=VARCHAR},
+      </if>
+      <if test="label2Words != null" >
+        LABEL2_WORDS = #{label2Words,jdbcType=VARCHAR},
+      </if>
+      <if test="label2UpdateUser != null" >
+        LABEL2_UPDATE_USER = #{label2UpdateUser,jdbcType=VARCHAR},
+      </if>
+      <if test="label2UpdateTime != null" >
+        LABEL2_UPDATE_TIME = #{label2UpdateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where LABEL1_ID = #{label1Id,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.unicom.tancms.pojo.ProfessionalLabel" >
+    update professional_label
+    set LABEL1_NAME = #{label1Name,jdbcType=CHAR},
+      LABEL2_ID = #{label2Id,jdbcType=CHAR},
+      LABEL2_NAME = #{label2Name,jdbcType=VARCHAR},
+      LABEL2_WORDS = #{label2Words,jdbcType=VARCHAR},
+      LABEL2_UPDATE_USER = #{label2UpdateUser,jdbcType=VARCHAR},
+      LABEL2_UPDATE_TIME = #{label2UpdateTime,jdbcType=TIMESTAMP}
+    where LABEL1_ID = #{label1Id,jdbcType=CHAR}
+  </update>
+</mapper>

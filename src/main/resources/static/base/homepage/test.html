@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<style>
+    body {
+        background-color: #fff;
+    }
+    .box {
+        width: 150px;
+        height: 150px;
+        background-color: #fff;
+        position: relative;
+        transform:rotate(7deg);
+    }
+
+    .cir {
+        width: 150px;
+        height: 150px;
+        position: absolute;
+        left: 0;
+        right: 0;
+        border: 10px solid pink;
+        border-radius: 50%;
+        box-sizing: border-box;
+        /* background-color: #ccc; */
+        box-shadow: 10px 10px 10px #888;
+    }
+
+    .sbot {
+        width: 30px;
+        height: 30px;
+        background-color: pink;
+        position: absolute;
+        border: 10px solid #fff;
+        border-radius: 50%;
+        box-shadow: 10px 10px 10px #888;
+    }
+
+    .sbot1 {
+        left: 50%;
+        top: -30px;
+        margin-left: -25px;
+    }
+
+    .sbot2 {
+        left: 50%;
+        bottom: -30px;
+        margin-left: -25px;
+    }
+
+    .sbot3 {
+        left: -30px;
+        top: 50%;
+        margin-top: -25px;
+    }
+    .sbot4 {
+        right: -30px;
+        top: 50%;
+        margin-top: -25px;
+    }
+
+    .num {
+        width: 150px;
+        height: 150px;
+        position: absolute;
+        left: 0;
+        right: 0;
+        /* background-color: skyblue; */
+        /* line-height: 100px; */
+        text-align: center;
+    }
+    /* .top {
+        position: absolute;
+        left: 0;
+        top: 0;
+    } */
+</style>
+
+<body>
+    <div class="box">
+        <div class="cir">
+            <div class="sbot1 sbot"></div>
+            <div class="sbot2 sbot"></div>
+            <div class="sbot3 sbot"></div>
+            <div class="sbot4 sbot"></div>
+        </div>
+        <div class="num">
+            <span class="top"></span>
+            <span class="bottom"></span>
+        </div>
+    </div>
+</body>
+
+</html>

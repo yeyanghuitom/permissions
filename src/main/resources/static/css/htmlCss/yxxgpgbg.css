@@ -1,0 +1,185 @@
+    /*内容*/
+.navResult {
+    position: relative;
+}
+
+.navResult-content {
+    padding: 0 80px;
+    position: absolute;
+    left: 80px;
+    right: 80px;
+}
+
+.navResult-left {
+    width: 200px;
+    position: absolute;
+    left: 0;
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    top: 10px;
+    border-right: none;
+    height: 390px;
+}
+
+.navResult-left p {
+    font-size: 16px;
+    font-weight: bold;
+    background-color: #f13d3c;
+    margin: 0;
+    color: #ffffff;
+    padding: 4px;
+}
+
+#navResult-leftBtn li {
+    margin: 2px;
+}
+
+#navResult-leftBtn li a {
+    display: inline-block;
+    width: 100%;
+    padding: 6px 6px 6px 30px;
+    font-size: 14px;
+    cursor: pointer;
+    color: #333333;
+}
+
+#navResult-leftBtn li a:hover {
+    background-color: #f13d3c;
+    color: #ffffff;
+}
+
+#navResult-leftBtn .libg {
+    background-color: #f13d3c;
+    color: #ffffff;
+}
+
+.navResult-right {
+    position: absolute;
+    left: 200px;
+    border: 1px solid #ddd;
+    right: 0;
+    top: 10px;
+    padding: 30px;
+    background-color: #ffffff;
+}
+
+.titleR {
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.downloadR {
+    text-align: right;
+}
+
+.downloadR img {
+    width: 20px;
+    height: 20px;
+    margin: 0 2px;
+}
+
+.smR li {
+    padding: 8px 0;
+}
+
+.smTitle {
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.smTime {
+    font-weight: bold;
+}
+
+.smTime span {
+    font-size: 14px;
+    font-weight: 100;
+}
+
+.contentTitle {
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 30px;
+    padding: 4px 0;
+    border-bottom: 1px solid #dddddd;
+}
+
+/*整体分析*/
+#ztfx {
+    overflow: hidden;
+}
+
+.ztfxContent li {
+    overflow: hidden;
+}
+
+.ztfxContent div {
+    background-color: #d9534f;
+    height: 120px;
+    position: relative;
+    border-radius: 8px;
+}
+
+.ztfxContent p {
+    text-align: center;
+    width: 100%;
+    color: #ffffff;
+    position: absolute;
+    margin-bottom: 0;
+    font-size: 16px;
+}
+
+.ztfxContent .fxbt {
+    top: 10px;
+}
+
+.ztfxContent .fxsl {
+    bottom: 10px;
+}
+/*热度分析*/
+#rdfx{
+    overflow: hidden;
+}
+.rdfxContent table{
+    width: 100%;
+}
+.rdfxContent table td{
+    padding: 4px 0;
+}
+.rdfxContent p{
+    padding: 20px 0;
+}
+.rdfxContent p span{
+    margin-left: 4px;
+}
+.rdfxContent table .rdfxtitle{
+    border-right:1px solid #dddddd;
+}
+.rdfxContent table .rdfxjd{
+    padding-left: 8px;
+    width: 300px;
+}
+/*用户分析*/
+#yhfx_sj table{
+    text-align: center;
+    border: 1px solid #dddddd;
+}
+#yhfx_sj table tr:first-child{
+    text-align: center;
+    color: #ffffff;
+    background-color: #e10111;
+}
+#yhfx_sj th{
+    text-align: center;
+    padding: 6px 2px;
+}
+#yhfx_sj td{
+    border: 1px solid #dddddd;
+    padding: 4px 2px;
+    width: 50%;
+}
+#yhfx_sj tr:nth-child(odd){
+    background: #f7efe5;
+}

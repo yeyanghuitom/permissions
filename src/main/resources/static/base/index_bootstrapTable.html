@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>bootstrapTable</title>
+
+    <link rel="shortcut icon" href="favicon.ico">
+    <link href="css/bootstrap.min.css?v=3.3.5" rel="stylesheet">
+    <link href="css/font-awesome.min.css?v=4.4.0" rel="stylesheet">
+    <!-- bootstrap-table.css -->
+    <link href="css/plugins/bootstrap-table/bootstrap-table.min.css" rel="stylesheet">
+    <link href="css/animate.min.css" rel="stylesheet">
+    <link href="css/style.min.css?v=4.0.0" rel="stylesheet">
+</head>
+<body>
+    <!-- Panel Other -->
+    <div class="container">
+        <!--<div class="ibox-title">
+            <h5>其他</h5>
+            <div class="ibox-tools">
+                <a class="collapse-link">
+                    <i class="fa fa-chevron-up"></i>
+                </a>
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                    <i class="fa fa-wrench"></i>
+                </a>
+                <ul class="dropdown-menu dropdown-user">
+                    <li><a href="#">选项1</a>
+                    </li>
+                    <li><a href="#">选项2</a>
+                    </li>
+                </ul>
+                <a class="close-link">
+                    <i class="fa fa-times"></i>
+                </a>
+            </div>
+        </div>-->
+        <div class="ibox-content">
+            <div class="row row-lg">
+
+                <div class="col-sm-12">
+                    <!-- Example Pagination -->
+                    <div class="example-wrap">
+                        <h4 class="example-title">分页：客户端</h4>
+                        <div class="example">
+                            <table id="exampleTablePagination" class="table"
+                                   data-show-refresh="true"
+                                   data-search="true"
+                                   data-show-columns="true"
+                                   data-toggle="table"
+                                   data-show-toggle="true"
+                                   data-query-params="queryParams"
+                                   data-mobile-responsive="true"
+                                   data-pagination="true"
+                                   data-icon-size="outline"
+                            >
+                                <!--
+                                    data-toggle="table"
+                                    data-height="400" -->
+                                <thead>
+                                    <tr>
+                                        <th data-field="state" data-checkbox="true"></th>
+                                        <th data-field="id">ID</th>
+                                        <th data-field="name">名称</th>
+                                        <th data-field="price">价格</th>
+                                    </tr>
+                                </thead>
+                            </table>
+                        </div>
+                    </div>
+                    <!-- End Example Pagination -->
+                </div>
+
+                <!--<div class="col-sm-12">
+                    &lt;!&ndash; Example Events &ndash;&gt;
+                    <div class="example-wrap">
+                        <h4 class="example-title">事件</h4>
+                        <div class="example">
+                            <div class="alert alert-success" id="examplebtTableEventsResult" role="alert">
+                                事件结果
+                            </div>
+                            <div class="btn-group hidden-xs" id="exampleTableEventsToolbar" role="group">
+                                <button type="button" class="btn btn-outline btn-default">
+                                    <i class="glyphicon glyphicon-plus" aria-hidden="true"></i>
+                                </button>
+                                <button type="button" class="btn btn-outline btn-default">
+                                    <i class="glyphicon glyphicon-heart" aria-hidden="true"></i>
+                                </button>
+                                <button type="button" class="btn btn-outline btn-default">
+                                    <i class="glyphicon glyphicon-trash" aria-hidden="true"></i>
+                                </button>
+                            </div>
+                            <table id="exampleTableEvents" data-height="400" data-mobile-responsive="true">
+                                <thead>
+                                    <tr>
+                                        <th data-field="state" data-checkbox="true"></th>
+                                        <th data-field="id">ID</th>
+                                        <th data-field="name">名称</th>
+                                        <th data-field="price">价格</th>
+                                    </tr>
+                                </thead>
+                                &lt;!&ndash;<tbody>
+                                    <tr>
+                                        <td>123456</td>
+                                        <td>HUAWEI-mate8</td>
+                                        <td>￥3210.00</td>
+                                    </tr>
+                                    <tr>
+                                        <td>1234567</td>
+                                        <td>HUAWEI-P9</td>
+                                        <td>￥2810.00</td>
+                                    </tr>
+                                </tbody>&ndash;&gt;
+                            </table>
+                        </div>
+                    </div>
+                    &lt;!&ndash; End Example Events &ndash;&gt;
+                </div>-->
+            </div>
+        </div>
+    </div>
+    <!-- End Panel Other -->
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <!--<script src="js/content.min.js?v=1.0.0"></script>-->
+    <script src="http://127.0.0.1:81/newjzyx_10_17/js/bootstrap-table.js"></script>
+    <!--<script src="js/plugins/bootstrap-table/bootstrap-table-mobile.min.js"></script>-->
+    <script src="js/plugins/bootstrap-table/locale/bootstrap-table-zh-CN.min.js"></script>
+    <script>
+        var $table = $('#exampleTablePagination');
+        function operateFormatter(value, row, index) {
+            return [
+                '<a rel="tooltip" title="View" class="btn btn-simple btn-info btn-icon table-action view" href="javascript:void(0)">',
+                '<i class="fa fa-image"></i>',
+                '</a>',
+                '<a rel="tooltip" title="Edit" class="btn btn-simple btn-warning btn-icon table-action edit" href="javascript:void(0)">',
+                '<i class="fa fa-edit"></i>',
+                '</a>',
+                '<a rel="tooltip" title="Remove" class="btn btn-simple btn-danger btn-icon table-action remove" href="javascript:void(0)">',
+                '<i class="fa fa-remove"></i>',
+                '</a>'
+            ].join('');
+        }
+        $().ready(function(){
+            window.operateEvents = {
+                'click .view': function (e, value, row, index) {
+                    info = JSON.stringify(row);
+
+                    swal('You click view icon, row: ', info);
+                    console.log(info);
+                },
+                'click .edit': function (e, value, row, index) {
+                    info = JSON.stringify(row);
+
+                    swal('You click edit icon, row: ', info);
+                    console.log(info);
+                },
+                'click .remove': function (e, value, row, index) {
+                    console.log(row);
+                    $table.bootstrapTable('remove', {
+                        field: 'id',
+                        values: [row.id]
+                    });
+                }
+            };
+            $table.bootstrapTable({
+                /*columns: [
+                 {
+                 field: 'id',
+                 title: 'Item ID'
+                 }, {
+                 field: 'name',
+                 title: 'Item Name'
+                 }, {
+                 field: 'price',
+                 title: 'Item Price'
+                 }
+                 ],*/
+                columns: [
+                    {field: 'index',}
+                ],
+                url: '/TableStyle/GetOrder',         //请求后台的URL（*）
+                method: 'get',                      //请求方式（*）
+                toolbar: ".toolbar",
+                clickToSelect: true,        //是否启用点击选中行
+                uniqueId: "id",              //每一行的唯一标识，一般为主键列
+                showRefresh: true,
+                search: true,
+                showToggle: true,            //是否显示详细视图和列表视图的切换按钮
+                showColumns: true,
+                cache: false,                       //是否使用缓存，默认为true，所以一般情况下需要设置一下这个属性（*）
+                pagination: true,
+                searchAlign: 'left',
+                //pageSize: 8,  //每一页展示的信息数量
+                //toolbar: '#toolbar',                //工具按钮用哪个容器
+                //clickToSelect: false,
+                idField: "id",
+                pageList: [4,10,25,50,100],
+                icons: {
+                    refresh: 'fa fa-refresh',
+                    toggle: 'fa fa-th-list',
+                    columns: 'fa fa-columns',
+                    detailOpen: 'fa fa-plus-circle',
+                    detailClose: 'fa fa-minus-circle'
+                },
+                data: [
+                    {
+                        id: 1,
+                        index: 'cache1',
+                        name: 'Item 1',
+                        price: '$1',
+                        actions : ''
+                    },{
+                        id: 2,
+                        index: 'cache2',
+                        name: 'Item 2',
+                        price: '$2',
+                        actions : ''
+                    },{
+                        id: 3,
+                        index: 'cache3',
+                        name: 'Item 3',
+                        price: '$3',
+                        actions : ''
+                    },{
+                        id: 4,
+                        index: 'cache4',
+                        name: 'Item 4',
+                        price: '$4',
+                        actions : ''
+                    }, {
+                        id: 5,
+                        index: 'cache5',
+                        name: 'Item 5',
+                        price: '$5',
+                        actions : ''
+                    }],
+
+            });
+
+            //activate the tooltips after the data table is initialized
+            $('[rel="tooltip"]').tooltip();
+
+            /*$(window).resize(function () {
+                $table.bootstrapTable('resetView');
+
+
+            });*/
+
+
+        });
+
+        //清屏方法：
+        //$table.bootstrapTable('removeAll')
+        /*****
+         * 获取项目数据
+         * $table.bootstrapTable('getOptions').data
+         * ***/
+        // 替换列表
+        /*******
+         * $table.bootstrapTable('load', [
+             {
+             id: 1,
+             name: 'Item 1',
+             price: '$1'
+             },{
+                     id: 2,
+                     name: 'Item 2',
+                     price: '$2'
+                     },{
+                     id: 3,
+                     name: 'Item 3',
+                     price: '$3'
+                     },{
+                     id: 4,
+                     name: 'Item 4',
+                     price: '$4'
+                     }, {
+                     id: 5,
+                     name: 'Item 5',
+                     price: '$5'
+                     }]);
+         */
+        //
+        /**************
+         *   增加一个或多个数据
+         * $table.bootstrapTable('prepend',[{
+                        id:9,
+                        index: 'cache1',
+                        name: 'Item 1',
+                        price: '$1',
+                        actions : ''
+                    },{
+                        id:10,
+                        index: 'cache1',
+                        name: 'Item 1',
+                        price: '$1',
+                        actions : ''
+                    }]);
+         *
+         * *************/
+
+        // 删
+        //$table.bootstrapTable('remove', {field: 'index', values: ["cache3",'cache2']});
+        // 改
+        // 先删，后增
+        /********
+         * function updata(){
+         *      $table.bootstrapTable('remove', {field: 'index', values: ["cache3",'cache2']});
+         *      $table.bootstrapTable('prepend',[object,object])
+         * }
+         *
+         * ******/
+        //获得（所有）所选行
+        // $table.bootstrapTable('getAllSelections');
+        // 返回值   '[{"id":2,"index":"cache2","name":"Item 2","price":"$2","actions":"","state":true},{"id":3,"index":"cache3","name":"Item 3","price":"$3","actions":"","state":true}]'
+
+    </script>
+</body>
+</html>

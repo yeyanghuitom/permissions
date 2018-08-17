@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>index_资源</title>
+
+    <link rel="shortcut icon" href="favicon.ico">
+    <link href="css/bootstrap.min.css?v=3.3.5" rel="stylesheet">
+    <link href="css/font-awesome.min.css?v=4.4.0" rel="stylesheet">
+    <!-- bootstrap-table.css -->
+    <link href="css/plugins/bootstrap-table/bootstrap-table.min.css" rel="stylesheet">
+    <link href="css/animate.min.css" rel="stylesheet">
+    <link href="css/style.min.css?v=4.0.0" rel="stylesheet">
+    <!-- awesome-bootstrap-checkbox -->
+    <link href="css/plugins/awesome-bootstrap-checkbox/awesome-bootstrap-checkbox.css" rel="stylesheet">
+    <!-- sweetalert -->
+    <link rel="stylesheet" type="text/css" href="css/plugins/sweetalert/sweetalert.css">
+    <script src="js/ajaxBaseURL.js"></script>
+    <script>
+        //const ajaxBaseURL = "http://10.0.78.109:8080/permissions",baseField = 'roles';
+        //const ajaxBaseURL = "http://localhost:8080/permissions",baseField = 'roles';
+        const baseField = 'roles';
+    </script>
+</head>
+<body class="gray-bg">
+<!-- Panel Other -->
+<div class="container-fluid">
+    <div class="wrapper-content">
+        <div class="row row-lg hidden" id="rolesBindResourcesOfTable">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5> CEM 角色信息配置页面 </h5>
+                    <div class="ibox-tools">
+                        <a class="collapse-link">
+                            <i class="fa fa-chevron-up"></i>
+                        </a>
+                        <!--<a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                            <i class="fa fa-wrench"></i>
+                        </a>
+                        <a class="close-link">
+                            <i class="fa fa-times"></i>
+                        </a>-->
+                        <a id="closeRolesBindResourcesOfTable">
+                            <i class="fa fa-times"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="ibox-content">
+                    <form class="form-horizontal"  id="rolesBindResources_from">
+
+                        <!--<div class="form-group ">
+                            <label class="col-md-3 col-sm-3 control-label"> 角色已绑定的资源： </label>
+                            <div class="col-md-9 col-sm-9">
+                                <div class="checkbox checkbox-success col-md-4">
+                                    <input id="userBindRoles_USER_ROLE_ID1" class="inline" type="checkbox"><label for="userBindRoles_USER_ROLE_ID1">复选框1</label>
+                                    <a rel="tooltip" title="绑定按钮" class="btn btn-xs btn-primary btn-icon" data-toggle="modal" data-target="#resourcesBindButton">
+                                        <i class="fa fa-plus"></i>
+                                    </a>
+                                </div>
+                                <div class="checkbox checkbox-success col-md-4">
+                                    <input id="userBindRoles_USER_ROLE_ID2" class="inline" type="checkbox"><label for="userBindRoles_USER_ROLE_ID2">复选框1</label>
+                                    <a rel="tooltip" title="绑定按钮" class="btn btn-xs btn-primary btn-icon" data-toggle="modal" data-target="#resourcesBindButton">
+                                        <i class="fa fa-plus"></i>
+                                    </a>
+                                </div>
+                                <div class="checkbox checkbox-success col-md-4">
+                                    <input id="userBindRoles_USER_ROLE_ID3" class="inline" type="checkbox"><label for="userBindRoles_USER_ROLE_ID3">复选框1</label>
+                                    <a rel="tooltip" title="绑定按钮" class="btn btn-xs btn-primary btn-icon" data-toggle="modal" data-target="#resourcesBindButton">
+                                        <i class="fa fa-plus"></i>
+                                    </a>
+                                </div>
+                                <hr style="background-color:#ffffff" class="col-md-10">
+                                <div class="checkbox checkbox-success col-md-4">
+                                    <input id="userBindRoles_USER_ROLE_ID4" class="inline" type="checkbox"><label for="userBindRoles_USER_ROLE_ID4">复选框1</label>
+                                    <a rel="tooltip" title="绑定按钮" class="btn  btn-xs btn-primary btn-icon" data-toggle="modal" data-target="#resourcesBindButton">
+                                        <i class="fa fa-plus"></i>
+                                    </a>
+                                </div>
+                                <div class="checkbox checkbox-success col-md-4">
+                                    <input id="userBindRoles_USER_ROLE_ID5" class="inline" type="checkbox"><label for="userBindRoles_USER_ROLE_ID5">复选框1</label>
+                                    <a rel="tooltip" title="绑定按钮" class="btn  btn-xs btn-primary btn-icon" data-toggle="modal" data-target="#resourcesBindButton">
+                                        <i class="fa fa-plus"></i>
+                                    </a>
+                                </div>
+                                <div class="checkbox checkbox-success col-md-4">
+                                    <input id="userBindRoles_USER_ROLE_ID6" class="inline" type="checkbox"><label for="userBindRoles_USER_ROLE_ID6">复选框1</label>
+                                    <a rel="tooltip" title="绑定按钮" class="btn  btn-xs btn-primary btn-icon" data-toggle="modal" data-target="#resourcesBindButton">
+                                        <i class="fa fa-plus"></i>
+                                    </a>
+                                </div>
+                                <hr style="background-color:#ffffff" class="col-md-10">
+
+                                &lt;!&ndash;<div class="form-group col-md-6">
+                                    <div class="input-group">
+                                                                <span class="input-group-addon">
+                                                                    <input type="checkbox" aria-label="...">
+                                                                </span>
+                                        <input type="text" class="form-control" disabled vlaue="按钮1" aria-label="...">
+                                    </div>&lt;!&ndash; /input-group &ndash;&gt;
+                                    <div class="input-group">
+                                                                <span class="input-group-addon">
+                                                                    <input type="checkbox" aria-label="...">
+                                                                </span>
+                                        <input type="text" class="form-control" disabled vlaue="按钮2" aria-label="...">
+                                    </div>&lt;!&ndash; /input-group &ndash;&gt;
+
+                                    &lt;!&ndash;<label class="col-md-12 control-label text-left">选择按钮：</label>
+
+                                    <div class="col-md-12">
+                                        <select class="form-control m-b" name="account">
+                                            <option>选项 1</option>
+                                            <option>选项 2</option>
+                                            <option>选项 3</option>
+                                            <option>选项 4</option>
+                                        </select>
+
+                                        <div class="col-md-12">
+                                            <select class="form-control" multiple="">
+                                                <option>选项 1</option>
+                                                <option>选项 2</option>
+                                                <option>选项 3</option>
+                                                <option>选项 4</option>
+                                            </select>
+                                        </div>
+                                    </div>&ndash;&gt;
+                                </div>&ndash;&gt;
+                            </div>
+                        </div>-->
+
+
+                    </form>
+                    <div class="row text-center">
+                        <button class="btn btn-primary" id="RolesBindResources_submit"> 保存并返回主页面 </button>
+                        <!--<button class="btn btn-primary" id="RolesBindResourcesReturnMain"> 保存并返回主页面 </button>-->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+        <div class="row row-lg" id="iBoxTable">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5> CEM 角色信息配置页面 </h5>
+                    <div class="ibox-tools">
+                        <a class="collapse-link">
+                            <i class="fa fa-chevron-up"></i>
+                        </a>
+                        <!--<a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                            <i class="fa fa-wrench"></i>
+                        </a>
+                        <a class="close-link">
+                            <i class="fa fa-times"></i>
+                        </a>-->
+                    </div>
+                </div>
+
+                <div class="ibox-content">
+                    <div class="row row-lg">
+                        <div class="col-sm-12">
+                            <!-- Example Pagination -->
+                            <!--<h4>工具提示示例 <small>深色背景</small></h4>
+                            <div class="tooltip-demo">
+                                <button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="left" title="这里是提示内容">左侧提示</button>
+                                <button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="这里是提示内容">顶部提示</button>
+                                <button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="bottom" title="这里是提示内容">底部提示</button>
+                                <button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="right" title="这里是提示内容">右侧提示</button>
+                            </div>
+                            <br>
+                            <h4>工具提示 - 单击提示</h4>
+                            <div class="tooltip-demo">
+                                <div class="btn-group" role="group" aria-label="...">
+                                    <button type="button" class="btn btn-default">1</button>
+                                    <button type="button" class="btn btn-default">2</button>
+
+                                    <div class="btn-group" role="group">
+                                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            Dropdown
+                                            <span class="caret"></span>
+                                        </button>
+                                        <ul class="dropdown-menu">
+                                            <li><a href="#">Dropdown link</a></li>
+                                            <li><a href="#">Dropdown link</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tooltip-demo">
+                                <button type="button" class="btn btn-primary" data-container="body" data-toggle="popover" data-placement="left" data-content="这里是提示内容">
+                                    左侧提示
+                                </button>
+                                <button type="button" class="btn btn-primary" data-container="body" data-toggle="popover" data-placement="top" data-content="这里是提示内容">
+                                    顶部提示
+                                </button>
+                                <button type="button" class="btn btn-primary" data-container="body" data-toggle="popover" data-placement="bottom" data-content="这里是提示内容">
+                                    底部提示
+                                </button>
+                                <button type="button" class="btn btn-primary" data-container="body" data-toggle="popover" data-placement="right" data-content="这里是提示内容">
+                                    右侧提示
+                                </button>
+                            </div>-->
+
+
+                            <div class="example">
+                                <button class="btn btn-group fa fa-file-excel-o exportExcel"> 一键导出</button>
+                                <button class="btn btn-group fa fa-user-plus " data-toggle="modal" data-target="#userPlus" id="plusMsg"> 新增</button>
+
+                                <table id="theBootstraptable" name="/roles/getRolesAll" class="fa-hover table bootstrapTable_demo1">
+                                    <!-- <thead>
+                                        <th data-field="state" data-checkbox="true"></th>
+                                        <th data-field="USER_ID" class="text-center" data-sortable="true">用户ID</th>
+                                        <th data-field="USER_NAME" data-sortable="true">用户名</th>
+                                        <th data-field="ACCOUNT" data-sortable="true">账号</th>
+                                        <th data-field="EMAIL" data-sortable="true">邮箱</th>
+                                        <th data-field="PASSWORD" data-sortable="true">密码</th>
+                                        <th data-field="REGISTER_DATE" data-sortable="true">注册时间</th>
+                                        <th data-field="STATUS" data-sortable="true">状态</th>
+                                        <th data-field="actions" class="td-actions text-right" data-events="operateEvents" data-formatter="operateFormatter">Actions</th>
+                                    </thead> -->
+                                </table>
+                            </div>
+                        </div>
+                        <!-- End Example Pagination -->
+
+
+                        <!--  modal window start -->
+
+                        <!-- 新增一条数据 start -->
+                        <div class="modal inmodal" id="userPlus" tabindex="-1" role="dialog" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <!-- 此处控制展示样式 -->
+                                <div class="modal-content animated bounceIn">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                                        <h4 class="modal-title"> Roles 新增一条数据 </h4>
+                                        <small class="font-bold">模态窗副标题</small>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form class="form-horizontal" id="userPlus_from">
+
+                                        </form>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-white" data-dismiss="modal">关闭</button>
+                                        <button type="button" class="btn btn-primary" id="userPlus_submit">保存</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- End 新增一条数据 -->
+                        <!-- 查一条数据 -->
+                        <div class="modal inmodal" id="getMsg" tabindex="-1" role="dialog" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <!-- 此处控制展示样式 -->
+                                <div class="modal-content animated flipInY">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                                        <h4 class="modal-title"> User - 查看一条数据 </h4>
+                                        <small class="font-bold">模态窗副标题</small>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form class="form-horizontal" id="getMsg_from">
+                                        </form>
+                                        <h3></h3>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-white" data-dismiss="modal">关闭</button>
+                                        <!-- <button type="button" class="btn btn-primary">保存</button>-->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- End 查一条数据 -->
+                        <!-- 改一条数据 -->
+                        <div class="modal inmodal" id="setMsg" tabindex="-1" role="dialog" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <!-- 此处控制展示样式 -->
+                                <div class="modal-content animated flipInX">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                                        <h4 class="modal-title"> 修改一条数据 </h4>
+                                        <small class="font-bold">模态窗副标题</small>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form class="form-horizontal"  id="setMsg_from">
+
+                                        </form>
+                                        <h3></h3>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-white" data-dismiss="modal">关闭</button>
+                                        <button type="button" class="btn btn-primary" id="setMsg_submit">保存</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- End 改一条数据 -->
+                        <!-- 角色绑定资源 -->
+                        <div class="modal inmodal" id="rolesResourcesBindButton" tabindex="-1" role="dialog" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <!-- 此处控制展示样式 -->
+                                <div class="modal-content animated flipInX">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                                        <h4 class="modal-title"> 资源绑定按钮  </h4>
+                                        <small class="font-bold">请勾选您需要配置的资源 </small>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form class="form-horizontal"  id="rolesResourcesBindButton_form">
+
+                                        </form>
+                                        <h3></h3>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-white" data-dismiss="modal">关闭</button>
+                                        <button type="button" class="btn btn-primary" id="rolesResourcesBindButton_submit">保存</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- End 角色绑定资源 -->
+
+
+                        <!-- End modal window -->
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+    </div>
+</div>
+<!-- End Panel Other -->
+<script src="js/jquery.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/content.min.js?v=1.0.0"></script>
+<script src="js/plugins/bootstrap-table/bootstrap-table.min.js"></script>
+<!--<script src="js/plugins/bootstrap-table/bootstrap-table-mobile.min.js"></script>-->
+<script src="js/plugins/bootstrap-table/locale/bootstrap-table-zh-CN.min.js"></script>
+<!-- sweetalert -->
+<script src="js/plugins/sweetalert/sweetalert.min.js"></script>
+<script src="js/tableExport.js"></script>
+<script src="js/jquery.base64.js"></script>
+<!-- JsonExportExcel -->
+<script src="js/JsonExportExcel.min.js"></script>
+<!--<script src="js/receiveBootstrapTable.js"></script>-->
+<script src="js/roles.js"></script>
+
+<script>
+
+</script>
+</body>
+</html>

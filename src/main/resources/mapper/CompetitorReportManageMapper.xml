@@ -1,0 +1,371 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.unicom.tancms.mapper.CompetitorReportManageMapper" >
+  <resultMap id="BaseResultMap" type="com.unicom.tancms.pojo.CompetitorReportManage" >
+    <id column="CPA_REPORT_ID" property="cpaReportId" jdbcType="VARCHAR" />
+    <result column="CPA_NUMBER" property="cpaNumber" jdbcType="DECIMAL" />
+    <result column="CPA_REPORT_NAME" property="cpaReportName" jdbcType="VARCHAR" />
+    <result column="CPA_NUM" property="cpaNum" jdbcType="DECIMAL" />
+    <result column="CPA_CREATE_TIME" property="cpaCreateTime" jdbcType="TIMESTAMP" />
+    <result column="CPA_FINISH_TIME" property="cpaFinishTime" jdbcType="TIMESTAMP" />
+    <result column="CPA_ANALYZ_STATUS" property="cpaAnalyzStatus" jdbcType="CHAR" />
+    <result column="CPA_START_TIME" property="cpaStartTime" jdbcType="TIMESTAMP" />
+    <result column="CPA_END_TIME" property="cpaEndTime" jdbcType="TIMESTAMP" />
+    <result column="IS_USE" property="isUse" jdbcType="CHAR" />
+    <result column="CPA_CREATE_USER" property="cpaCreateUser" jdbcType="VARCHAR" />
+    <result column="CPA_PATH_WORD" property="cpaPathWord" jdbcType="VARCHAR" />
+    <result column="CPA_PATH_PDF" property="cpaPathPdf" jdbcType="VARCHAR" />
+    <result column="CPA_UPDATE_USER" property="cpaUpdateUser" jdbcType="VARCHAR" />
+    <result column="CPA_UPDATE_TIME" property="cpaUpdateTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    CPA_REPORT_ID, CPA_NUMBER, CPA_REPORT_NAME, CPA_NUM, CPA_CREATE_TIME, CPA_FINISH_TIME, 
+    CPA_ANALYZ_STATUS, CPA_START_TIME, CPA_END_TIME, IS_USE, CPA_CREATE_USER, CPA_PATH_WORD, 
+    CPA_PATH_PDF, CPA_UPDATE_USER, CPA_UPDATE_TIME
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.unicom.tancms.pojo.CompetitorReportManageExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from competitor_report_manage
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from competitor_report_manage
+    where CPA_REPORT_ID = #{cpaReportId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from competitor_report_manage
+    where CPA_REPORT_ID = #{cpaReportId,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.unicom.tancms.pojo.CompetitorReportManageExample" >
+    delete from competitor_report_manage
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.unicom.tancms.pojo.CompetitorReportManage" >
+    insert into competitor_report_manage (CPA_REPORT_ID, CPA_NUMBER, CPA_REPORT_NAME, 
+      CPA_NUM, CPA_CREATE_TIME, CPA_FINISH_TIME, 
+      CPA_ANALYZ_STATUS, CPA_START_TIME, CPA_END_TIME, 
+      IS_USE, CPA_CREATE_USER, CPA_PATH_WORD, 
+      CPA_PATH_PDF, CPA_UPDATE_USER, CPA_UPDATE_TIME
+      )
+    values (#{cpaReportId,jdbcType=VARCHAR}, #{cpaNumber,jdbcType=DECIMAL}, #{cpaReportName,jdbcType=VARCHAR}, 
+      #{cpaNum,jdbcType=DECIMAL}, #{cpaCreateTime,jdbcType=TIMESTAMP}, #{cpaFinishTime,jdbcType=TIMESTAMP}, 
+      #{cpaAnalyzStatus,jdbcType=CHAR}, #{cpaStartTime,jdbcType=TIMESTAMP}, #{cpaEndTime,jdbcType=TIMESTAMP}, 
+      #{isUse,jdbcType=CHAR}, #{cpaCreateUser,jdbcType=VARCHAR}, #{cpaPathWord,jdbcType=VARCHAR}, 
+      #{cpaPathPdf,jdbcType=VARCHAR}, #{cpaUpdateUser,jdbcType=VARCHAR}, #{cpaUpdateTime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.unicom.tancms.pojo.CompetitorReportManage" >
+    insert into competitor_report_manage
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="cpaReportId != null" >
+        CPA_REPORT_ID,
+      </if>
+      <if test="cpaNumber != null" >
+        CPA_NUMBER,
+      </if>
+      <if test="cpaReportName != null" >
+        CPA_REPORT_NAME,
+      </if>
+      <if test="cpaNum != null" >
+        CPA_NUM,
+      </if>
+      <if test="cpaCreateTime != null" >
+        CPA_CREATE_TIME,
+      </if>
+      <if test="cpaFinishTime != null" >
+        CPA_FINISH_TIME,
+      </if>
+      <if test="cpaAnalyzStatus != null" >
+        CPA_ANALYZ_STATUS,
+      </if>
+      <if test="cpaStartTime != null" >
+        CPA_START_TIME,
+      </if>
+      <if test="cpaEndTime != null" >
+        CPA_END_TIME,
+      </if>
+      <if test="isUse != null" >
+        IS_USE,
+      </if>
+      <if test="cpaCreateUser != null" >
+        CPA_CREATE_USER,
+      </if>
+      <if test="cpaPathWord != null" >
+        CPA_PATH_WORD,
+      </if>
+      <if test="cpaPathPdf != null" >
+        CPA_PATH_PDF,
+      </if>
+      <if test="cpaUpdateUser != null" >
+        CPA_UPDATE_USER,
+      </if>
+      <if test="cpaUpdateTime != null" >
+        CPA_UPDATE_TIME,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="cpaReportId != null" >
+        #{cpaReportId,jdbcType=VARCHAR},
+      </if>
+      <if test="cpaNumber != null" >
+        #{cpaNumber,jdbcType=DECIMAL},
+      </if>
+      <if test="cpaReportName != null" >
+        #{cpaReportName,jdbcType=VARCHAR},
+      </if>
+      <if test="cpaNum != null" >
+        #{cpaNum,jdbcType=DECIMAL},
+      </if>
+      <if test="cpaCreateTime != null" >
+        #{cpaCreateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="cpaFinishTime != null" >
+        #{cpaFinishTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="cpaAnalyzStatus != null" >
+        #{cpaAnalyzStatus,jdbcType=CHAR},
+      </if>
+      <if test="cpaStartTime != null" >
+        #{cpaStartTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="cpaEndTime != null" >
+        #{cpaEndTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isUse != null" >
+        #{isUse,jdbcType=CHAR},
+      </if>
+      <if test="cpaCreateUser != null" >
+        #{cpaCreateUser,jdbcType=VARCHAR},
+      </if>
+      <if test="cpaPathWord != null" >
+        #{cpaPathWord,jdbcType=VARCHAR},
+      </if>
+      <if test="cpaPathPdf != null" >
+        #{cpaPathPdf,jdbcType=VARCHAR},
+      </if>
+      <if test="cpaUpdateUser != null" >
+        #{cpaUpdateUser,jdbcType=VARCHAR},
+      </if>
+      <if test="cpaUpdateTime != null" >
+        #{cpaUpdateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.unicom.tancms.pojo.CompetitorReportManageExample" resultType="java.lang.Integer" >
+    select count(*) from competitor_report_manage
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update competitor_report_manage
+    <set >
+      <if test="record.cpaReportId != null" >
+        CPA_REPORT_ID = #{record.cpaReportId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cpaNumber != null" >
+        CPA_NUMBER = #{record.cpaNumber,jdbcType=DECIMAL},
+      </if>
+      <if test="record.cpaReportName != null" >
+        CPA_REPORT_NAME = #{record.cpaReportName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cpaNum != null" >
+        CPA_NUM = #{record.cpaNum,jdbcType=DECIMAL},
+      </if>
+      <if test="record.cpaCreateTime != null" >
+        CPA_CREATE_TIME = #{record.cpaCreateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.cpaFinishTime != null" >
+        CPA_FINISH_TIME = #{record.cpaFinishTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.cpaAnalyzStatus != null" >
+        CPA_ANALYZ_STATUS = #{record.cpaAnalyzStatus,jdbcType=CHAR},
+      </if>
+      <if test="record.cpaStartTime != null" >
+        CPA_START_TIME = #{record.cpaStartTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.cpaEndTime != null" >
+        CPA_END_TIME = #{record.cpaEndTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.isUse != null" >
+        IS_USE = #{record.isUse,jdbcType=CHAR},
+      </if>
+      <if test="record.cpaCreateUser != null" >
+        CPA_CREATE_USER = #{record.cpaCreateUser,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cpaPathWord != null" >
+        CPA_PATH_WORD = #{record.cpaPathWord,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cpaPathPdf != null" >
+        CPA_PATH_PDF = #{record.cpaPathPdf,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cpaUpdateUser != null" >
+        CPA_UPDATE_USER = #{record.cpaUpdateUser,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cpaUpdateTime != null" >
+        CPA_UPDATE_TIME = #{record.cpaUpdateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update competitor_report_manage
+    set CPA_REPORT_ID = #{record.cpaReportId,jdbcType=VARCHAR},
+      CPA_NUMBER = #{record.cpaNumber,jdbcType=DECIMAL},
+      CPA_REPORT_NAME = #{record.cpaReportName,jdbcType=VARCHAR},
+      CPA_NUM = #{record.cpaNum,jdbcType=DECIMAL},
+      CPA_CREATE_TIME = #{record.cpaCreateTime,jdbcType=TIMESTAMP},
+      CPA_FINISH_TIME = #{record.cpaFinishTime,jdbcType=TIMESTAMP},
+      CPA_ANALYZ_STATUS = #{record.cpaAnalyzStatus,jdbcType=CHAR},
+      CPA_START_TIME = #{record.cpaStartTime,jdbcType=TIMESTAMP},
+      CPA_END_TIME = #{record.cpaEndTime,jdbcType=TIMESTAMP},
+      IS_USE = #{record.isUse,jdbcType=CHAR},
+      CPA_CREATE_USER = #{record.cpaCreateUser,jdbcType=VARCHAR},
+      CPA_PATH_WORD = #{record.cpaPathWord,jdbcType=VARCHAR},
+      CPA_PATH_PDF = #{record.cpaPathPdf,jdbcType=VARCHAR},
+      CPA_UPDATE_USER = #{record.cpaUpdateUser,jdbcType=VARCHAR},
+      CPA_UPDATE_TIME = #{record.cpaUpdateTime,jdbcType=TIMESTAMP}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.unicom.tancms.pojo.CompetitorReportManage" >
+    update competitor_report_manage
+    <set >
+      <if test="cpaNumber != null" >
+        CPA_NUMBER = #{cpaNumber,jdbcType=DECIMAL},
+      </if>
+      <if test="cpaReportName != null" >
+        CPA_REPORT_NAME = #{cpaReportName,jdbcType=VARCHAR},
+      </if>
+      <if test="cpaNum != null" >
+        CPA_NUM = #{cpaNum,jdbcType=DECIMAL},
+      </if>
+      <if test="cpaCreateTime != null" >
+        CPA_CREATE_TIME = #{cpaCreateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="cpaFinishTime != null" >
+        CPA_FINISH_TIME = #{cpaFinishTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="cpaAnalyzStatus != null" >
+        CPA_ANALYZ_STATUS = #{cpaAnalyzStatus,jdbcType=CHAR},
+      </if>
+      <if test="cpaStartTime != null" >
+        CPA_START_TIME = #{cpaStartTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="cpaEndTime != null" >
+        CPA_END_TIME = #{cpaEndTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isUse != null" >
+        IS_USE = #{isUse,jdbcType=CHAR},
+      </if>
+      <if test="cpaCreateUser != null" >
+        CPA_CREATE_USER = #{cpaCreateUser,jdbcType=VARCHAR},
+      </if>
+      <if test="cpaPathWord != null" >
+        CPA_PATH_WORD = #{cpaPathWord,jdbcType=VARCHAR},
+      </if>
+      <if test="cpaPathPdf != null" >
+        CPA_PATH_PDF = #{cpaPathPdf,jdbcType=VARCHAR},
+      </if>
+      <if test="cpaUpdateUser != null" >
+        CPA_UPDATE_USER = #{cpaUpdateUser,jdbcType=VARCHAR},
+      </if>
+      <if test="cpaUpdateTime != null" >
+        CPA_UPDATE_TIME = #{cpaUpdateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where CPA_REPORT_ID = #{cpaReportId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.unicom.tancms.pojo.CompetitorReportManage" >
+    update competitor_report_manage
+    set CPA_NUMBER = #{cpaNumber,jdbcType=DECIMAL},
+      CPA_REPORT_NAME = #{cpaReportName,jdbcType=VARCHAR},
+      CPA_NUM = #{cpaNum,jdbcType=DECIMAL},
+      CPA_CREATE_TIME = #{cpaCreateTime,jdbcType=TIMESTAMP},
+      CPA_FINISH_TIME = #{cpaFinishTime,jdbcType=TIMESTAMP},
+      CPA_ANALYZ_STATUS = #{cpaAnalyzStatus,jdbcType=CHAR},
+      CPA_START_TIME = #{cpaStartTime,jdbcType=TIMESTAMP},
+      CPA_END_TIME = #{cpaEndTime,jdbcType=TIMESTAMP},
+      IS_USE = #{isUse,jdbcType=CHAR},
+      CPA_CREATE_USER = #{cpaCreateUser,jdbcType=VARCHAR},
+      CPA_PATH_WORD = #{cpaPathWord,jdbcType=VARCHAR},
+      CPA_PATH_PDF = #{cpaPathPdf,jdbcType=VARCHAR},
+      CPA_UPDATE_USER = #{cpaUpdateUser,jdbcType=VARCHAR},
+      CPA_UPDATE_TIME = #{cpaUpdateTime,jdbcType=TIMESTAMP}
+    where CPA_REPORT_ID = #{cpaReportId,jdbcType=VARCHAR}
+  </update>
+</mapper>

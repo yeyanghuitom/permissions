@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>index_资源</title>
+
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link href="../css/bootstrap.min.css?v=3.3.5" rel="stylesheet">
+    <link href="../css/font-awesome.min.css?v=4.4.0" rel="stylesheet">
+    <!-- bootstrap-table.css -->
+    <link href="../css/plugins/bootstrap-table/bootstrap-table.min.css" rel="stylesheet">
+    <link href="../css/animate.min.css" rel="stylesheet">
+    <link href="../css/style.min.css?v=4.0.0" rel="stylesheet">
+    <!-- awesome-bootstrap-checkbox -->
+    <link href="../css/plugins/awesome-bootstrap-checkbox/awesome-bootstrap-checkbox.css" rel="stylesheet">
+    <!-- sweetalert -->
+    <link rel="stylesheet" type="text/css" href="../css/plugins/sweetalert/sweetalert.css">
+    <script src="../js/ajaxBaseURL.js"></script>
+    <script>
+        //const ajaxBaseURL = "http://10.0.78.109:8080/permissions",baseField = 'roles';
+        //const ajaxBaseURL = "http://localhost:8080/permissions",baseField = 'roles';
+        const baseField = 'api';
+    </script>
+</head>
+<body class="gray-bg">
+<!-- Panel Other -->
+<div class="container-fluid">
+    <div class="wrapper-content">
+        <div class="row row-lg hidden" id="iBoxOfButtonTable">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5> 资源页面对应 API 列表 </h5>
+                    <div class="ibox-tools">
+                        <a class="collapse-link">
+                            <i class="fa fa-chevron-up"></i>
+                        </a>
+
+                        <a id="closeIBoxOfButtonTable">
+                            <i class="fa fa-times"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="ibox-content">
+                    <div class="row row-lg">
+
+                        <div class="col-md-12">
+                            <!-- createOneButtonMsg -->
+
+                            <button class="btn btn-primary fa fa-plus-square " data-toggle="modal" data-target="#createOneButtonMsg" id="createOneButton"> 新增 API</button>
+
+                            <table id="buttonTable" name="/api/getApiResourcesAll" class="table">
+                                <thead>
+                                <th data-field="state" data-checkbox="true"></th>
+                                <th data-field="BUTTON_ID" data-sortable="true">API对应 ID</th>
+                                <th data-field="BUTTON_NAME" data-sortable="true">API文字</th>
+                                <th data-field="SORT_CODE" data-sortable="true">API排序码</th>
+                                <th data-field="BUTTON_URL" disabled="" data-sortable="true">API路径</th>
+                                <th data-field="RESOURCE_ID" data-sortable="true">API资源ID</th>
+                                <th data-field="REMARK" data-sortable="true">API描述</th>
+                                <th data-field="actions" class="td-actions text-right" data-events="operateEventsOfButtonTable" data-formatter="operateFormatterOfButtonTable" >Actions</th>
+                                </thead>
+                                <tbody>
+                                </tbody>
+
+                            </table>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row row-lg">
+            <div id="iBoxTable" class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5> 分页：API资源页面 </h5>
+                    <div class="ibox-tools">
+                        <a class="collapse-link">
+                            <i class="fa fa-chevron-up"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="ibox-content">
+                    <div class="row row-lg">
+
+                        <div class="col-md-12">
+                            <!-- Example Pagination -->
+                            <h4 class="example-title"></h4>
+
+                            <div class="example">
+                                <button class="btn btn-primary fa fa-file-excel-o exportExcel"> 一键导出</button>
+                                <button class="btn btn-primary fa fa-user-plus " data-toggle="modal" data-target="#userPlus" id="plusMsg"> 新增</button>
+
+                                <table id="theBootstraptable" name="/api/getApiResourcesAll" class="table bootstrapTable_demo1">
+                                    <!-- <thead>
+                                        <th data-field="state" data-checkbox="true"></th>
+                                        <th data-field="USER_ID" class="text-center" data-sortable="true">用户ID</th>
+                                        <th data-field="USER_NAME" data-sortable="true">用户名</th>
+                                        <th data-field="ACCOUNT" data-sortable="true">账号</th>
+                                        <th data-field="EMAIL" data-sortable="true">邮箱</th>
+                                        <th data-field="PASSWORD" data-sortable="true">密码</th>
+                                        <th data-field="REGISTER_DATE" data-sortable="true">注册时间</th>
+                                        <th data-field="STATUS" data-sortable="true">状态</th>
+                                        <th data-field="actions" class="td-actions text-right" data-events="operateEvents" data-formatter="operateFormatter">Actions</th>
+                                    </thead> -->
+                                </table>
+                            </div>
+                        </div>
+                        <!-- End Example Pagination -->
+
+
+                        <!--  modal window start -->
+
+                        <!-- todo  资源绑定button start -->
+                        <!--<div class="modal inmodal" id="resourcesBindButton" tabindex="-1" role="dialog" aria-hidden="true">
+                            <div class="modal-dialog">
+                                &lt;!&ndash; 此处控制展示样式 &ndash;&gt;
+                                <div class="modal-content animated flipInX">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                                        <h4 class="modal-title"> 资源按钮绑定  </h4>
+                                        <small class="font-bold">请勾选您需要配置的按钮</small>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form class="form-horizontal"  id="resourcesBindButton_from">
+
+                                        </form>
+                                        <h3></h3>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-white" data-dismiss="modal">关闭</button>
+                                        <button type="button" class="btn btn-primary" id="resourcesBindButton_submit">保存</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>-->
+
+                        <!-- 资源绑定button End -->
+
+
+                        <!-- 资源绑定button - todo 修改 button 信息 -->
+
+                        <!--<div class="modal inmodal" id="setOneButtonMsg" tabindex="-1" role="dialog" aria-hidden="true">
+                            <div class="modal-dialog">
+                                &lt;!&ndash; 此处控制展示样式 &ndash;&gt;
+                                <div class="modal-content animated flipInX">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                                        <h4 class="modal-title"> 修改按钮信息  </h4>
+                                        <small class="font-bold"> *** </small>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form class="form-horizontal"  id="setOneButtonMsg_from">
+                                            &lt;!&ndash;<div class="form-group ">
+                                                <label class="col-md-3 col-sm-3 control-label"> 已经绑定角色： </label>
+                                                <div class="col-md-9 col-sm-9">
+                                                    <input type="text" id="setOneButtonMsg_BUTTON_ID" class="form-control" value="">
+                                                </div>
+                                            </div>&ndash;&gt;
+                                            <div class="form-group ">
+                                                <label class="col-md-3 col-sm-3 control-label"> 按钮名字： </label>
+                                                <div class="col-md-9 col-sm-9">
+                                                    <input type="text" id="setOneButtonMsg_BUTTON_NAME" class="form-control" value="">
+                                                </div>
+                                            </div>
+                                            <div class="form-group ">
+                                                <label class="col-md-3 col-sm-3 control-label"> 按钮路径： </label>
+                                                <div class="col-md-9 col-sm-9">
+                                                    <input type="text" id="setOneButtonMsg_BUTTON_URL" class="form-control" value="">
+                                                </div>
+                                            </div>
+                                            <div class="form-group ">
+                                                <label class="col-md-3 col-sm-3 control-label"> 资源页面ID： </label>
+                                                <div class="col-md-9 col-sm-9">
+                                                    <input type="text" id="setOneButtonMsg_RESOURCE_ID" disabled class="form-control" value="">
+                                                </div>
+                                            </div>
+                                            <div class="form-group ">
+                                                <label class="col-md-3 col-sm-3 control-label"> 按钮排序码： </label>
+                                                <div class="col-md-9 col-sm-9">
+                                                    <input type="text" id="setOneButtonMsg_SORT_CODE" class="form-control" value="">
+                                                </div>
+                                            </div>
+                                            <div class="form-group ">
+                                                <label class="col-md-3 col-sm-3 control-label"> 按钮描述： </label>
+                                                <div class="col-md-9 col-sm-9">
+                                                    <input type="text" id="setOneButtonMsg_REMARK" class="form-control" value="">
+                                                </div>
+                                            </div>
+
+                                        </form>
+                                        <h3></h3>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-white" data-dismiss="modal">关闭</button>
+                                        <button type="button" class="btn btn-primary" id="setOneButtonMsg_submit">保存</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>-->
+
+                        <!-- 资源绑定button - 修改 button 信息 - End -->
+
+                        <!-- 资源绑定button - todo  创建 button 信息 -->
+
+                        <div class="modal inmodal" id="createOneButtonMsg" tabindex="-1" role="dialog" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <!-- 此处控制展示样式 -->
+                                <div class="modal-content animated flipInX">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                                        <h4 class="modal-title"> 创建按钮信息  </h4>
+                                        <small class="font-bold"> *** </small>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form class="form-horizontal"  id="createOneButtonMsg_from">
+                                            <!--<div class="form-group ">
+                                                <label class="col-md-3 col-sm-3 control-label"> 已经绑定角色： </label>
+                                                <div class="col-md-9 col-sm-9">
+                                                    <input type="text" id="setOneButtonMsg_BUTTON_ID" class="form-control" value="">
+                                                </div>
+                                            </div>-->
+                                            <!--
+                                <th data-field="BUTTON_ID" data-sortable="true">按钮对应 ID</th> -->
+                                            <div class="form-group ">
+                                                <label class="col-md-3 col-sm-3 control-label"> API对应 ID： </label>
+                                                <div class="col-md-9 col-sm-9">
+                                                    <input type="text" id="createOneButtonMsg_BUTTON_ID" class="form-control" value="">
+                                                </div>
+                                            </div>
+                                            <div class="form-group ">
+                                                <label class="col-md-3 col-sm-3 control-label"> API名字： </label>
+                                                <div class="col-md-9 col-sm-9">
+                                                    <input type="text" id="createOneButtonMsg_BUTTON_NAME" class="form-control" value="">
+                                                </div>
+                                            </div>
+                                            <div class="form-group ">
+                                                <label class="col-md-3 col-sm-3 control-label"> API路径： </label>
+                                                <div class="col-md-9 col-sm-9">
+                                                    <input type="text" id="createOneButtonMsg_BUTTON_URL" class="form-control" value="">
+                                                </div>
+                                            </div>
+                                            <div class="form-group ">
+                                                <label class="col-md-3 col-sm-3 control-label"> API资源ID： </label>
+                                                <div class="col-md-9 col-sm-9">
+                                                    <input type="text" id="createOneButtonMsg_RESOURCE_ID" class="form-control" value="">
+                                                </div>
+                                            </div>
+                                            <div class="form-group ">
+                                                <label class="col-md-3 col-sm-3 control-label"> API排序码： </label>
+                                                <div class="col-md-9 col-sm-9">
+                                                    <input type="text" id="createOneButtonMsg_SORT_CODE" class="form-control" value="">
+                                                </div>
+                                            </div>
+                                            <div class="form-group ">
+                                                <label class="col-md-3 col-sm-3 control-label"> API描述： </label>
+                                                <div class="col-md-9 col-sm-9">
+                                                    <input type="text" id="createOneButtonMsg_REMARK" class="form-control" value="">
+                                                </div>
+                                            </div>
+                                        </form>
+                                        <h3></h3>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-white" data-dismiss="modal">关闭</button>
+                                        <button type="button" class="btn btn-primary" id="createOneButtonMsg_submit">保存</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- 资源绑定button - 修改 button 信息 - End -->
+                        <!-- todo 新增一条数据 start -->
+                        <div class="modal inmodal" id="userPlus" tabindex="-1" role="dialog" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <!-- 此处控制展示样式 -->
+                                <div class="modal-content animated bounceIn">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                                        <h4 class="modal-title"> API 新增一条数据 </h4>
+                                        <small class="font-bold">模态窗副标题</small>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form class="form-horizontal" id="userPlus_from">
+                                        </form>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-white" data-dismiss="modal">关闭</button>
+                                        <button type="button" class="btn btn-primary" id="userPlus_submit">保存</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- End 新增一条数据 -->
+                        <!-- todo 查一条数据 -->
+                        <div class="modal inmodal" id="getMsg" tabindex="-1" role="dialog" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <!-- 此处控制展示样式 -->
+                                <div class="modal-content animated flipInY">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                                        <h4 class="modal-title"> User - 查看一条数据 </h4>
+                                        <small class="font-bold">模态窗副标题</small>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form class="form-horizontal" id="getMsg_from">
+                                        </form>
+                                        <h3></h3>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-white" data-dismiss="modal">关闭</button>
+                                        <!-- <button type="button" class="btn btn-primary">保存</button>-->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- End 查一条数据 -->
+                        <!-- todo 改一条数据 -->
+                        <div class="modal inmodal" id="setMsg" tabindex="-1" role="dialog" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <!-- 此处控制展示样式 -->
+                                <div class="modal-content animated flipInX">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                                        <h4 class="modal-title"> 修改一条数据 </h4>
+                                        <small class="font-bold">模态窗副标题</small>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form class="form-horizontal"  id="setMsg_from">
+                                        </form>
+                                        <h3></h3>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-white" data-dismiss="modal">关闭</button>
+                                        <button type="button" class="btn btn-primary" id="setMsg_submit">保存</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- End 改一条数据 -->
+                        <!-- End modal window -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+</div>
+</div>
+<!-- End Panel Other -->
+<script src="../js/jquery.min.js"></script>
+<script src="../js/bootstrap.min.js"></script>
+<script src="../js/content.min.js?v=1.0.0"></script>
+<script src="../js/plugins/bootstrap-table/bootstrap-table.min.js"></script>
+<!--<script src="js/plugins/bootstrap-table/bootstrap-table-mobile.min.js"></script>-->
+<script src="../js/plugins/bootstrap-table/locale/bootstrap-table-zh-CN.min.js"></script>
+
+<script src="../js/tableExport.js"></script>
+<script src="../js/jquery.base64.js"></script>
+<!-- JsonExportExcel -->
+<script src="../js/JsonExportExcel.min.js"></script>
+<!-- sweetalert -->
+<script src="../js/plugins/sweetalert/sweetalert.min.js"></script>
+<!--<script src="js/receiveBootstrapTable.js"></script>-->
+<script src="../js/apiresources.js"></script>
+<!--<script src="js/resources-base.js"></script>
+&lt;!&ndash;  &ndash;&gt;
+<script src="js/resourcesBindButton.js"></script>-->
+
+<script>
+
+</script>
+</body>
+</html>

@@ -1,0 +1,182 @@
+body {
+    color: #000;
+    background-color: #f6f6f6;
+    min-width: 1200px;
+}
+
+.hideMes {
+    display: none;
+}
+
+ul, li {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.menucur {
+    background-color: #e10111 !important;
+    color: #ffffff;
+}
+.menucur:hover {
+    background-color: #e10111 !important;
+    color: #ffffff;
+}
+
+a:link {
+    text-decoration: none;
+}
+
+/* 指正常的未被访问过的链接*/
+
+a:visited {
+    text-decoration: none;
+}
+
+/*指已经访问过的链接*/
+
+a:hover {
+    text-decoration: none;
+}
+
+/*指鼠标在链接*/
+
+a:active {
+    text-decoration: none;
+}
+
+/* 指正在点的链接*/
+/*头部*/
+.header {
+    height: 80px;
+    margin-top: 4px;
+    background-color: #ffffff;
+}
+
+.header-content {
+    border-bottom: 2px solid #f6f6f6;
+    height: 80px;
+    line-height: 80px;
+    padding: 0 80px;
+}
+
+.header-user {
+    float: right;
+    font-size: 16px;
+}
+.header-user a{
+    color: #e10111;
+    font-size: 14px;
+}
+.header-user a:hover{
+    color: #f13d3c;
+}
+
+#username {
+    margin-right: 10px;
+    font-weight: bold;
+}
+
+.redBtn {
+    background-color: #f13d3c;
+}
+
+#userLogin {
+    margin-right: 10px;
+}
+
+/*导航*/
+.nav {
+    background-color: #f13d3c;
+}
+
+.nav-content {
+    padding: 0 80px;
+}
+
+.nav-ul {
+    height: 40px;
+    border-left: 1px solid #e10111;
+}
+
+.nav-ul li {
+    float: left;
+    text-align: center;
+    font-size: 16px;
+    line-height: 40px;
+}
+
+.nav-ul li a {
+    height: 40px;
+    color: #ffffff;
+    display: inline-block;
+    padding: 0 20px;
+    border-right: 1px solid #e10111;
+}
+
+.nav-ul li a:hover {
+    background-color: #e10111;
+}
+#table th .th-inner{
+    text-align: center;
+}
+.table_data p{
+    font-size: 14px !important;
+    font-weight: 100 !important;
+}
+label.error {
+    position: absolute;
+    right: 18px;
+    top: 9px;
+    color: #ef392b;
+    font-size: 12px;
+    margin-bottom: 0px;
+}
+
+.Validform_error, input.error, select.error, textarea.error {
+    /*background-color: #fbe2e2;*/
+    background-color: #ffffff;
+    border-color: #c66161 !important;
+    color: #c00;
+}
+
+/*推荐词语*/
+.tjcy {
+    width: 400px;
+    z-index: 10000000;
+    background-color: #ffffff;
+    border: 1px solid #dddddd;
+    border-radius: 4px;
+    padding-top: 0;
+    position: absolute;
+    display: none;
+}
+.tjcy .tjcyTitle span{
+    text-align: right;
+    padding: 0;
+    color: #dddddd;
+}
+.tjcy .tjcyTitle{
+    background-color: #f13d3c;
+    color: #ffffff;
+    padding: 4px;
+    margin-bottom: 2px;
+}
+
+.tjcy span {
+    display: inline-block;
+    width: 92px;
+    padding: 5px 0;
+    text-align: center;
+}
+.disabled{
+    cursor: not-allowed !important;
+}
+.tjcy p span:hover {
+    cursor: pointer;
+    color: #ffffff;
+}
+.form-control[disabled], .form-control[readonly], fieldset[disabled] .form-control {
+    background-color: #ffffff !important;
+    opacity: 1;
+}

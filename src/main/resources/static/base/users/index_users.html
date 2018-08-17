@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>index_资源</title>
+
+    <link rel="shortcut icon" href="favicon.ico">
+    <link href="../css/bootstrap.min.css?v=3.3.5" rel="stylesheet">
+    <link href="../css/font-awesome.min.css?v=4.4.0" rel="stylesheet">
+    <!-- bootstrap-table.css -->
+    <link href="../css/plugins/bootstrap-table/bootstrap-table.min.css" rel="stylesheet">
+    <link href="../css/animate.min.css" rel="stylesheet">
+    <link href="../css/style.min.css?v=4.0.0" rel="stylesheet">
+    <!-- datepicker3 时间插件 -->
+    <link href="../css/plugins/datapicker/datepicker3.css" rel="stylesheet">
+    <!-- awesome-bootstrap-checkbox -->
+    <link href="../css/plugins/awesome-bootstrap-checkbox/awesome-bootstrap-checkbox.css" rel="stylesheet">
+    <!-- sweetalert -->
+    <link rel="stylesheet" type="text/css" href="../css/plugins/sweetalert/sweetalert.css">
+    <!-- ajaxBaseURL -->
+    <script src="../js/ajaxBaseURL.js"></script>
+    <script>
+        //const ajaxBaseURL = "http://10.0.78.158:8080/permissions",baseField = 'users';
+        const baseField = 'users';
+    </script>
+</head>
+<body class="gray-bg">
+<!-- Panel Other -->
+<div class="container-fluid">
+
+    <div class="wrapper-content">
+        <div class="row row-lg hidden" id="iBoxOfAPITable">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5> 用户页面对应 API 列表 </h5>
+                    <div class="ibox-tools">
+                        <a class="collapse-link">
+                            <i class="fa fa-chevron-up"></i>
+                        </a>
+
+                        <a id="closeIBoxOfAPITable">
+                            <i class="fa fa-times"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="ibox-content">
+                    <div class="row row-lg">
+                        <div class="col-md-12">
+                            <!-- createOneButtonMsg -->
+                            <table id="APITable" name="/api/getApiResourcesAll" class="table">
+                                <thead>
+                                <th data-field="state" data-formatter="stateFormatterCheckBox" data-checkbox="true"></th>
+                                <th data-field="API_RESOURCE_NAME" data-sortable="true">API名字</th>
+                                <th data-field="SORT_CODE" data-sortable="true">API排序码</th>
+                                <th data-field="API_URL" disabled="" data-sortable="true">API路径</th>
+                                <th data-field="REMARK" data-sortable="true">描述</th>
+                                <th data-field="STATUS" data-sortable="true">状态</th>
+                                </thead>
+                                <tbody>
+                                </tbody>
+
+                            </table>
+
+                        </div>
+                        <div class="col-md-12">
+                           <button class="btn btn-primary" id="userBindApis">绑定API</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    <div class="row row-lg" id="screenUserBox" hidden>
+        <div class="ibox float-e-margins">
+            <div class="ibox-title">
+                <h5> CEM 用户信息配置页面 </h5>
+                <div class="ibox-tools">
+                    <a class="collapse-link">
+                        <i class="fa fa-chevron-up"></i>
+                    </a>
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                        <i class="fa fa-wrench"></i>
+                    </a>
+                    <a class="close-link">
+                        <i class="fa fa-times"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="ibox-content">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <!-- Example Pagination -->
+                        <!--<h4 class="example-title">分页：客户端</h4>-->
+                        <div class="example">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <fieldset>
+                                        <h3>基本</h3>
+                                        <p>
+                                            支持使用Bootstrap内置颜色，如：<code>.checkbox-primary</code>, <code>.checkbox-info</code>等。
+                                        </p>
+                                        <div class="checkbox">
+                                            <input id="checkbox1" type="checkbox">
+                                            <label for="checkbox1">
+                                                Default
+                                            </label>
+                                        </div>
+                                        <div class="checkbox checkbox-primary">
+                                            <input id="checkbox2" type="checkbox" checked="">
+                                            <label for="checkbox2">
+                                                Primary
+                                            </label>
+                                        </div>
+                                        <div class="checkbox checkbox-success">
+                                            <input id="checkbox3" type="checkbox">
+                                            <label for="checkbox3">
+                                                Success
+                                            </label>
+                                        </div>
+                                        <div class="checkbox checkbox-info">
+                                            <input id="checkbox4" type="checkbox">
+                                            <label for="checkbox4">
+                                                Info
+                                            </label>
+                                        </div>
+                                        <div class="checkbox checkbox-warning">
+                                            <input id="checkbox5" type="checkbox" checked="">
+                                            <label for="checkbox5">
+                                                Warning
+                                            </label>
+                                        </div>
+                                        <div class="checkbox checkbox-danger">
+                                            <input id="checkbox6" type="checkbox" checked="">
+                                            <label for="checkbox6">
+                                                Danger
+                                            </label>
+                                        </div>
+                                        <p>无文本</p>
+                                        <div class="checkbox">
+                                            <input type="checkbox" id="singleCheckbox1" value="option1" aria-label="Single checkbox One">
+                                            <label></label>
+                                        </div>
+                                        <div class="checkbox checkbox-primary">
+                                            <input type="checkbox" id="singleCheckbox2" value="option2" checked="" aria-label="Single checkbox Two">
+                                            <label></label>
+                                        </div>
+                                        <p>行级显示</p>
+                                        <div class="checkbox checkbox-inline">
+                                            <input type="checkbox" id="inlineCheckbox1" value="option1">
+                                            <label for="inlineCheckbox1"> 选项01 </label>
+                                        </div>
+                                        <div class="checkbox checkbox-success checkbox-inline">
+                                            <input type="checkbox" id="inlineCheckbox2" value="option1" checked="">
+                                            <label for="inlineCheckbox2"> 选项02 </label>
+                                        </div>
+                                        <div class="checkbox checkbox-inline">
+                                            <input type="checkbox" id="inlineCheckbox3" value="option1">
+                                            <label for="inlineCheckbox3"> 选项03 </label>
+                                        </div>
+                                    </fieldset>
+                                </div>
+                                <div class="col-md-4">
+                                    <fieldset>
+                                        <h3>
+                                            圆形显示
+                                        </h3>
+                                        <p>
+                                            <code>.checkbox-circle</code> 可实现圆形显示
+                                        </p>
+                                        <div class="checkbox checkbox-circle">
+                                            <input id="checkbox7" type="checkbox">
+                                            <label for="checkbox7">
+                                                示例 01
+                                            </label>
+                                        </div>
+                                        <div class="checkbox checkbox-info checkbox-circle">
+                                            <input id="checkbox8" type="checkbox" checked="">
+                                            <label for="checkbox8">
+                                                示例 02
+                                            </label>
+                                        </div>
+                                    </fieldset>
+                                </div>
+                                <div class="col-md-4">
+                                    <fieldset>
+                                        <h3>
+                                            单选框
+                                        </h3>
+                                        <p>
+                                            支持使用Bootstrap内置颜色，如：<code>.radio-primary</code>, <code>.radio-danger</code> 等。
+                                        </p>
+                                        <div class="row">
+                                            <div class="col-sm-6">
+                                                <div class="radio">
+                                                    <input type="radio" name="radio1" id="radio1" value="option1" checked="">
+                                                    <label for="radio1">
+                                                        文本 01
+                                                    </label>
+                                                </div>
+                                                <div class="radio">
+                                                    <input type="radio" name="radio1" id="radio2" value="option2">
+                                                    <label for="radio2">
+                                                        文本 02
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <div class="radio radio-danger">
+                                                    <input type="radio" name="radio2" id="radio3" value="option1">
+                                                    <label for="radio3">
+                                                        文本 03
+                                                    </label>
+                                                </div>
+                                                <div class="radio radio-danger">
+                                                    <input type="radio" name="radio2" id="radio4" value="option2" checked="">
+                                                    <label for="radio4">
+                                                        文本 04
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <p>无文本</p>
+                                        <div class="radio">
+                                            <input type="radio" id="singleRadio1" value="option1" name="radioSingle1" aria-label="Single radio One">
+                                            <label></label>
+                                        </div>
+                                        <div class="radio radio-success">
+                                            <input type="radio" id="singleRadio2" value="option2" name="radioSingle1" checked="" aria-label="Single radio Two">
+                                            <label></label>
+                                        </div>
+                                        <p>行级显示</p>
+                                        <div class="radio radio-info radio-inline">
+                                            <input type="radio" id="inlineRadio1" value="option1" name="radioInline" checked="">
+                                            <label for="inlineRadio1"> 选项 01 </label>
+                                        </div>
+                                        <div class="radio radio-inline">
+                                            <input type="radio" id="inlineRadio2" value="option2" name="radioInline">
+                                            <label for="inlineRadio2"> 选项 02 </label>
+                                        </div>
+                                    </fieldset>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="ibox float-e-margins">
+                                        <div class="ibox-title">
+                                            <h5> 日期选择 </h5>
+                                            <div class="ibox-tools">
+                                                <a class="collapse-link">
+                                                    <i class="fa fa-chevron-up"></i>
+                                                </a>
+                                                <a class="dropdown-toggle" data-toggle="dropdown" href="form_advanced.html#">
+                                                    <i class="fa fa-wrench"></i>
+                                                </a>
+                                                <a class="close-link">
+                                                    <i class="fa fa-times"></i>
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="ibox-content">
+                                            <h3>
+                                                日期选择器
+                                            </h3>
+                                            <p>
+                                                简单好用的日期选择器
+                                            </p>
+
+                                            <!--<div class="form-group" id="data_1">
+                                                <label class="font-noraml">简单示例</label>
+                                                <div class="input-group date">
+                                                    <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                                    <input type="text" class="form-control" value="2014-11-11">
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group" id="data_2">
+                                                <label class="font-noraml">年视图</label>
+                                                <div class="input-group date">
+                                                    <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                                    <input type="text" class="form-control" value="2014-11-11">
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group" id="data_3">
+                                                <label class="font-noraml">10年视图</label>
+                                                <div class="input-group date">
+                                                    <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                                    <input type="text" class="form-control" value="2014-11-11">
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group" id="data_4">
+                                                <label class="font-noraml">选择月份</label>
+                                                <div class="input-group date">
+                                                    <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                                    <input type="text" class="form-control" value="2014-11-11">
+                                                </div>
+                                            </div>-->
+
+                                            <div class="form-group" id="data_5">
+                                                <label class="font-noraml">范围选择</label>
+                                                <div class="input-daterange input-group" id="datepicker">
+                                                    <input type="text" class="input-sm form-control" name="start" value="2014-11-11" />
+                                                    <span class="input-group-addon">到</span>
+                                                    <input type="text" class="input-sm form-control" name="end" value="2014-11-17" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <!-- End Example Pagination -->
+
+
+                <!--  modal window start -->
+
+                <!-- 新增一条数据 start -->
+                <div class="modal inmodal" id="userPlus" tabindex="-1" role="dialog" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <!-- 此处控制展示样式 -->
+                        <div class="modal-content animated bounceIn">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                                <h4 class="modal-title"> 新增一条数据 </h4>
+                                <small class="font-bold">模态窗副标题</small>
+                            </div>
+                            <div class="modal-body">
+                                <form class="form-horizontal" id="userPlus_from">
+
+                                </form>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-white" data-dismiss="modal">关闭</button>
+                                <button type="button" class="btn btn-primary" id="userPlus_submit">保存</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- End 新增一条数据 -->
+                <!-- 查一条数据 -->
+                <div class="modal inmodal" id="getMsg" tabindex="-1" role="dialog" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <!-- 此处控制展示样式 -->
+                        <div class="modal-content animated flipInY">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                                <h4 class="modal-title"> User - 查看一条数据 </h4>
+                                <small class="font-bold">模态窗副标题</small>
+                            </div>
+                            <div class="modal-body">
+                                <form class="form-horizontal" id="getMsg_from">
+                                </form>
+                                <h3></h3>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-white" data-dismiss="modal">关闭</button>
+                                <!-- <button type="button" class="btn btn-primary">保存</button>-->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- End 查一条数据 -->
+                <!-- 改一条数据 -->
+                <div class="modal inmodal" id="setMsg" tabindex="-1" role="dialog" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <!-- 此处控制展示样式 -->
+                        <div class="modal-content animated flipInX">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                                <h4 class="modal-title"> 修改一条数据 </h4>
+                                <small class="font-bold">模态窗副标题</small>
+                            </div>
+                            <div class="modal-body">
+                                <form class="form-horizontal"  id="setMsg_from">
+
+                                </form>
+                                <h3></h3>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-white" data-dismiss="modal">关闭</button>
+                                <button type="button" class="btn btn-primary" id="setMsg_submit">保存</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- End 改一条数据 -->
+                <!-- 用户绑定角色 -->
+                <div class="modal inmodal" id="userBindRoles" tabindex="-1" role="dialog" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <!-- 此处控制展示样式 -->
+                        <div class="modal-content animated flipInX">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                                <h4 class="modal-title"> 用户角色绑定  </h4>
+                                <small class="font-bold">请勾选您需要配置的角色</small>
+                            </div>
+                            <div class="modal-body">
+                                <form class="form-horizontal"  id="userBindRoles_from">
+
+                                </form>
+                                <h3></h3>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-white" data-dismiss="modal">关闭</button>
+                                <button type="button" class="btn btn-primary" id="userBindRoles_submit">保存</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- End modal window -->
+
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="ibox float-e-margins" id="userBox">
+            <div class="ibox-title">
+                <h5> CEM 用户信息配置页面 </h5>
+                <div class="ibox-tools">
+                </div>
+            </div>
+            <div class="ibox-content">
+                <div class="example">
+                    <button class="btn btn-group fa fa-file-excel-o exportExcel"> 一键导出</button>
+                    <button class="btn btn-group fa fa-user-plus " data-toggle="modal" data-target="#userPlus" id="plusMsg"> 新增</button>
+
+                    <table id="theBootstraptable" name="/users/getUsersAll" class="fa-hover table bootstrapTable_demo1">
+                        <!-- <thead>
+                            <th data-field="state" data-checkbox="true"></th>
+                            <th data-field="USER_ID" class="text-center" data-sortable="true">用户ID</th>
+                            <th data-field="USER_NAME" data-sortable="true">用户名</th>
+                            <th data-field="ACCOUNT" data-sortable="true">账号</th>
+                            <th data-field="EMAIL" data-sortable="true">邮箱</th>
+                            <th data-field="PASSWORD" data-sortable="true">密码</th>
+                            <th data-field="REGISTER_DATE" data-sortable="true">注册时间</th>
+                            <th data-field="STATUS" data-sortable="true">状态</th>
+                            <th data-field="actions" class="td-actions text-right" data-events="operateEvents" data-formatter="operateFormatter">Actions</th>
+                        </thead> -->
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    </div>
+
+
+
+</div>
+<!-- End Panel Other -->
+<script src="../js/jquery.min.js"></script>
+<script src="../js/bootstrap.min.js"></script>
+<script src="../js/content.min.js?v=1.0.0"></script>
+<script src="../js/plugins/bootstrap-table/bootstrap-table.min.js"></script>
+<!--<script src="js/plugins/bootstrap-table/bootstrap-table-mobile.min.js"></script>-->
+<script src="../js/plugins/bootstrap-table/locale/bootstrap-table-zh-CN.min.js"></script>
+<!-- sweetalert -->
+<script src="../js/plugins/sweetalert/sweetalert.min.js"></script>
+<!-- datepicker3 时间插件 -->
+<script src="../js/plugins/datapicker/bootstrap-datepicker.js"></script>
+<!--  -->
+<script src="../js/tableExport.js"></script>
+<script src="../js/jquery.base64.js"></script>
+<!-- JsonExportExcel -->
+<script src="../js/JsonExportExcel.min.js"></script>
+<!--<script src="js/receiveBootstrapTable.js"></script>-->
+<script src="../js/users.js"></script>
+<!-- API -->
+<script src="../js/userBindAPI.js"></script>
+
+<script>
+
+</script>
+</body>
+</html>

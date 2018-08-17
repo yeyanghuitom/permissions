@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.unicom.tancms.mapper.MonitoringSchemeMapper" >
+  <resultMap id="BaseResultMap" type="com.unicom.tancms.pojo.MonitoringScheme" >
+    <id column="PLAN_ID" property="planId" jdbcType="VARCHAR" />
+    <result column="PLAN_NAME" property="planName" jdbcType="VARCHAR" />
+    <result column="PLAN_KEYWORDS" property="planKeywords" jdbcType="VARCHAR" />
+    <result column="PLAN_EXCLUDE" property="planExclude" jdbcType="VARCHAR" />
+    <result column="CPA_CREATE_TIME" property="cpaCreateTime" jdbcType="TIMESTAMP" />
+    <result column="PLAN_CREATE_USER" property="planCreateUser" jdbcType="VARCHAR" />
+    <result column="PLAN_UPDATE_TIME" property="planUpdateTime" jdbcType="TIMESTAMP" />
+    <result column="PLAN_UPDATE_USER" property="planUpdateUser" jdbcType="VARCHAR" />
+    <result column="PLAN_CLASS_ID" property="planClassId" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    PLAN_ID, PLAN_NAME, PLAN_KEYWORDS, PLAN_EXCLUDE, CPA_CREATE_TIME, PLAN_CREATE_USER, 
+    PLAN_UPDATE_TIME, PLAN_UPDATE_USER, PLAN_CLASS_ID
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.unicom.tancms.pojo.MonitoringSchemeExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from monitoring_scheme
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from monitoring_scheme
+    where PLAN_ID = #{planId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from monitoring_scheme
+    where PLAN_ID = #{planId,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.unicom.tancms.pojo.MonitoringSchemeExample" >
+    delete from monitoring_scheme
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.unicom.tancms.pojo.MonitoringScheme" >
+    insert into monitoring_scheme (PLAN_ID, PLAN_NAME, PLAN_KEYWORDS, 
+      PLAN_EXCLUDE, CPA_CREATE_TIME, PLAN_CREATE_USER, 
+      PLAN_UPDATE_TIME, PLAN_UPDATE_USER, PLAN_CLASS_ID
+      )
+    values (#{planId,jdbcType=VARCHAR}, #{planName,jdbcType=VARCHAR}, #{planKeywords,jdbcType=VARCHAR}, 
+      #{planExclude,jdbcType=VARCHAR}, #{cpaCreateTime,jdbcType=TIMESTAMP}, #{planCreateUser,jdbcType=VARCHAR}, 
+      #{planUpdateTime,jdbcType=TIMESTAMP}, #{planUpdateUser,jdbcType=VARCHAR}, #{planClassId,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.unicom.tancms.pojo.MonitoringScheme" >
+    insert into monitoring_scheme
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="planId != null" >
+        PLAN_ID,
+      </if>
+      <if test="planName != null" >
+        PLAN_NAME,
+      </if>
+      <if test="planKeywords != null" >
+        PLAN_KEYWORDS,
+      </if>
+      <if test="planExclude != null" >
+        PLAN_EXCLUDE,
+      </if>
+      <if test="cpaCreateTime != null" >
+        CPA_CREATE_TIME,
+      </if>
+      <if test="planCreateUser != null" >
+        PLAN_CREATE_USER,
+      </if>
+      <if test="planUpdateTime != null" >
+        PLAN_UPDATE_TIME,
+      </if>
+      <if test="planUpdateUser != null" >
+        PLAN_UPDATE_USER,
+      </if>
+      <if test="planClassId != null" >
+        PLAN_CLASS_ID,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="planId != null" >
+        #{planId,jdbcType=VARCHAR},
+      </if>
+      <if test="planName != null" >
+        #{planName,jdbcType=VARCHAR},
+      </if>
+      <if test="planKeywords != null" >
+        #{planKeywords,jdbcType=VARCHAR},
+      </if>
+      <if test="planExclude != null" >
+        #{planExclude,jdbcType=VARCHAR},
+      </if>
+      <if test="cpaCreateTime != null" >
+        #{cpaCreateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="planCreateUser != null" >
+        #{planCreateUser,jdbcType=VARCHAR},
+      </if>
+      <if test="planUpdateTime != null" >
+        #{planUpdateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="planUpdateUser != null" >
+        #{planUpdateUser,jdbcType=VARCHAR},
+      </if>
+      <if test="planClassId != null" >
+        #{planClassId,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.unicom.tancms.pojo.MonitoringSchemeExample" resultType="java.lang.Integer" >
+    select count(*) from monitoring_scheme
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update monitoring_scheme
+    <set >
+      <if test="record.planId != null" >
+        PLAN_ID = #{record.planId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.planName != null" >
+        PLAN_NAME = #{record.planName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.planKeywords != null" >
+        PLAN_KEYWORDS = #{record.planKeywords,jdbcType=VARCHAR},
+      </if>
+      <if test="record.planExclude != null" >
+        PLAN_EXCLUDE = #{record.planExclude,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cpaCreateTime != null" >
+        CPA_CREATE_TIME = #{record.cpaCreateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.planCreateUser != null" >
+        PLAN_CREATE_USER = #{record.planCreateUser,jdbcType=VARCHAR},
+      </if>
+      <if test="record.planUpdateTime != null" >
+        PLAN_UPDATE_TIME = #{record.planUpdateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.planUpdateUser != null" >
+        PLAN_UPDATE_USER = #{record.planUpdateUser,jdbcType=VARCHAR},
+      </if>
+      <if test="record.planClassId != null" >
+        PLAN_CLASS_ID = #{record.planClassId,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update monitoring_scheme
+    set PLAN_ID = #{record.planId,jdbcType=VARCHAR},
+      PLAN_NAME = #{record.planName,jdbcType=VARCHAR},
+      PLAN_KEYWORDS = #{record.planKeywords,jdbcType=VARCHAR},
+      PLAN_EXCLUDE = #{record.planExclude,jdbcType=VARCHAR},
+      CPA_CREATE_TIME = #{record.cpaCreateTime,jdbcType=TIMESTAMP},
+      PLAN_CREATE_USER = #{record.planCreateUser,jdbcType=VARCHAR},
+      PLAN_UPDATE_TIME = #{record.planUpdateTime,jdbcType=TIMESTAMP},
+      PLAN_UPDATE_USER = #{record.planUpdateUser,jdbcType=VARCHAR},
+      PLAN_CLASS_ID = #{record.planClassId,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.unicom.tancms.pojo.MonitoringScheme" >
+    update monitoring_scheme
+    <set >
+      <if test="planName != null" >
+        PLAN_NAME = #{planName,jdbcType=VARCHAR},
+      </if>
+      <if test="planKeywords != null" >
+        PLAN_KEYWORDS = #{planKeywords,jdbcType=VARCHAR},
+      </if>
+      <if test="planExclude != null" >
+        PLAN_EXCLUDE = #{planExclude,jdbcType=VARCHAR},
+      </if>
+      <if test="cpaCreateTime != null" >
+        CPA_CREATE_TIME = #{cpaCreateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="planCreateUser != null" >
+        PLAN_CREATE_USER = #{planCreateUser,jdbcType=VARCHAR},
+      </if>
+      <if test="planUpdateTime != null" >
+        PLAN_UPDATE_TIME = #{planUpdateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="planUpdateUser != null" >
+        PLAN_UPDATE_USER = #{planUpdateUser,jdbcType=VARCHAR},
+      </if>
+      <if test="planClassId != null" >
+        PLAN_CLASS_ID = #{planClassId,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where PLAN_ID = #{planId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.unicom.tancms.pojo.MonitoringScheme" >
+    update monitoring_scheme
+    set PLAN_NAME = #{planName,jdbcType=VARCHAR},
+      PLAN_KEYWORDS = #{planKeywords,jdbcType=VARCHAR},
+      PLAN_EXCLUDE = #{planExclude,jdbcType=VARCHAR},
+      CPA_CREATE_TIME = #{cpaCreateTime,jdbcType=TIMESTAMP},
+      PLAN_CREATE_USER = #{planCreateUser,jdbcType=VARCHAR},
+      PLAN_UPDATE_TIME = #{planUpdateTime,jdbcType=TIMESTAMP},
+      PLAN_UPDATE_USER = #{planUpdateUser,jdbcType=VARCHAR},
+      PLAN_CLASS_ID = #{planClassId,jdbcType=VARCHAR}
+    where PLAN_ID = #{planId,jdbcType=VARCHAR}
+  </update>
+</mapper>

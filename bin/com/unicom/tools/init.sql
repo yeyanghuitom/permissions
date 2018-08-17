@@ -1,0 +1,252 @@
+/*
+SQLyog Ultimate - MySQL GUI v8.2
+MySQL - 5.1.73 : Database - CEM
+*********************************************************************
+*/
+
+/*!40101 SET NAMES utf8 */;
+
+/*!40101 SET SQL_MODE=''*/;
+
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+/*Table structure for table `API_LOG` */
+
+DROP TABLE IF EXISTS `API_LOG`;
+
+CREATE TABLE `API_LOG` (
+  `CHECK_DATE` datetime DEFAULT NULL,
+  `API_URL` varchar(100) DEFAULT NULL,
+  `TOKEN` varchar(200) DEFAULT NULL,
+  `USER_ID` varchar(40) DEFAULT NULL,
+  `IN_JSON` varchar(400) DEFAULT NULL,
+  `ORGANIZATION_ID` varchar(40) DEFAULT NULL,
+  KEY `RefUSERS22` (`USER_ID`),
+  KEY `RefORGANIZATION23` (`ORGANIZATION_ID`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+/*Data for the table `API_LOG` */
+
+/*Table structure for table `API_RESOURCES` */
+
+DROP TABLE IF EXISTS `API_RESOURCES`;
+
+CREATE TABLE `API_RESOURCES` (
+  `API_RESOURCE_ID` varchar(40) NOT NULL,
+  `STATUS` varchar(2) NOT NULL,
+  `IS_ENT` varchar(5) NOT NULL,
+  `API_RESOURCE_NAME` varchar(100) DEFAULT NULL,
+  `DESCRIBTION` varchar(200) DEFAULT NULL,
+  `PARENT_ID` varchar(40) DEFAULT NULL,
+  `API_URL` varchar(100) DEFAULT NULL,
+  `RESOURCES_ING` varchar(10) DEFAULT NULL,
+  `SORT_CODE` varchar(10) DEFAULT NULL,
+  `CREATE_DATE` datetime DEFAULT NULL,
+  `CREATE_USERID` varchar(40) DEFAULT NULL,
+  PRIMARY KEY (`API_RESOURCE_ID`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+/*Data for the table `API_RESOURCES` */
+
+/*Table structure for table `BUTTON` */
+
+DROP TABLE IF EXISTS `BUTTON`;
+
+CREATE TABLE `BUTTON` (
+  `BUTTON_ID` varchar(40) NOT NULL,
+  `BUTTON_NAME` char(10) DEFAULT NULL,
+  `BUTTON_URL` char(50) DEFAULT NULL,
+  `SORT_CODE` char(10) DEFAULT NULL,
+  `REMARK` char(10) DEFAULT NULL,
+  `RESOURCE_ID` varchar(40) NOT NULL,
+  PRIMARY KEY (`BUTTON_ID`),
+  KEY `RefRESOURCES19` (`RESOURCE_ID`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+/*Data for the table `BUTTON` */
+
+/*Table structure for table `ENUMS` */
+
+DROP TABLE IF EXISTS `ENUMS`;
+
+CREATE TABLE `ENUMS` (
+  `ENUMS_ID` varchar(20) NOT NULL,
+  `ENUMS_NAME` varchar(100) DEFAULT NULL,
+  `PARENT_ID` varchar(20) DEFAULT NULL,
+  `ENUMS_TYPE_ID` varchar(20) DEFAULT NULL,
+  `ENUMS_TYPE_NAME` varchar(100) DEFAULT NULL,
+  PRIMARY KEY (`ENUMS_ID`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+/*Data for the table `ENUMS` */
+
+insert  into `ENUMS`(`ENUMS_ID`,`ENUMS_NAME`,`PARENT_ID`,`ENUMS_TYPE_ID`,`ENUMS_TYPE_NAME`) values ('1003','一级问题类型',NULL,NULL,NULL),('1003001','致命问题','1003',NULL,NULL),('1003002','非致命问题','1003',NULL,NULL),('1004','二级问题类型',NULL,NULL,NULL),('1004001','录音质量问题','1004',NULL,NULL),('1004002','命名问题','1004',NULL,NULL),('1004003','服务质量问题','1004',NULL,NULL),('1004004','引导问题','1004',NULL,NULL),('1005','三级问题类型',NULL,NULL,NULL),('1005001','录音无法播放','1005',NULL,NULL),('1005002','文件格式有误','1005',NULL,NULL),('1005003','无录音','1005',NULL,NULL),('1005004','录音与问卷不对应','1005',NULL,NULL),('1005005','标签打标不完整','1005',NULL,NULL),('1005006','填写逻辑错误','1005',NULL,NULL),('1005007','分值有误','1005',NULL,NULL),('1005008','移网客户归属错误','1005',NULL,NULL),('1005009','未使用普通话','1005',NULL,NULL),('1005010','未按话术解释说明','1005',NULL,NULL),('1006','改进建议',NULL,NULL,NULL),('1006001','致命问题实例场景建议','1006',NULL,NULL),('1006002','标签改进建议','1006',NULL,NULL),('1007001','问卷创建',NULL,'1007','问卷状态'),('1007002','问卷下发',NULL,'1007','问卷状态'),('1007003','问卷回传',NULL,'1007','问卷状态'),('1007004','问卷计算',NULL,'1007','问卷状态');
+
+/*Table structure for table `ORGANIZATION` */
+
+DROP TABLE IF EXISTS `ORGANIZATION`;
+
+CREATE TABLE `ORGANIZATION` (
+  `ORGANIZATION_ID` varchar(40) NOT NULL,
+  `ORGANIZATION_CODE` varchar(40) DEFAULT NULL,
+  `ORGANIZATION_NAME` varchar(40) DEFAULT NULL,
+  `ORGANIZATION_INNERPHONE` varchar(40) DEFAULT NULL,
+  `ORGANIZATION_OUTERPHONE` varchar(40) DEFAULT NULL,
+  `ORGANIZATION_MANAGER` varchar(40) DEFAULT NULL,
+  `ORGANIZATION_ASSISTANTMANAGER` varchar(40) DEFAULT NULL,
+  `ORGANIZATION_FAX` varchar(10) DEFAULT NULL,
+  `ORGANIZATION_ZIPCODE` varchar(10) DEFAULT NULL,
+  `ORGANIZATION_ADDRESS` varchar(10) DEFAULT NULL,
+  `ORGANIZATION_REMARK` varchar(10) DEFAULT NULL,
+  `PARENT_ID` varchar(40) DEFAULT NULL,
+  `SORT_CODE` varchar(10) DEFAULT NULL,
+  `CREATE_USERID` varchar(40) DEFAULT NULL,
+  `CREATE_DATE` datetime DEFAULT NULL,
+  `DEPT_LEVEL` varchar(2) DEFAULT NULL,
+  `STATUS` varchar(2) DEFAULT NULL,
+  PRIMARY KEY (`ORGANIZATION_ID`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+/*Data for the table `ORGANIZATION` */
+
+insert  into `ORGANIZATION`(`ORGANIZATION_ID`,`ORGANIZATION_CODE`,`ORGANIZATION_NAME`,`ORGANIZATION_INNERPHONE`,`ORGANIZATION_OUTERPHONE`,`ORGANIZATION_MANAGER`,`ORGANIZATION_ASSISTANTMANAGER`,`ORGANIZATION_FAX`,`ORGANIZATION_ZIPCODE`,`ORGANIZATION_ADDRESS`,`ORGANIZATION_REMARK`,`PARENT_ID`,`SORT_CODE`,`CREATE_USERID`,`CREATE_DATE`,`DEPT_LEVEL`,`STATUS`) values ('D_1','','网络发展部',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2018-04-24 17:36:55',NULL,NULL),('D_2','','信息化部',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2018-04-24 17:36:55',NULL,NULL),('D_3','','测试部门',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2018-04-24 17:36:55',NULL,NULL);
+
+/*Table structure for table `RESOURCES` */
+
+DROP TABLE IF EXISTS `RESOURCES`;
+
+CREATE TABLE `RESOURCES` (
+  `RESOURCE_ID` varchar(40) NOT NULL,
+  `STATUS` varchar(2) NOT NULL,
+  `IS_ENT` varchar(5) NOT NULL,
+  `ACTION_URL` varchar(100) DEFAULT NULL,
+  `RESOURCE_NAME` varchar(100) DEFAULT NULL,
+  `DESCRIBTION` varchar(200) NOT NULL,
+  `PARENT_ID` varchar(40) NOT NULL,
+  `URL` varchar(100) DEFAULT NULL,
+  `RESOURCES_ING` varchar(10) DEFAULT NULL,
+  `SORT_CODE` varchar(10) DEFAULT NULL,
+  `CREATE_DATE` datetime DEFAULT NULL,
+  `CREATE_USERNAME` varchar(10) DEFAULT NULL,
+  `CREATE_USERID` varchar(40) NOT NULL,
+  `SYS_ID` varchar(10) DEFAULT NULL,
+  `SYS_VALUE` varchar(10) DEFAULT NULL,
+  PRIMARY KEY (`RESOURCE_ID`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+/*Data for the table `RESOURCES` */
+
+insert  into `RESOURCES`(`RESOURCE_ID`,`STATUS`,`IS_ENT`,`ACTION_URL`,`RESOURCE_NAME`,`DESCRIBTION`,`PARENT_ID`,`URL`,`RESOURCES_ING`,`SORT_CODE`,`CREATE_DATE`,`CREATE_USERNAME`,`CREATE_USERID`,`SYS_ID`,`SYS_VALUE`) values ('1521615198040_78dcbf','0','1','/resources','资源页面','','GZ05','base/resource/index_resources.html','','ZZ01','2018-03-21 00:00:00','','',NULL,NULL),('Z01','0','1','/questionnnaire','问卷页面','','GZ06','questionnaire/QuestionnaireManage','','ZZ02','2018-04-13 00:00:00','','',NULL,NULL),('GZ05','0','1','','系统权限管理','根目录_系统权限管理','','','','GZ05','2018-04-11 00:00:00','','',NULL,NULL),('Z02','0','1','/roles','角色页面','根目录_系统权限管理','GZ05','base/roles/index_roles.html',NULL,'ZZ02','2018-04-13 00:00:00',NULL,'admin',NULL,NULL),('Z03','0','1','/organization','组织页面','根目录_系统权限管理','GZ05','base/organization/index_organization.html',NULL,'ZZ03','2018-04-13 00:00:00',NULL,'admin',NULL,NULL),('Z04','0','1','/users','用户页面','根目录_系统权限管理','GZ05','base/users/index_users.html',NULL,'ZZ04','2018-04-13 00:00:00',NULL,'admin',NULL,NULL),('1523612712736_8a8fbb','0','1','','升投中心','','','','','GZ06','2018-04-17 00:00:00',NULL,'','A','0'),('1523955655889_a38176','0','0','/UserNumber','号单上传','','ZZ11','UserNumber/UserNumberReturn','','003','2018-04-27 10:58:54',NULL,'',NULL,NULL),('Z06','0','1','/api','API资源页面','根目录_系统权限管理','GZ05','base/resource/index_apiresources.html',NULL,'ZZ06','2018-04-13 00:00:00',NULL,'admin',NULL,NULL),('1523608764785_2176d3','0','0','/createTaskProcess','质检任务创建','质检任务创建','GZ06','createTaskProcess/TaskDetail','1','1','2018-04-13 00:00:00',NULL,'shuai',NULL,NULL),('1523601696345_d48e25','0','0','/check','升投质检','','GZ06','check/checkDataMgr.html','','','2018-04-27 10:54:38',NULL,'','A','0'),('1523610526638_057290','0','0','/modify','修改员修改','','GZ06','modify/modifyDataMgr.html','','002','2018-04-13 00:00:00',NULL,'',NULL,NULL),('1523610623454_9621b2','0','0','/complain','升投审核','','GZ06','complain/complainDataMgr.html','','','2018-04-13 00:00:00',NULL,'','A','0'),('1524206082031_72976e','0','0','','外呼中心','','','','','GZ07','2018-04-20 14:27:53',NULL,'','A','1'),('1524206159521_723142','0','0','','外呼问卷','','GZ07','questionnaire/CenterQuestionnaireManage','','','2018-04-20 14:29:10',NULL,'','A','1'),('1524475074132_d8f18e','0','0','/createTaskProcess','创建自检任务','','GZ07','createTaskProcess/TaskDetailSelf','','','2018-04-23 17:11:06',NULL,'1',NULL,NULL),('1524563165101_df5a61','0','0','','升投管理模块','升投用户管理','','','','ZZ10','2018-04-24 17:43:15',NULL,'','A','0'),('1524563297973_8b245c','0','0','','外呼管理模块','外呼用户管理','','','','ZZ11','2018-04-24 17:43:05',NULL,'','A','1'),('1524563330933_98d1d3','0','0','','省份管理模块','省份用户管理','','','','ZZ12','2018-05-02 14:47:40',NULL,'','B','1'),('1524563370349_2af513','0','0','','集团管理模块','集团权限管理','','','','ZZ13','2018-04-28 15:00:24',NULL,'','B','0'),('1524563904777_0c4651','0','0','/management','升投用户页面','','ZZ10','management/userManager','','','2018-04-24 20:09:01',NULL,'','A','0'),('1524648681272_7d925a','0','0','','外呼用户管理','','ZZ11','management/WHUserManager','','','2018-04-25 17:50:03',NULL,'','A','1'),('1524734891033_ab74ca','0','0','','移网二级标签预计算','','ZZ10','label/ywLabelHtml','','','2018-04-26 17:23:27',NULL,'',NULL,NULL),('1524734905536_0fbd19','0','0','','宽带二级标签预计算','','ZZ10','jplabel/jpLabelHtml','','','2018-04-26 17:21:32',NULL,'',NULL,NULL),('1524734921529_10d0e7','0','0','','互检顺序','','ZZ10','','','','2018-04-26 17:21:48',NULL,'',NULL,NULL),('1524734973393_550df2','0','0','','双圈选和互斥规则','','ZZ10','DataClear/dataClear','','','2018-04-26 17:22:40',NULL,'',NULL,NULL),('1524798126192_fc5449','0','0','','外呼质检','','GZ07','check/checkDataMgr.html','','','2018-04-27 11:03:26',NULL,'','A','1'),('1524815445257_5009d0','0','0','','升投角色管理','','ZZ10','management/userRoleManager','','','2018-04-27 15:45:04',NULL,'','A','0'),('1525247701248_b5faa2','0','0','','直辖市管理模块','直辖市管理','','','','ZZ14','2018-05-02 17:14:36',NULL,'',NULL,NULL),('1524899202512_5a1c99','0','0','','集团用户管理','集团用户管理','ZZ13','management/JTManager','','','2018-04-28 15:01:51',NULL,'','B','0'),('1524899271301_105480','0','0','','集团角色管理','','ZZ13','management/JTRoleManager	','','','2018-05-02 11:28:29',NULL,'','B','0'),('1525243992154_d1a12f','0','0','','省份用户管理','','ZZ12','management/SFUserManager','','','2018-05-02 14:46:45',NULL,'',NULL,NULL),('1525250365368_c94ed0','0','0','','直辖市用户管理','','ZZ14','management/ZXSUserManager','','','2018-05-02 16:54:42',NULL,'',NULL,NULL),('1525250409625_5eb7eb','0','0','','直辖市号单上传','','ZZ14','management/BillUpload','','','2018-05-02 16:55:54',NULL,'',NULL,NULL),('1525250430833_21a37c','0','0','','直辖市号单下载','','ZZ14','management/BillDownload','','','2018-05-02 16:56:20',NULL,'',NULL,NULL),('1525328742850_582d7a','0','0','','城市级别配额管理','','','','','ZZ20','2018-05-03 14:18:49',NULL,'',NULL,NULL),('1525328768425_ac6ef0','0','0','','城市级别','','ZZ20','city/cityLevel','','','2018-05-03 14:34:20',NULL,'',NULL,NULL),('1525328937619_cfce41','0','0','','联通移网城市配额','','ZZ20','city/LTYWcityQuota','','','2018-05-03 16:38:34',NULL,'',NULL,NULL),('1525337063948_abd7ee','0','0','','联通宽带城市配额','','ZZ20','city/LTKDcityQuota','','','2018-05-03 16:38:27',NULL,'',NULL,NULL),('1525337093132_b8a296','0','0','','移动移网城市配额','','ZZ20','city/YDYWcityQuota','','','2018-05-03 20:03:49',NULL,'',NULL,NULL),('1525337113395_b4451c','0','0','','移动宽带城市配额','','ZZ20','city/YDKDcityQuota','','','2018-05-03 20:04:14',NULL,'',NULL,NULL),('1525349515338_651ba4','0','0','','电信移网城市配额','','ZZ20','city/DXYWcityQuota	','','','2018-05-03 20:05:01',NULL,'',NULL,NULL),('1525349537722_f35a74','0','0','','电信宽带城市配额','','ZZ20','city/DXKDcityQuota	','','','2018-05-03 20:05:23',NULL,'',NULL,NULL);
+
+/*Table structure for table `ROLES` */
+
+DROP TABLE IF EXISTS `ROLES`;
+
+CREATE TABLE `ROLES` (
+  `USER_ROLE_ID` varchar(40) NOT NULL,
+  `STATUS` varchar(2) NOT NULL,
+  `IS_ENT` varchar(5) NOT NULL,
+  `USER_ROLE_NAME` varchar(10) DEFAULT NULL,
+  `USER_ROLE_REMARK` varchar(500) DEFAULT NULL,
+  `CREATE_DATE` datetime DEFAULT NULL,
+  `CREATE_USERID` varchar(40) NOT NULL,
+  `SYS_ID` varchar(10) DEFAULT NULL,
+  `SYS_VALUE` varchar(10) DEFAULT NULL,
+  PRIMARY KEY (`USER_ROLE_ID`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+/*Data for the table `ROLES` */
+
+insert  into `ROLES`(`USER_ROLE_ID`,`STATUS`,`IS_ENT`,`USER_ROLE_NAME`,`USER_ROLE_REMARK`,`CREATE_DATE`,`CREATE_USERID`,`SYS_ID`,`SYS_VALUE`) values ('QU3VdB4xtWpc1wzWC6C','0','0','admin','','2018-04-27 18:04:06','admin',NULL,NULL),('KgsY8MAWwXlmeJjzvh2','0','1','升投中心质检员','升投质检员','2018-04-23 17:25:19','admin','A','0'),('MikF75ojXmeF0Df85uU','0','1','升投中心裁定员','升投裁定员','2018-04-23 17:25:26','admin','A','0'),('sKMiXDJQh9JvkNBEdHr','0','1','升投中心管理员','升投管理员','2018-04-24 17:53:09','admin','A','0'),('FYUxxLeHvRfo3q7uUOk','0','2','外呼中心管理员','','2018-04-23 17:25:58','admin','A','1'),('xTxhQM3elA2ofRFkmU4','0','2','外呼中心质检员','','2018-04-23 17:26:13','admin','A','1'),('jG6Qpt3FcG5uGKR3eON','0','2','外呼中心质检组长','能够录入表述库','2018-04-26 11:10:15','admin','A','1'),('017xwwqDVmDK45akWMV','0','3','集团管理员','','2018-04-26 11:10:36','admin','B','0'),('IY4jPLA7SPoa7AZ9qIv','0','3','集团员工','','2018-04-26 11:10:45','admin','B','0'),('YjxXtTll5wKx0RQaIHf','0','4','省份管理员','','2018-04-26 11:10:57','admin','B','1'),('i86w1WE1vH5ZqTDRFRF','0','4','省份员工','','2018-04-26 11:11:07','admin','B','1'),('cKT77OsFKKIL1JFmCV8','0','3','CSJS','CSJS','2018-05-02 12:07:52','JT_GLY','B','0'),('3My8uy5RVM6Ks6DEW01','0','0','直辖市管理员','','2018-05-02 17:12:47','admin',NULL,NULL),('TGGk0gJlaV4RczWKfGi','1','1','省份测试','测试','2018-05-03 10:50:36','JT_GLY','B','1'),('wNHZMWQRPGVbtXaf2gv','1','1','测试角色','','2018-05-03 20:51:17','ST_GLY','A','0');
+
+/*Table structure for table `ROLES_RESOURCE` */
+
+DROP TABLE IF EXISTS `ROLES_RESOURCE`;
+
+CREATE TABLE `ROLES_RESOURCE` (
+  `NOT_URL` varchar(500) DEFAULT NULL,
+  `CREATE_DATE` datetime DEFAULT NULL,
+  `CREATE_USERID` varchar(40) DEFAULT NULL,
+  `USER_ROLE_ID` varchar(40) NOT NULL,
+  `RESOURCE_ID` varchar(40) NOT NULL,
+  KEY `RefROLES17` (`USER_ROLE_ID`),
+  KEY `RefRESOURCES18` (`RESOURCE_ID`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+/*Data for the table `ROLES_RESOURCE` */
+
+insert  into `ROLES_RESOURCE`(`NOT_URL`,`CREATE_DATE`,`CREATE_USERID`,`USER_ROLE_ID`,`RESOURCE_ID`) values ('','2018-04-11 00:00:00','admin','QU3VdB4xtWpc1wzWC6C','Z01'),('','2018-04-11 00:00:00','admin','QU3VdB4xtWpc1wzWC6C','Z02'),('','2018-04-11 00:00:00','admin','QU3VdB4xtWpc1wzWC6C','GZ05'),('','2018-04-11 00:00:00','admin','QU3VdB4xtWpc1wzWC6C','1521615198040_78dcbf'),(NULL,'2018-04-13 00:00:00','admin','QU3VdB4xtWpc1wzWC6C','Z03'),(NULL,'2018-04-13 00:00:00','admin','QU3VdB4xtWpc1wzWC6C','Z04'),(NULL,'2018-04-13 00:00:00','admin','QU3VdB4xtWpc1wzWC6C','Z06'),(NULL,NULL,NULL,'QU3VdB4xtWpc1wzWC6C','Z05'),(NULL,NULL,NULL,'QU3VdB4xtWpc1wzWC6C','1523601696345_d48e25'),(NULL,NULL,NULL,'QU3VdB4xtWpc1wzWC6C','1523608764785_2176d3'),(NULL,NULL,NULL,'QU3VdB4xtWpc1wzWC6C','1523610526638_057290'),(NULL,NULL,NULL,'QU3VdB4xtWpc1wzWC6C','1523610623454_9621b2'),(NULL,NULL,NULL,'QU3VdB4xtWpc1wzWC6C','1523612712736_8a8fbb'),(NULL,NULL,NULL,'QU3VdB4xtWpc1wzWC6C','1524563904777_0c4651'),(NULL,NULL,NULL,'QU3VdB4xtWpc1wzWC6C','1524563370349_2af513'),(NULL,NULL,NULL,'QU3VdB4xtWpc1wzWC6C','1524563330933_98d1d3'),(NULL,NULL,NULL,'KgsY8MAWwXlmeJjzvh2','1523612712736_8a8fbb'),(NULL,NULL,NULL,'QU3VdB4xtWpc1wzWC6C','1524563297973_8b245c'),(NULL,NULL,NULL,'QU3VdB4xtWpc1wzWC6C','1524563165101_df5a61'),(NULL,NULL,NULL,'KgsY8MAWwXlmeJjzvh2','1523601696345_d48e25'),(NULL,NULL,NULL,'QU3VdB4xtWpc1wzWC6C','1523955655889_a38176'),(NULL,NULL,NULL,'sKMiXDJQh9JvkNBEdHr','1523608764785_2176d3'),(NULL,NULL,NULL,'sKMiXDJQh9JvkNBEdHr','1523955655889_a38176'),(NULL,NULL,NULL,'sKMiXDJQh9JvkNBEdHr','1523612712736_8a8fbb'),(NULL,NULL,NULL,'MikF75ojXmeF0Df85uU','1523612712736_8a8fbb'),(NULL,NULL,NULL,'MikF75ojXmeF0Df85uU','1523610526638_057290'),(NULL,NULL,NULL,'QU3VdB4xtWpc1wzWC6C','1524206082031_72976e'),(NULL,NULL,NULL,'QU3VdB4xtWpc1wzWC6C','1524206159521_723142'),(NULL,NULL,NULL,'QU3VdB4xtWpc1wzWC6C','1524475074132_d8f18e'),(NULL,NULL,NULL,'sKMiXDJQh9JvkNBEdHr','1523610623454_9621b2'),(NULL,NULL,NULL,'sKMiXDJQh9JvkNBEdHr','1523610526638_057290'),(NULL,NULL,NULL,'undefined','1525250365368_c94ed0'),(NULL,NULL,NULL,'sKMiXDJQh9JvkNBEdHr','1523601696345_d48e25'),(NULL,NULL,NULL,'undefined','1525247701248_b5faa2'),(NULL,NULL,NULL,'QU3VdB4xtWpc1wzWC6C','1524899202512_5a1c99'),(NULL,NULL,NULL,'QU3VdB4xtWpc1wzWC6C','1524815445257_5009d0'),(NULL,NULL,NULL,'QU3VdB4xtWpc1wzWC6C','1524798126192_fc5449'),(NULL,NULL,NULL,'sKMiXDJQh9JvkNBEdHr','1524563165101_df5a61'),(NULL,NULL,NULL,'sKMiXDJQh9JvkNBEdHr','1524563904777_0c4651'),(NULL,NULL,NULL,'sKMiXDJQh9JvkNBEdHr','Z01'),(NULL,NULL,NULL,'QU3VdB4xtWpc1wzWC6C','1524648681272_7d925a'),(NULL,NULL,NULL,'QU3VdB4xtWpc1wzWC6C','1524899271301_105480'),(NULL,NULL,NULL,'sKMiXDJQh9JvkNBEdHr','1524475074132_d8f18e'),(NULL,'2018-04-28 00:00:00',NULL,'FYUxxLeHvRfo3q7uUOk','1524798126192_fc5449'),(NULL,'2018-04-28 00:00:00',NULL,'FYUxxLeHvRfo3q7uUOk','1524648681272_7d925a'),(NULL,NULL,NULL,'QU3VdB4xtWpc1wzWC6C','1524734891033_ab74ca'),(NULL,NULL,NULL,'QU3VdB4xtWpc1wzWC6C','1524734905536_0fbd19'),(NULL,NULL,NULL,'QU3VdB4xtWpc1wzWC6C','1524734921529_10d0e7'),(NULL,NULL,NULL,'QU3VdB4xtWpc1wzWC6C','1524734973393_550df2'),(NULL,NULL,NULL,'sKMiXDJQh9JvkNBEdHr','1524734891033_ab74ca'),(NULL,NULL,NULL,'sKMiXDJQh9JvkNBEdHr','1524734905536_0fbd19'),(NULL,NULL,NULL,'sKMiXDJQh9JvkNBEdHr','1524734921529_10d0e7'),(NULL,NULL,NULL,'sKMiXDJQh9JvkNBEdHr','1524815445257_5009d0'),(NULL,'2018-04-28 00:00:00',NULL,'xTxhQM3elA2ofRFkmU4','1524206082031_72976e'),(NULL,'2018-04-28 00:00:00',NULL,'FYUxxLeHvRfo3q7uUOk','1524563297973_8b245c'),(NULL,'2018-04-28 00:00:00',NULL,'FYUxxLeHvRfo3q7uUOk','1524206159521_723142'),(NULL,'2018-04-28 00:00:00',NULL,'FYUxxLeHvRfo3q7uUOk','1524206082031_72976e'),(NULL,'2018-04-28 00:00:00',NULL,'xTxhQM3elA2ofRFkmU4','1524798126192_fc5449'),(NULL,'2018-04-28 00:00:00',NULL,'jG6Qpt3FcG5uGKR3eON','1524206082031_72976e'),(NULL,'2018-04-28 00:00:00',NULL,'jG6Qpt3FcG5uGKR3eON','1524798126192_fc5449'),(NULL,NULL,NULL,'017xwwqDVmDK45akWMV','1524563370349_2af513'),(NULL,NULL,NULL,'017xwwqDVmDK45akWMV','1524899202512_5a1c99'),(NULL,NULL,NULL,'017xwwqDVmDK45akWMV','1524899271301_105480'),(NULL,NULL,NULL,'FYUxxLeHvRfo3q7uUOk','1524475074132_d8f18e'),(NULL,NULL,NULL,'YjxXtTll5wKx0RQaIHf','1524563330933_98d1d3'),(NULL,NULL,NULL,'YjxXtTll5wKx0RQaIHf','1525243992154_d1a12f'),(NULL,NULL,NULL,'QU3VdB4xtWpc1wzWC6C','1525247701248_b5faa2'),(NULL,NULL,NULL,'QU3VdB4xtWpc1wzWC6C','1525243992154_d1a12f'),(NULL,NULL,NULL,'QU3VdB4xtWpc1wzWC6C','1525250365368_c94ed0'),(NULL,NULL,NULL,'QU3VdB4xtWpc1wzWC6C','1525250409625_5eb7eb'),(NULL,NULL,NULL,'QU3VdB4xtWpc1wzWC6C','1525250430833_21a37c'),(NULL,NULL,NULL,'undefined','1525250409625_5eb7eb'),(NULL,NULL,NULL,'undefined','1525250430833_21a37c'),(NULL,NULL,NULL,'3My8uy5RVM6Ks6DEW01','1525247701248_b5faa2'),(NULL,NULL,NULL,'3My8uy5RVM6Ks6DEW01','1525250365368_c94ed0'),(NULL,NULL,NULL,'3My8uy5RVM6Ks6DEW01','1525250409625_5eb7eb'),(NULL,NULL,NULL,'3My8uy5RVM6Ks6DEW01','1525250430833_21a37c'),(NULL,NULL,NULL,'QU3VdB4xtWpc1wzWC6C','1525328742850_582d7a'),(NULL,NULL,NULL,'QU3VdB4xtWpc1wzWC6C','1525328768425_ac6ef0'),(NULL,NULL,NULL,'QU3VdB4xtWpc1wzWC6C','1525328937619_cfce41'),(NULL,NULL,NULL,'QU3VdB4xtWpc1wzWC6C','1525337063948_abd7ee'),(NULL,NULL,NULL,'QU3VdB4xtWpc1wzWC6C','1525337093132_b8a296'),(NULL,NULL,NULL,'QU3VdB4xtWpc1wzWC6C','1525337113395_b4451c'),(NULL,NULL,NULL,'QU3VdB4xtWpc1wzWC6C','1525349515338_651ba4'),(NULL,NULL,NULL,'QU3VdB4xtWpc1wzWC6C','1525349537722_f35a74');
+
+/*Table structure for table `USERS` */
+
+DROP TABLE IF EXISTS `USERS`;
+
+CREATE TABLE `USERS` (
+  `USER_ID` varchar(40) NOT NULL,
+  `TOKEN_TIME` varchar(40) DEFAULT NULL,
+  `QPS` varchar(10) DEFAULT NULL,
+  `QPM` char(10) DEFAULT NULL,
+  `USER_NAME` varchar(40) DEFAULT NULL,
+  `PASSWORD` varchar(40) DEFAULT NULL,
+  `EMAIL` varchar(40) DEFAULT NULL,
+  `QQ` varchar(20) DEFAULT NULL,
+  `CREATE_DATE` datetime DEFAULT NULL,
+  `CREATE_USERID` varchar(40) DEFAULT NULL,
+  `DESCRIBTION` varchar(200) DEFAULT NULL,
+  `STATUS` varchar(2) DEFAULT '0',
+  `USER_CODE` varchar(10) DEFAULT NULL,
+  `REAL_NAME` varchar(10) DEFAULT NULL,
+  `SEX` varchar(5) DEFAULT NULL,
+  `IS_ENT` varchar(5) DEFAULT NULL,
+  `ORGANIZATION_ID` varchar(40) DEFAULT NULL,
+  `ACCESS_CENTER` varchar(5) DEFAULT NULL,
+  `PROVINCE` varchar(20) DEFAULT NULL,
+  `SYS_ID` varchar(10) DEFAULT NULL,
+  `SYS_VALUE` varchar(10) DEFAULT NULL,
+  PRIMARY KEY (`USER_ID`),
+  KEY `RefORGANIZATION16` (`ORGANIZATION_ID`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+/*Data for the table `USERS` */
+
+insert  into `USERS`(`USER_ID`,`TOKEN_TIME`,`QPS`,`QPM`,`USER_NAME`,`PASSWORD`,`EMAIL`,`QQ`,`CREATE_DATE`,`CREATE_USERID`,`DESCRIBTION`,`STATUS`,`USER_CODE`,`REAL_NAME`,`SEX`,`IS_ENT`,`ORGANIZATION_ID`,`ACCESS_CENTER`,`PROVINCE`,`SYS_ID`,`SYS_VALUE`) values ('admin','','','','admin','admin','','','2018-03-21 00:00:00','','','0','','','','','',NULL,NULL,NULL,NULL),('badmin','180000','100','10000','badmin','badmin','','','2018-04-13 00:00:00','admin','','0','0002','','0','0',NULL,NULL,NULL,NULL,NULL),('xmh','1000000','100','10000','xmh','xmh','','','2018-04-17 00:00:00','admin','','0','','','0','0',NULL,NULL,NULL,NULL,NULL),('abc','','','','外呼中心质检员','abc','','369012044','2018-04-24 17:36:55','admin','这是一个萌萌的外呼质检员','0','','','0','0',NULL,'1',NULL,'A','3'),('ST_GLY','','','','升投管理员','ST_GLY','','','2018-04-24 17:35:18','admin','ST_GLY','0','','ST_GLY','0','0',NULL,'0',NULL,'A','0'),('WH_GLY','','','','外呼管理员','WH_GLY','369012044@qq.com','369012044','2018-04-24 17:35:32','admin','WH_GLY','0','','WH_GLY','0','0',NULL,'1',NULL,'A','1'),('qaz','','15','','外呼中心质检员','qaz','','','2018-04-24 17:36:55','admin','','0','','','0','0',NULL,'1',NULL,'A','2'),('SF_GLY','','','','省份管理员','SF_GLY','','','2018-04-24 17:34:43','admin','','0','','','0','0',NULL,NULL,'山东',NULL,NULL),('JT_GLY','','','','集团管理员','JT_GLY','','','2018-04-24 17:36:55','admin','','0','','','0','0',NULL,NULL,NULL,NULL,NULL),('wsx','','','','外呼中心质检员','wsx','','','2018-04-24 17:36:55','admin','','0','','','0','0',NULL,'2',NULL,'A','1'),('edc','','','','外呼中心质检员','edc','','','2018-04-24 17:36:55','admin','','0','','','0','0',NULL,'3',NULL,'A','1'),('test','','','','测试用户','test','','','2018-04-25 12:51:29',NULL,'','0',NULL,NULL,'1','1',NULL,'1',NULL,NULL,NULL),('test1','','','',NULL,'test1','','','2018-04-25 12:59:47',NULL,'','0',NULL,NULL,'1','1',NULL,'1',NULL,NULL,NULL),('1231231','','','',NULL,'2312312','','','2018-04-25 13:02:49',NULL,'','0',NULL,NULL,'1','1',NULL,'1',NULL,NULL,NULL),('123123','','','',NULL,'12312','','','2018-04-25 21:05:14','ST_GLY','','0',NULL,NULL,'1','1',NULL,'1',NULL,NULL,NULL),('JT_GYL','','','','JT_GYL','JT_GYL','','','2018-04-26 11:12:20','admin','集团管理员','0','','','0','0',NULL,NULL,NULL,NULL,NULL),('WH_ZJZZ','','','','WH_ZJZZ','WH_ZJZZ','','','2018-04-26 11:12:45','admin','质检组长','0','','','','0',NULL,NULL,NULL,NULL,NULL),('JT_YG','','','','JT_YG','JT_YG','','','2018-04-26 11:13:12','admin','集团员工','0','','','','0',NULL,NULL,NULL,NULL,NULL),('SF_GLY_1','','','','SF_GLY','SF_GLY_1','','','2018-04-26 11:13:32','admin','省份管理员','0','','','','0',NULL,NULL,'山东',NULL,NULL),('SF_YG','','','','SF_YG','SF_YG','','','2018-04-26 11:13:51','admin','省份员工','0','','','','0',NULL,NULL,'山东',NULL,NULL),('ST_ZJY','','','','ST_ZJY','ST_ZJY','','','2018-04-27 11:48:29','admin','','0','','','','0',NULL,'0',NULL,NULL,NULL),('JTCS','','','',NULL,'JTCS','','','2018-05-02 10:52:21','JT_GLY','','0',NULL,NULL,'1','1',NULL,NULL,NULL,NULL,NULL),('SDCS','','','',NULL,'SDCS','','','2018-05-02 10:54:06','JT_GLY','','0',NULL,NULL,'1','1',NULL,NULL,'山东',NULL,NULL),('ZXSCS','','','','ZXSCS','ZXSCS','','','2018-05-02 17:13:10','admin','','0','','','0','0','',NULL,'重庆',NULL,NULL),('CSYH','','','',NULL,'CSYH','','','2018-05-03 10:41:25','ST_GLY','','0',NULL,NULL,'1','1',NULL,'0',NULL,NULL,NULL),('ZXSYH','','','',NULL,'ZXSYH','','','2018-05-03 10:45:48','JT_GLY','','0',NULL,NULL,'1','1',NULL,NULL,'重庆',NULL,NULL);
+
+/*Table structure for table `USER_API` */
+
+DROP TABLE IF EXISTS `USER_API`;
+
+CREATE TABLE `USER_API` (
+  `CREATE_DATE` datetime DEFAULT NULL,
+  `CREATE_USERID` varchar(40) DEFAULT NULL,
+  `USER_ID` varchar(40) NOT NULL,
+  `API_RESOURCE_ID` varchar(40) NOT NULL,
+  KEY `RefUSERS20` (`USER_ID`),
+  KEY `RefAPI_RESOURCES21` (`API_RESOURCE_ID`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+/*Data for the table `USER_API` */
+
+/*Table structure for table `USER_ROLE` */
+
+DROP TABLE IF EXISTS `USER_ROLE`;
+
+CREATE TABLE `USER_ROLE` (
+  `CREATE_DATE` date DEFAULT NULL,
+  `CREATE_USERID` varchar(40) DEFAULT NULL,
+  `USER_ID` varchar(40) NOT NULL,
+  `USER_ROLE_ID` varchar(40) NOT NULL,
+  KEY `RefUSERS14` (`USER_ID`),
+  KEY `RefROLES15` (`USER_ROLE_ID`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+/*Data for the table `USER_ROLE` */
+
+insert  into `USER_ROLE`(`CREATE_DATE`,`CREATE_USERID`,`USER_ID`,`USER_ROLE_ID`) values ('2018-04-27',NULL,'test','xTxhQM3elA2ofRFkmU4'),('2018-04-27',NULL,'qaz','xTxhQM3elA2ofRFkmU4'),('2018-04-13','','badmin','QU3VdB4xtWpc1wzWC6C'),('2018-04-18','','xmh','QU3VdB4xtWpc1wzWC6C'),('2018-04-25','','wsx','xTxhQM3elA2ofRFkmU4'),('2018-04-25','','abc','xTxhQM3elA2ofRFkmU4'),('2018-05-02',NULL,'ST_GLY','KgsY8MAWwXlmeJjzvh2'),('2018-04-25','','edc','xTxhQM3elA2ofRFkmU4'),('2018-04-25','','WH_GLY','FYUxxLeHvRfo3q7uUOk'),('2018-04-26','','SF_YG','i86w1WE1vH5ZqTDRFRF'),('2018-04-26','','SF_GYL','YjxXtTll5wKx0RQaIHf'),('2018-04-26','','JT_YG','IY4jPLA7SPoa7AZ9qIv'),('2018-04-26','','WH_ZJZZ','jG6Qpt3FcG5uGKR3eON'),('2018-04-26','','JT_GYL','017xwwqDVmDK45akWMV'),('2018-04-27',NULL,'test','FYUxxLeHvRfo3q7uUOk'),('2018-04-26','','admin','QU3VdB4xtWpc1wzWC6C'),('2018-04-26',NULL,'123123','xTxhQM3elA2ofRFkmU4'),('2018-04-27','','ST_ZJY','KgsY8MAWwXlmeJjzvh2'),('2018-04-27',NULL,'test1','FYUxxLeHvRfo3q7uUOk'),('2018-04-28','','JT_GLY','017xwwqDVmDK45akWMV'),('2018-05-02',NULL,'ST_GLY','MikF75ojXmeF0Df85uU'),('2018-05-02',NULL,'ST_GLY','sKMiXDJQh9JvkNBEdHr'),('2018-05-02',NULL,'SF_GLY_1','i86w1WE1vH5ZqTDRFRF'),('2018-05-02','','ZXSCS','3My8uy5RVM6Ks6DEW01'),('2018-05-03',NULL,'SF_GLY','YjxXtTll5wKx0RQaIHf');
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;

@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="cache-control" content="no-cache,no-store, must-revalidate"/>
+    <meta http-equiv="pragma" content="no-cache"/>
+    <meta http-equiv="Expires" content="0"/>
+    <title>全网舆情监测</title>
+    <link rel="stylesheet" href="../lib/bootstrap-3.3.7-dist/css/bootstrap.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <link href="../lib/bootstrap-3.3.7-dist/time/bootstrap-datetimepicker.min.css" rel="stylesheet"
+          media="screen">
+
+    <!--[if lt IE 9]>
+    <script src="../lib/bootstrap-3.3.7-dist/js/html5shiv.min.js"></script>
+    <script src="../lib/bootstrap-3.3.7-dist/js/respond.min.js"></script>
+    <![endif]-->
+    <!--[if IE 6]>
+    <script type="text/javascript" src="../lib/bootstrap-3.3.7-dist/js/DD_belatedPNG_0.0.8a-min.js"></script>
+    <script>DD_belatedPNG.fix('*');</script>
+    <![endif]-->
+    <style>
+        /*内容*/
+        .navResult {
+            position: relative;
+        }
+
+        .navResult-content {
+            position: absolute;
+            left: 80px;
+            right: 80px;
+        }
+
+        .navResult-right {
+            border: 1px solid #ddd;
+            margin-top: 10px;
+            padding: 30px;
+            background-color: #ffffff;
+        }
+
+        .jbrwcjcx {
+            width: 100%;
+        }
+
+        .jbrwcjcx td {
+            padding: 10px 0;
+        }
+
+        .jbrwcjcxTime .timeSpan {
+            margin: 5px 10px 0;
+        }
+
+        .right-nav-content {
+            border: 1px solid #dddddd;
+            position: relative;
+        }
+
+        .mxBtnP {
+            text-align: right;
+            width: 100%;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+<div class="header">
+    <div class="header-content" id="header-content">
+
+    </div>
+</div>
+<div class="nav">
+    <div class="nav-content">
+        <ul class="nav-ul" id="navUrl">
+
+        </ul>
+    </div>
+</div>
+<div class="navResult">
+    <div class="navResult-content">
+        <div class="navResult-right">
+            <table class="jbrwcjcx">
+                <tr>
+                    <td>时间范围</td>
+                    <td class="jbrwcjcxTime">
+                        <div id="datetimeStart" style="width: 250px;float: left"
+                             class="input-group date form_datetime col-md-5"
+                             data-link-field="dtp_input1">
+                            <input class="form-control" size="16" type="text" value="" readonly placeholder="开始时间">
+                            <span class="input-group-addon"><span class="glyphicon glyphicon-th"></span></span>
+                        </div>
+                        <span class="timeSpan" style="float: left">—</span>
+                        <div id="datetimeEnd" style="width: 250px;float: left"
+                             class="input-group date form_datetime col-md-5"
+                             data-link-field="dtp_input1">
+                            <input class="form-control" size="16" type="text" value="" readonly placeholder="结束时间">
+                            <span class="input-group-addon"><span class="glyphicon glyphicon-th"></span></span>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>运营商</td>
+                    <td>
+                        <span style="margin: 0 10px"><label><input type="checkbox" value="联通"> 联通</label></span>
+                        <span style="margin: 0 10px"><label><input type="checkbox" value="电信"> 电信</label></span>
+                        <span style="margin: 0 10px"><label><input type="checkbox" value="移动"> 移动</label></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>调性属性</td>
+                    <td id="jprwztG">
+                        <span style="margin: 0 10px"><label><input type="checkbox" value="全向"> 全向</label></span>
+                        <span style="margin: 0 10px"><label><input type="checkbox" value="正向"> 正向</label></span>
+                        <span style="margin: 0 10px"><label><input type="checkbox" value="中立"> 中立</label></span>
+                        <span style="margin: 0 10px"><label><input type="checkbox" value="负向"> 负向</label></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td align="right">
+                        <button type="button" class="btn btn-danger redBtn btn-sm" onclick="cx_btn()">查询</button>
+                        <button type="button" class="btn btn-danger redBtn btn-sm" onclick="dc_btn()">导出</button>
+                    </td>
+                </tr>
+            </table>
+            <div style="background-color: #ffffff;padding: 20px 0px">
+                <ul class="navResult-right-nav">
+                    <li class="menucur btn btn-default btn-sm">专业线整体</li>
+                    <li class="btn btn-default btn-sm">专业线网络</li>
+                    <li class="btn btn-default btn-sm">专业线业务</li>
+                    <li class="btn btn-default btn-sm">专业线服务</li>
+                </ul>
+                <div style="margin-top: 20px">
+                    <div class="right-nav-content">
+                        <div class="mxBtnP">
+                            <button type="button" class="menucur btn btn-danger btn-xs mxBtn">明细</button>
+                        </div>
+                        <div id="yqzyxfb" style="min-width:600px;height: 500px"></div>
+                    </div>
+                    <div class="right-nav-content hideMes">
+                        <div class="mxBtnP">
+                            <button type="button" class="menucur btn btn-danger btn-xs mxBtn">明细</button>
+                        </div>
+                        <div id="zyxwl" style="min-width:600px;height: 500px"></div>
+                    </div>
+                    <div class="right-nav-content hideMes">
+                        <div class="mxBtnP">
+                            <button type="button" class="menucur btn btn-danger btn-xs mxBtn">明细</button>
+                        </div>
+                        <div id="zyxyw" style="min-width:600px;height: 500px;"></div>
+                    </div>
+                    <div class="right-nav-content hideMes">
+                        <div class="mxBtnP">
+                            <button type="button" class="menucur btn btn-danger btn-xs mxBtn">明细</button>
+                        </div>
+                        <div id="zyxfwl" style="min-width:600px;height: 500px;"></div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+<script src="../js/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" src="../js/pageNav.js"></script>
+<script src="../lib/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+<script src="../lib/echarts/echarts.min.js"></script>
+<script type="text/javascript" src="../lib/echarts/china.js"></script>
+<!--time-->
+<script type="text/javascript" src="../lib/bootstrap-3.3.7-dist/time/bootstrap-datetimepicker.min.js"
+        charset="UTF-8"></script>
+<script type="text/javascript" src="../lib/bootstrap-3.3.7-dist/time/bootstrap-datetimepicker.zh-CN.js"
+        charset="UTF-8"></script>
+<script>
+    $("#navUrl .qwyqjc").addClass("menucur");
+</script>
+<script>
+    /*自定义时间*/
+    DatePicker("#datetimeStart", "#datetimeEnd");
+    function DatePicker(beginSelector, endSelector) {
+        // 仅选择日期
+        $(beginSelector).datetimepicker(
+            {
+                format: "yyyy-mm-dd",
+                autoclose: true,
+                todayBtn: true,
+                language: "zh-CN",
+                startView: 2,
+                minView: 'year',
+                maxView: 'decade',
+                endDate: new Date(),
+                pickerPosition: "bottom-left"
+            }).on('changeDate', function (ev) {
+            if (ev.date) {
+                $(endSelector).datetimepicker('setStartDate', new Date(ev.date.valueOf()))
+            } else {
+                $(endSelector).datetimepicker('setStartDate', null);
+            }
+        });
+
+        $(endSelector).datetimepicker(
+            {
+                format: "yyyy-mm-dd",
+                autoclose: true,
+                todayBtn: true,
+                language: "zh-CN",
+                startView: 2,
+                minView: 'year',
+                maxView: 'decade',
+                endDate: new Date(),
+                pickerPosition: "bottom-left"
+            }).on('changeDate', function (ev) {
+            if (ev.date) {
+                $(beginSelector).datetimepicker('setEndDate', new Date(ev.date.valueOf()))
+            } else {
+                $(beginSelector).datetimepicker('setEndDate', new Date());
+            }
+        })
+    }
+    /*舆情走势图*/
+    var label = {
+        normal: {
+            show: true,
+            position: 'top'
+        }
+    };
+    var yqzyxfb = {
+        titleData: ['联通', '电信', '移动'], titleX: ['网络', '业务', '服务'], sqlData: [
+            {
+                name: '联通',
+                type: 'bar',
+                data: [30, 330, 320],
+                label: label
+            },
+            {
+                name: '电信',
+                type: 'bar',
+                data: [20, 332, 180],
+                label: label
+            },
+            {
+                name: '移动',
+                type: 'bar',
+                data: [70, 432, 108],
+                label: label
+            }
+        ]
+    };
+    var zyxwl = {
+        titleData: ['联通', '电信', '移动'], titleX: ['信号覆盖', '信号稳定性', '上网速度'], sqlData: [
+            {
+                name: '联通',
+                type: 'bar',
+                data: [30, 330, 320],
+                label: label
+            },
+            {
+                name: '电信',
+                type: 'bar',
+                data: [20, 332, 180],
+                label: label
+            },
+            {
+                name: '移动',
+                type: 'bar',
+                data: [70, 432, 108],
+                label: label
+            }
+        ]
+    };
+    var zyxyw = {
+        titleData: ['联通', '电信', '移动'], titleX: ['计费争议', '订购办理', '套餐设计', '促销活动', '流量包'], sqlData: [
+            {
+                name: '联通',
+                type: 'bar',
+                data: [30, 330, 320, 120, 220],
+                label: label
+            },
+            {
+                name: '电信',
+                type: 'bar',
+                data: [20, 332, 180, 280, 80],
+                label: label
+            },
+            {
+                name: '移动',
+                type: 'bar',
+                data: [70, 432, 108, 132, 108],
+                label: label
+            }
+        ]
+    };
+    var zyxfwl = {
+        titleData: ['正向', '中向', '负向', '全部'], titleX: ['服务态度', '办理方便快捷', '活动运营服务', '投诉解决', '查询'], sqlData: [
+            {
+                name: '正向',
+                type: 'bar',
+                data: [30, 330, 320, 120, 220],
+                label: label
+            },
+            {
+                name: '中向',
+                type: 'bar',
+                data: [20, 332, 180, 280, 80],
+                label: label
+            },
+            {
+                name: '负向',
+                type: 'bar',
+                data: [70, 432, 108, 132, 108],
+                label: label
+            },
+            {
+                name: '全部',
+                type: 'bar',
+                data: [270, 732, 608, 132, 408],
+                label: label
+            }
+        ]
+    };
+    echartsFun("yqzyxfb", "舆情专业线分布", yqzyxfb);
+    echartsFun("zyxwl", "舆情分布（网络类）", zyxwl);
+    echartsFun("zyxyw", "舆情分布（业务类）", zyxyw);
+    echartsFun("zyxfwl", "舆情分布（服务类）", zyxfwl);
+    var pageState = 0;
+    function echartsFun(id, title, result) {
+        var yqzyxfb = echarts.init(document.getElementById(id));
+        var yqzyxfb_option = {
+            title: {
+                text: title,
+                x: 'left'
+            },
+            tooltip: {
+                trigger: 'axis'
+            },
+            legend: {
+                data: result.titleData
+            },
+            calculable: true,
+            xAxis: [
+                {
+                    type: 'category',
+                    data: result.titleX
+                }
+            ],
+            yAxis: [
+                {
+                    type: 'value'
+                }
+            ],
+            series: result.sqlData
+        };
+        yqzyxfb.setOption(yqzyxfb_option);
+        /*选项卡*/
+        $(".navResult-right-nav li").click(function () {
+            $(".navResult-right-nav li").removeClass("menucur");
+            $(".right-nav-content").addClass("hideMes");
+            $(this).addClass("menucur");
+            $(".right-nav-content").eq($(this).index()).removeClass("hideMes");
+            window.onresize = yqzyxfb.resize();
+            pageState = $(this).index();
+        })
+    }
+    /*查看明细*/
+    $(".mxBtn").click(function () {
+        var data = "";
+        switch (pageState) {
+            case 0:
+                break;
+            case 1:
+                break;
+            case 2:
+                break;
+            case 3:
+                break;
+        }
+        data = pageState;
+    window.location.href = "zyxsdfx-mxy.html?data="+data;
+    });
+</script>
+</body>
+</html>

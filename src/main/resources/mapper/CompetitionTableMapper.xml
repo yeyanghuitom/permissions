@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.unicom.tancms.mapper.CompetitionTableMapper" >
+  <resultMap id="BaseResultMap" type="com.unicom.tancms.pojo.CompetitionTable" >
+    <id column="CPA_ID" property="cpaId" jdbcType="VARCHAR" />
+    <result column="CPA_EXCLUDE" property="cpaExclude" jdbcType="VARCHAR" />
+    <result column="CPA_NAME" property="cpaName" jdbcType="VARCHAR" />
+    <result column="CPA_PLAN_ID" property="cpaPlanId" jdbcType="VARCHAR" />
+    <result column="CPA_KEYWORDS" property="cpaKeywords" jdbcType="VARCHAR" />
+    <result column="CPA_USE_PLAN" property="cpaUsePlan" jdbcType="CHAR" />
+    <result column="IS_DELETE" property="isDelete" jdbcType="CHAR" />
+    <result column="CPA_REPORT_ID" property="cpaReportId" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    CPA_ID, CPA_EXCLUDE, CPA_NAME, CPA_PLAN_ID, CPA_KEYWORDS, CPA_USE_PLAN, IS_DELETE, 
+    CPA_REPORT_ID
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.unicom.tancms.pojo.CompetitionTableExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from competition_table
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from competition_table
+    where CPA_ID = #{cpaId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from competition_table
+    where CPA_ID = #{cpaId,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.unicom.tancms.pojo.CompetitionTableExample" >
+    delete from competition_table
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.unicom.tancms.pojo.CompetitionTable" >
+    insert into competition_table (CPA_ID, CPA_EXCLUDE, CPA_NAME, 
+      CPA_PLAN_ID, CPA_KEYWORDS, CPA_USE_PLAN, 
+      IS_DELETE, CPA_REPORT_ID)
+    values (#{cpaId,jdbcType=VARCHAR}, #{cpaExclude,jdbcType=VARCHAR}, #{cpaName,jdbcType=VARCHAR}, 
+      #{cpaPlanId,jdbcType=VARCHAR}, #{cpaKeywords,jdbcType=VARCHAR}, #{cpaUsePlan,jdbcType=CHAR}, 
+      #{isDelete,jdbcType=CHAR}, #{cpaReportId,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.unicom.tancms.pojo.CompetitionTable" >
+    insert into competition_table
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="cpaId != null" >
+        CPA_ID,
+      </if>
+      <if test="cpaExclude != null" >
+        CPA_EXCLUDE,
+      </if>
+      <if test="cpaName != null" >
+        CPA_NAME,
+      </if>
+      <if test="cpaPlanId != null" >
+        CPA_PLAN_ID,
+      </if>
+      <if test="cpaKeywords != null" >
+        CPA_KEYWORDS,
+      </if>
+      <if test="cpaUsePlan != null" >
+        CPA_USE_PLAN,
+      </if>
+      <if test="isDelete != null" >
+        IS_DELETE,
+      </if>
+      <if test="cpaReportId != null" >
+        CPA_REPORT_ID,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="cpaId != null" >
+        #{cpaId,jdbcType=VARCHAR},
+      </if>
+      <if test="cpaExclude != null" >
+        #{cpaExclude,jdbcType=VARCHAR},
+      </if>
+      <if test="cpaName != null" >
+        #{cpaName,jdbcType=VARCHAR},
+      </if>
+      <if test="cpaPlanId != null" >
+        #{cpaPlanId,jdbcType=VARCHAR},
+      </if>
+      <if test="cpaKeywords != null" >
+        #{cpaKeywords,jdbcType=VARCHAR},
+      </if>
+      <if test="cpaUsePlan != null" >
+        #{cpaUsePlan,jdbcType=CHAR},
+      </if>
+      <if test="isDelete != null" >
+        #{isDelete,jdbcType=CHAR},
+      </if>
+      <if test="cpaReportId != null" >
+        #{cpaReportId,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.unicom.tancms.pojo.CompetitionTableExample" resultType="java.lang.Integer" >
+    select count(*) from competition_table
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update competition_table
+    <set >
+      <if test="record.cpaId != null" >
+        CPA_ID = #{record.cpaId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cpaExclude != null" >
+        CPA_EXCLUDE = #{record.cpaExclude,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cpaName != null" >
+        CPA_NAME = #{record.cpaName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cpaPlanId != null" >
+        CPA_PLAN_ID = #{record.cpaPlanId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cpaKeywords != null" >
+        CPA_KEYWORDS = #{record.cpaKeywords,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cpaUsePlan != null" >
+        CPA_USE_PLAN = #{record.cpaUsePlan,jdbcType=CHAR},
+      </if>
+      <if test="record.isDelete != null" >
+        IS_DELETE = #{record.isDelete,jdbcType=CHAR},
+      </if>
+      <if test="record.cpaReportId != null" >
+        CPA_REPORT_ID = #{record.cpaReportId,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update competition_table
+    set CPA_ID = #{record.cpaId,jdbcType=VARCHAR},
+      CPA_EXCLUDE = #{record.cpaExclude,jdbcType=VARCHAR},
+      CPA_NAME = #{record.cpaName,jdbcType=VARCHAR},
+      CPA_PLAN_ID = #{record.cpaPlanId,jdbcType=VARCHAR},
+      CPA_KEYWORDS = #{record.cpaKeywords,jdbcType=VARCHAR},
+      CPA_USE_PLAN = #{record.cpaUsePlan,jdbcType=CHAR},
+      IS_DELETE = #{record.isDelete,jdbcType=CHAR},
+      CPA_REPORT_ID = #{record.cpaReportId,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.unicom.tancms.pojo.CompetitionTable" >
+    update competition_table
+    <set >
+      <if test="cpaExclude != null" >
+        CPA_EXCLUDE = #{cpaExclude,jdbcType=VARCHAR},
+      </if>
+      <if test="cpaName != null" >
+        CPA_NAME = #{cpaName,jdbcType=VARCHAR},
+      </if>
+      <if test="cpaPlanId != null" >
+        CPA_PLAN_ID = #{cpaPlanId,jdbcType=VARCHAR},
+      </if>
+      <if test="cpaKeywords != null" >
+        CPA_KEYWORDS = #{cpaKeywords,jdbcType=VARCHAR},
+      </if>
+      <if test="cpaUsePlan != null" >
+        CPA_USE_PLAN = #{cpaUsePlan,jdbcType=CHAR},
+      </if>
+      <if test="isDelete != null" >
+        IS_DELETE = #{isDelete,jdbcType=CHAR},
+      </if>
+      <if test="cpaReportId != null" >
+        CPA_REPORT_ID = #{cpaReportId,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where CPA_ID = #{cpaId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.unicom.tancms.pojo.CompetitionTable" >
+    update competition_table
+    set CPA_EXCLUDE = #{cpaExclude,jdbcType=VARCHAR},
+      CPA_NAME = #{cpaName,jdbcType=VARCHAR},
+      CPA_PLAN_ID = #{cpaPlanId,jdbcType=VARCHAR},
+      CPA_KEYWORDS = #{cpaKeywords,jdbcType=VARCHAR},
+      CPA_USE_PLAN = #{cpaUsePlan,jdbcType=CHAR},
+      IS_DELETE = #{isDelete,jdbcType=CHAR},
+      CPA_REPORT_ID = #{cpaReportId,jdbcType=VARCHAR}
+    where CPA_ID = #{cpaId,jdbcType=VARCHAR}
+  </update>
+</mapper>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<title>demo</title>
+<link rel="stylesheet" href="css/select.css">
+</head>
+<body>
+<h3>请选择（请尝试在select中输入）</h3>
+<div>
+	<select id="select">
+		<option value="">请选择月份</option><!-- 此选项为 默认显示内容 -->
+		<option value="一月">一月</option>
+		<option value="二月">二月</option>
+		<option value="三月">三月</option>
+		<option value="四月">四月</option>
+		<option value="五月">五月</option>
+		<option value="六月">六月</option>
+		<option value="七月">七月</option>
+		<option value="八月">八月</option>
+		<option value="九月">九月</option>
+		<option value="十月">十月</option>
+		<option value="十一月">十一月</option>
+		<option value="十二月">十二月</option>
+	</select>
+</div>
+<h3>你的选项</h3>
+<p class="result">&nbsp;</p>
+
+<script src="js/jquery-1.11.3.min.js"></script>
+<script src="js/jquery.select.js"></script>
+<script>
+$(function() {
+	$('select').comboSelect();
+	//todo 对 #select 元素进行事件绑定
+	$('#select').on("change",function(e, v) {
+		//todo select 发生选择变化
+		$('.result').html('你选择了第' + e.target.selectedIndex + '项，值是' + e.target.value);
+	});
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,166 @@
+/*内容*/
+.navResult {
+    position: relative;
+}
+#table .aUrl:hover {
+    color: #000000 !important;
+}
+
+.navResult-content {
+    padding: 0 80px;
+    position: absolute;
+    left: 80px;
+    right: 80px;
+}
+
+.navResult-left {
+    width: 200px;
+    position: absolute;
+    left: 0;
+    background-color: #ffffff;
+    padding: 10px;
+    border: 1px solid #ddd;
+    top: 10px;
+    border-right: none;
+    height: 390px;
+}
+.navResult-right {
+    position: absolute;
+    left: 200px;
+    border: 1px solid #ddd;
+    right: 0;
+    top: 10px;
+}
+
+.navResult-right p {
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.navResult-right .form-horizontal .control-label {
+    padding-top: 0;
+    margin-bottom: 0;
+    text-align: left;
+    font-weight: 500;
+    padding-right: 0px;
+}
+
+.navResult-right .form-horizontal .col-sm-8 {
+    padding: 0;
+}
+
+.navResult-right-nav {
+    overflow: hidden;
+    background-color: #ffffff;
+}
+.navResult-right-nav li{
+    float: left;
+    padding: 4px 8px;
+    cursor: pointer;
+    border-right: 1px solid #dddddd;
+    border-bottom:1px solid #dddddd;
+}
+.navResult-right-nav li:hover{
+    background-color: #e10111 !important;
+    color: #ffffff;
+}
+
+#xxjc-query {
+    width: 100%;
+}
+
+.right-nav-content td {
+    padding: 10px 0;
+}
+
+.right-nav-content span {
+    padding: 4px 8px;
+    margin: 1px;
+    cursor: pointer;
+}
+
+#xxjc-table {
+    width: 100%;
+}
+
+#xxjc-table .xxjc-title {
+    background-color: #dddddd;
+    text-align: center;
+}
+
+#xxjc-table td, #xxjc-table th {
+    text-align: center;
+    padding: 6px;
+}
+
+/*中国地图*/
+#tjtb div {
+    background-color: #ffffff;
+}
+
+#dyfx_sj table {
+    margin-top: 30px;
+    border: 1px solid #dddddd;
+}
+
+#dyfx_sj table tr:first-child {
+    background-color: #e10111;
+    color: #ffffff;
+}
+
+#dyfx_sj table tr:first-child:hover {
+    background-color: #e10111;
+    color: #ffffff;
+}
+
+#dyfx_sj table {
+    width: 100%;
+}
+#dyfx_sj table td,#dyfx_sj table th {
+    padding: 4px 8px;
+    text-align: center;
+    border: 1px solid #dddddd;
+}
+#dyfx_sj table th{
+    background-color:#e10111;
+ }
+#dyfx_sj table tr:nth-child(odd) {
+    background: #f7efe5;
+}
+
+
+#fa_ul li {
+    padding: 4px 4px 4px 30px;
+    cursor: pointer;
+    margin: 2px;
+}
+
+#fa_ul li:hover {
+    background-color: #f13d3c;
+    color: #ffffff;
+}
+
+#fa_ul .libg {
+    background-color: #f13d3c;
+    color: #ffffff;
+}
+
+
+/*自定义时间*/
+#zdysj {
+    display: inline-block;
+    position: absolute;
+    vertical-align: middle;
+    margin-top: -5px;
+}
+
+#zdysj .glyphicon {
+    padding: 0 5px 0 0;
+}
+.jcfaTable td{
+    padding: 10px 4px;
+    position: relative;
+}
+.jcfaTable td .error{
+    top: 20px;
+}

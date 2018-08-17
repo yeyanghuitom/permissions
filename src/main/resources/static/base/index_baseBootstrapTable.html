@@ -1,0 +1,826 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>index_资源</title>
+
+    <link rel="shortcut icon" href="favicon.ico"/>
+    <link href="css/bootstrap.min.css?v=3.3.5" rel="stylesheet"/>
+    <link href="css/font-awesome.min.css?v=4.4.0" rel="stylesheet"/>
+    <!-- bootstrap-table.css -->
+    <link href="css/plugins/bootstrap-table/bootstrap-table.min.css" rel="stylesheet"/>
+    <link href="css/animate.min.css" rel="stylesheet"/>
+    <link href="css/style.min.css?v=4.0.0" rel="stylesheet"/>
+    <!-- datepicker - 时间选择插件 -->
+    <link rel="stylesheet" href="css/plugins/datapicker/datepicker3.css"/>
+
+    <!-- sweetalert -->
+    <link rel="stylesheet" type="text/css" href="css/plugins/sweetalert/sweetalert.css"/>
+    <!-- awesome-bootstrap-checkbox -->
+    <link href="css/plugins/awesome-bootstrap-checkbox/awesome-bootstrap-checkbox.css" rel="stylesheet"/>
+
+    <script src="js/ajaxBaseURL.js"></script>
+    <script>
+        //const ajaxBaseURL = "http://10.0.78.158:8080/permissions",baseField = 'resources';
+        //const ajaxBaseURL = "http://localhost:8080/permissions",baseField = 'resources';
+        const baseField = 'resources';
+    </script>
+</head>
+<body class="gray-bg">
+<!-- Panel Other -->
+<div class="container-fluid">
+    <div class="wrapper-content">
+
+        <div class="row row-lg" id="">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5> Button 示例 </h5>
+                    <div class="ibox-tools">
+                        <a class="collapse-link">
+                            <i class="fa fa-chevron-up"></i>
+                        </a>
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                            <i class="fa fa-wrench"></i>
+                        </a>
+                        <a class="close-link">
+                            <i class="fa fa-times"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="ibox-content">
+                    <div class="padding_left">
+                        <h3>约定样式</h3>
+
+                        <button class="btn btn-primary">
+                            <i class="fa fa-file-word-o"></i>
+                            word导入
+                        </button>
+                        <button class="btn btn-link">
+                            <i class="fa fa-file-excel-o"></i>
+                            excel导入
+                        </button>
+                        <button class="btn btn-primary">
+                            <i class="fa fa-file-excel-o"></i>
+                            生成Excel表头
+                        </button>
+                        <button class="btn btn-primary">
+                            <i class="fa fa-external-link"></i>
+                            数据回传明细
+                        </button>
+                        <button class="btn btn-primary">
+                            <i class="fa fa-search"></i>
+                            数据回传查找
+                        </button>
+                        <button class="btn btn-primary">
+                            <i class="fa fa-link"></i>
+                            绑定用户
+                        </button>
+                        <button class="btn btn-primary">
+                            <i class="fa fa-link"></i>
+                            绑定角色
+                        </button>
+                        <button class="btn btn-primary">
+                            <i class="fa fa-user-plus"></i>
+                            新增用户
+                        </button>
+                        <button class="btn btn-primary">
+                            <i class="fa fa-user-plus"></i>
+                            新增角色
+                        </button>
+                        <!--  -->
+                        <br>
+
+                        <button class="btn btn-warning ">
+                            <i class="fa fa-home"></i>
+                        </button>
+                        <button class="btn btn-success">
+                            <i class="fa fa-home"></i>
+                        </button>
+                        <button class="btn btn-primary">
+                            <i class="fa fa-home"></i>
+                        </button>
+                        <button class="btn btn-group">
+                            <i class="fa fa-home"></i>
+                        </button>
+                        <button class="btn btn-danger">
+                            <i class="fa fa-home"></i>
+                        </button>
+                        <br>
+                        <!-- todo 换行 -->
+                        <button class="btn btn-link">
+                            <i class="fa fa-home"></i>
+                            主页
+                        </button>
+                        <button class="btn btn-danger">
+                            <i class="fa fa-home"></i>
+                            主页
+                        </button>
+                        <button class="btn btn-group">
+                            <i class="fa fa-home"></i>
+                            主页
+                        </button>
+                        <button class="btn btn-primary">
+                            <i class="fa fa-home"></i>
+                            主页
+                        </button>
+                        <button class="btn">
+                            <i class="fa fa-home"></i>
+                            主页
+                        </button>
+                        <button class="btn btn-warning">
+                            <i class="fa fa-home"></i>
+                            主页
+                        </button>
+                        <button class="btn btn-info">
+                            <i class="fa fa-home"></i>
+                            主页
+                        </button>
+                        <button class="btn btn-danger">
+                            <i class="fa fa-home"></i>
+                            主页
+                        </button>
+                        <br>
+
+
+                        <button class="btn btn-circle btn-group">
+                            <i class="fa fa-home"></i>
+                        </button>
+                        <button class="btn btn-circle btn-primary">
+                            <i class="fa fa-home"></i>
+                        </button>
+                        <button class="btn btn-circle btn-success">
+                            <i class="fa fa-home"></i>
+                        </button>
+                        <button class="btn btn-circle btn-warning">
+                            <i class="fa fa-home"></i>
+                        </button>
+                        <button class="btn btn-circle btn-danger">
+                            <i class="fa fa-home"></i>
+                        </button>
+                        <button class="btn btn-circle">
+                            <i class="fa fa-home"></i>
+                        </button>
+                        <button class="btn btn-circle btn-link">
+                            <i class="fa fa-home"></i>
+                        </button>
+                        <br>
+                        <a rel="tooltip" title="buttonList[i].buttonName" class="btn btn-success " data-toggle="modal" data-target="#'+ buttonList[i].actionToModalsId +'">
+                            <i class="fa fa-home"></i>
+                            主页
+                        </a>
+                        <a rel="tooltip" title="buttonList[i].buttonName" class="btn btn-link" data-toggle="modal" data-target="#'+ buttonList[i].actionToModalsId +'">
+                            <i class="fa fa-home"></i>
+                            主页
+                        </a>
+                        <a rel="tooltip" title="buttonList[i].buttonName" class="btn btn-primary " data-toggle="modal" data-target="#'+ buttonList[i].actionToModalsId +'">
+                            <i class="fa fa-plus-square"></i>
+                            新增
+                        </a>
+                        <a rel="tooltip" title="buttonList[i].buttonName" class="btn btn-primary " data-toggle="modal" data-target="#'+ buttonList[i].actionToModalsId +'">
+                            <i class="fa fa-search"></i>
+                            查询
+                        </a>
+                        <a rel="tooltip" title="buttonList[i].buttonName" class="btn btn-primary " data-toggle="modal" data-target="#'+ buttonList[i].actionToModalsId +'">
+                            <i class="fa fa-link"></i>
+                            绑定
+                        </a>
+                        <a rel="tooltip" title="buttonList[i].buttonName" class="btn btn-warning " data-toggle="modal" data-target="#'+ buttonList[i].actionToModalsId +'">
+                            <i class="fa fa-pencil"></i>
+                            修改
+                        </a>
+                        <a rel="tooltip" title="buttonList[i].buttonName" class="btn btn-warning " data-toggle="modal" data-target="#'+ buttonList[i].actionToModalsId +'">
+                            <i class="fa fa-close"></i>
+                            清空
+                        </a>
+                        <a rel="tooltip" title="buttonList[i].buttonName" class="btn btn-danger " data-toggle="modal" data-target="#'+ buttonList[i].actionToModalsId +'">
+                            <i class="fa fa-trash"></i>
+                            删除
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row row-lg" id="iBoxOfButtonTable">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5> table 筛选条件示例 </h5>
+                    <div class="ibox-tools">
+                        <a class="collapse-link">
+                            <i class="fa fa-chevron-up"></i>
+                        </a>
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                            <i class="fa fa-wrench"></i>
+                        </a>
+                        <a class="close-link">
+                            <i class="fa fa-times"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="ibox-content">
+                    <div class="padding_left">
+
+                        <form class="form-horizontal" id="">
+                            <div class="row">
+                                <div class="col-md-12 col-sm-12">
+                                    <!-- createOneButtonMsg -->
+                                    <button class="btn btn-primary fa fa-plus-square " data-toggle="modal" data-target="#createOneButtonMsg" id="createOneButton"> 新增 BUTTON</button>
+                                </div>
+                                <hr class="col-md-11 hidden-xs hidden-sm"/>
+                                <div class="form-group col-md-6 col-sm-12" id="data_6">
+                                    <label class="control-label col-sm-3">时间范围选择</label>
+                                    <div class="col-sm-9">
+                                        <div class="input-daterange input-group" id="datepicker">
+                                            <span class="input-group-addon">从</span>
+                                            <input type="text" class="input-sm form-control" name="start" value="2017-11-11" />
+                                            <span class="input-group-addon">到</span>
+                                            <input type="text" class="input-sm form-control" name="end" value="2018-2-17" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <hr class="col-md-11 hidden-xs hidden-sm"/>
+                                <div class="form-group col-sm-6 col-md-4">
+                                    <label for="labelId21" class="col-sm-3 control-label">姓名1： </label>
+                                    <div class="col-sm-9"><input type="text" class="form-control" id="labelId21" placeholder="请输入" maxlength="40"></div>
+                                </div>
+                                <div class="form-group col-sm-6 col-md-4">
+                                    <label for="labelId22" class="col-sm-3 control-label">姓名1： </label>
+                                    <div class="col-sm-9"><input type="text" class="form-control" id="labelId22" placeholder="请输入" maxlength="40"></div>
+                                </div>
+
+                                <div class="form-group col-sm-6 col-md-4">
+                                    <label for="labelId23" class="col-sm-3 control-label">姓名1： </label>
+                                    <div class="col-sm-9"><input type="text" class="form-control" id="labelId23" placeholder="请输入" maxlength="40"></div>
+                                </div>
+                                <hr class="col-md-11 hidden-xs hidden-sm"/>
+
+                                <div class="form-group col-sm-6 col-md-4">
+                                    <label for="labelId24" class="col-sm-3 control-label">姓名1： </label>
+                                    <div class="col-sm-9"><input type="text" class="form-control" id="labelId24" placeholder="请输入" maxlength="40"></div>
+                                </div>
+                                <div class="form-group col-sm-6 col-md-4">
+                                    <label for="labelId25" class="col-sm-3 control-label">姓名1： </label>
+                                    <div class="col-sm-9">
+                                        <select class="form-control" id="labelId25">
+                                            <option>1</option>
+                                            <option>2</option>
+                                            <option>3</option>
+                                            <option>4</option>
+                                            <option>5</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="form-group col-sm-6 col-md-4">
+                                    <label for="labelId26" class="col-sm-3 control-label">姓名1： </label>
+                                    <div class="col-sm-9">
+                                        <select class="form-control" id="labelId26">
+                                            <option>1</option>
+                                            <option>2</option>
+                                            <option>3</option>
+                                            <option>4</option>
+                                            <option>5</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <hr class="col-md-11 hidden-xs hidden-sm"/>
+
+                                <div class="form-group col-sm-6 col-md-6">
+                                    <label for="labelId11" class="col-sm-3 control-label">姓名1： </label>
+                                    <div class="col-sm-9"><input type="text" class="form-control" id="labelId11" placeholder="请输入" maxlength="40"></div>
+                                </div>
+                                <div class="form-group col-sm-6 col-md-6">
+                                    <label for="labelId12" class="col-sm-3 control-label">姓名1： </label>
+                                    <div class="col-sm-9"><input type="text" class="form-control" id="labelId12" placeholder="请输入" maxlength="40"></div>
+                                </div>
+                                <hr class="col-md-11 hidden-xs hidden-sm"/>
+
+                                <div class="form-group col-sm-6 col-md-6">
+                                    <label for="labelId13" class="col-sm-3 control-label">姓名1： </label>
+                                    <div class="col-sm-9"><input type="text" class="form-control" id="labelId13" placeholder="请输入" maxlength="40"></div>
+                                </div>
+                                <div class="form-group col-sm-6 col-md-6">
+                                    <label for="labelId14" class="col-sm-3 control-label">姓名1： </label>
+                                    <div class="col-sm-9">
+                                        <select class="form-control" id="labelId14">
+                                            <option>1</option>
+                                            <option>2</option>
+                                            <option>3</option>
+                                            <option>4</option>
+                                            <option>5</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+
+                                <hr class="col-md-11 hidden-xs hidden-sm"/>
+
+                                <!-- todo 单选：一行两个 radio样式 ：选中绿色-->
+                                <div class="form-group col-sm-6 col-md-6">
+
+                                    <label class="col-sm-3 control-label">一行三个</label>
+                                    <div class=" col-sm-9">
+                                        <div class="radio radio-success col-sm-4">
+                                            <input type="radio" id="inlineRadio1" value="option1" name="radioInline" checked="">
+                                            <label for="inlineRadio1"> 选项 01 </label>
+                                        </div>
+                                        <div class="radio  radio-info col-sm-4">
+                                            <input type="radio" id="inlineRadio2" value="option2" name="radioInline">
+                                            <label for="inlineRadio2"> 选项 02 </label>
+                                        </div>
+                                        <div class="radio  radio-success col-sm-4">
+                                            <input type="radio" id="inlineRadio3" value="option2" name="radioInline">
+                                            <label for="inlineRadio3"> 选项 02 </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--
+                                 todo 单选：一行四个
+                                 todo 颜色：绿色
+                                 todo label：3个字符
+                                 todo div 样式 : radio-success  radio-info radio-danger
+                                 -->
+                                <div class="form-group col-sm-6 col-md-6">
+
+                                    <label class="col-sm-3 control-label">一行四个:</label>
+                                    <div class=" col-sm-9">
+                                        <div class="radio radio-success col-sm-3">
+                                            <input type="radio" id="inlineRadio111" value="option1" name="radioInline">
+                                            <label for="inlineRadio111"> 选项01 </label>
+                                        </div>
+                                        <div class="radio radio-danger col-sm-3">
+                                            <input type="radio" id="inlineRadio112" value="option2" name="radioInline" checked="checked">
+                                            <label for="inlineRadio112"> 吴新荣 </label>
+                                        </div>
+                                        <div class="radio radio-info col-sm-3">
+                                            <input type="radio" id="inlineRadio113" value="option2" name="radioInline" >
+                                            <label for="inlineRadio113"> 选项02 </label>
+                                        </div>
+                                        <div class="radio radio-primary col-sm-3">
+                                            <input type="radio" id="inlineRadio114" value="option2" name="radioInline">
+                                            <label for="inlineRadio114"> 选项02 </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <hr class="col-md-11 hidden-xs hidden-sm"/>
+                                <!--
+                                 todo 单选：一行两个
+                                 todo 颜色：绿色
+                                 todo label：5-8个字符
+                                 todo div 样式 : radio-success  radio-info radio-danger
+                                 -->
+                                <div class="form-group col-sm-6 col-md-6">
+                                    <label class="col-sm-3 control-label">一行两个:</label>
+                                    <div class=" col-sm-9">
+                                        <div class="radio success col-sm-6">
+                                            <input type="radio" name="radio1" id="radio1" value="option1" checked="">
+                                            <label for="radio1">
+                                                文本 01
+                                            </label>
+                                        </div>
+                                        <div class="radio success col-sm-6">
+                                            <input type="radio" name="radio1" id="radio2" value="option2">
+                                            <label for="radio2">
+                                                文本一二三四五六七
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <!--
+                                 todo 复选框：一行两个
+                                 todo 颜色：绿色
+                                 todo label：5个字符
+                                 todo div 样式 : radio-success  radio-info radio-danger
+                                 -->
+                                <div class="form-group col-sm-6 col-md-6">
+                                    <label class="col-sm-3 control-label">一行两个:</label>
+                                    <div class=" col-sm-9">
+                                        <div class="checkbox checkbox-danger col-sm-6">
+                                            <input type="checkbox" id="check_remember1" checked="checked">
+                                            <label for="check_remember1"> Remember me </label>
+                                        </div>
+                                        <div class="checkbox checkbox-group  col-sm-6">
+                                            <input type="checkbox" id="check_Forget1" checked="checked">
+                                            <label for="check_Forget1">Forget me </label>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <hr class="col-md-11 hidden-xs hidden-sm"/>
+                                <!-- 复选框 -->
+                                <div class="form-group col-sm-6 col-md-6">
+                                    <div class="col-sm-offset-3 col-sm-9">
+                                        <div class="checkbox checkbox-success">
+                                            <input type="checkbox" id="inlineCheckbox4">
+                                            <label for="inlineCheckbox4">
+                                                Believe me
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!--
+                                 todo 复选框：一行三个
+                                 todo 颜色：绿色
+                                 todo label：最多5个字符（汉字）
+                                 todo div 样式 : radio-success  radio-info radio-danger
+                                 -->
+                                <div class="form-group col-sm-6 col-md-6">
+                                    <label class="col-sm-3 control-label">一行三个:</label>
+                                    <div class=" col-sm-9">
+                                        <div class="checkbox checkbox-success col-sm-4">
+                                            <input type="checkbox" id="check_remember12" checked="checked">
+                                            <label for="check_remember12">文本一二三</label>
+                                        </div>
+                                        <div class="checkbox checkbox-info col-sm-4">
+                                            <input type="checkbox" id="check_Forget12" checked="checked">
+                                            <label for="check_Forget12">Forget me </label>
+                                        </div>
+                                        <div class="checkbox checkbox-primary col-sm-4">
+                                            <input type="checkbox" id="check_Believe12" checked="checked">
+                                            <label for="check_Believe12">Believe me </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <hr class="col-md-11 hidden-xs hidden-sm"/>
+
+                            </div>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="row row-lg">
+            <div id="iBoxTable" class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5> 分页：资源页面 </h5>
+                    <div class="ibox-tools">
+                        <a class="collapse-link">
+                            <i class="fa fa-chevron-up"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="ibox-content">
+                    <div class="row row-lg">
+
+                        <div class="col-md-12">
+                            <!-- Example Pagination -->
+                            <h4 class="example-title"></h4>
+
+                            <div class="example">
+                                <button class="btn btn-primary fa fa-file-excel-o exportExcel"> 一键导出</button>
+                                <button class="btn btn-primary fa fa-user-plus " data-toggle="modal" data-target="#userPlus" id="plusMsg"> 新增</button>
+                                <button class="btn btn-primary fa fa-user-plus " data-toggle="modal" data-target="#demo" id="openDemo"> 模态框数据展示页面 </button>
+
+                                <table id="theBootstraptable" name="/resources/getResourcesAll" class="table bootstrapTable_demo1">
+                                    <thead>
+                                    <th data-field="state" data-checkbox="true"></th>
+                                    <th data-field="cityName" class="text-center" data-sortable="true">城市名称</th>
+                                    <th data-field="actions" class="td-actions text-nowrap text-center text-overflow" data-events="operateEvents" data-formatter="operateFormatter">操作</th>
+                                    <th data-field="cityLevel_mobileNetwork" class="text-center" data-sortable="true">城市级别 - 宽带级别 </th>
+                                    <th data-field="cityLevel_Broadband" class="text-center" data-sortable="true">城市级别 - 移网级别</th>
+                                    <th data-field="cityQuota_mobileNetwork" data-sortable="true">城市配额 - 移网配额</th>
+                                    <th data-field="cityQuota_Broadband" data-sortable="true">城市配额 - 宽带配额 </th>
+                                    <th data-field="cityEnlargeRatio_mobileNetwork" data-sortable="true">城市放大比例 - 移网放大比例  </th>
+                                    <th data-field="cityEnlargeRatio_Broadband" data-sortable="true">城市放大比例 - 宽带放大比例 </th>
+
+                                    </thead>
+                                </table>
+                            </div>
+                        </div>
+                        <!-- End Example Pagination -->
+
+
+                        <!--  modal window start -->
+                        <!-- todo 新增一条数据 start -->
+                        <div class="modal inmodal" id="userPlus" tabindex="-1" role="dialog" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <!-- 此处控制展示样式 -->
+                                <div class="modal-content animated bounceIn">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                                        <h4 class="modal-title"> Roles 新增一条数据 </h4>
+                                        <small class="font-bold">模态窗副标题</small>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form class="form-horizontal" id="userPlus_from">
+
+                                        </form>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-white" data-dismiss="modal">关闭</button>
+                                        <button type="button" class="btn btn-primary" id="userPlus_submit">保存</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- End 新增一条数据 -->
+                        <!-- todo 查一条数据 -->
+                        <div class="modal inmodal" id="getMsg" tabindex="-1" role="dialog" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <!-- 此处控制展示样式 -->
+                                <div class="modal-content animated flipInY">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                                        <h4 class="modal-title"> User - 查看一条数据 </h4>
+                                        <small class="font-bold">模态窗副标题</small>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form class="form-horizontal" id="getMsg_from">
+                                        </form>
+                                        <h3></h3>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-white" data-dismiss="modal">关闭</button>
+                                        <!-- <button type="button" class="btn btn-primary">保存</button>-->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- End 查一条数据 -->
+                        <!-- todo 改一条数据 -->
+                        <div class="modal inmodal" id="setMsg" tabindex="-1" role="dialog" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <!-- 此处控制展示样式 -->
+                                <div class="modal-content animated flipInX">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                                        <h4 class="modal-title"> 修改一条数据 </h4>
+                                        <small class="font-bold">模态窗副标题</small>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form class="form-horizontal"  id="setMsg_from">
+
+                                        </form>
+                                        <h3></h3>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-white" data-dismiss="modal">关闭</button>
+                                        <button type="button" class="btn btn-primary" id="setMsg_submit">保存</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- End 改一条数据 -->
+                        <!-- start Demo 模态框 -->
+                        <div class="modal inmodal" id="demo" tabindex="-1" role="dialog" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <!-- 此处控制展示样式 -->
+                                <div class="modal-content animated flipInY">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                                        <h4 class="modal-title"> Demo 模态框 -- 示例 </h4>
+                                        <small class="font-bold">模态窗副标题</small>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form class="form-horizontal" id="demo_from">
+
+                                            <!-- todo 单选：一行两个 radio样式 ：选中绿色-->
+                                            <div class="form-group">
+
+                                                <label class="col-sm-3 control-label">一行三个</label>
+                                                <div class=" col-sm-9">
+                                                    <div class="radio radio-success col-sm-4">
+                                                        <input type="radio" id="inlineRadio1" value="option1" name="radioInline" checked="">
+                                                        <label for="inlineRadio1"> 选项 01 </label>
+                                                    </div>
+                                                    <div class="radio  radio-info col-sm-4">
+                                                        <input type="radio" id="inlineRadio2" value="option2" name="radioInline">
+                                                        <label for="inlineRadio2"> 选项 02 </label>
+                                                    </div>
+                                                    <div class="radio  radio-success col-sm-4">
+                                                        <input type="radio" id="inlineRadio3" value="option2" name="radioInline">
+                                                        <label for="inlineRadio3"> 选项 02 </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <hr>
+                                            <!--
+                                             todo 单选：一行四个
+                                             todo 颜色：绿色
+                                             todo label：5个字符
+                                             todo div 样式 : radio-success  radio-info radio-danger
+                                             -->
+                                            <div class="form-group">
+
+                                                <label class="col-sm-3 control-label">一行四个:</label>
+                                                <div class=" col-sm-9">
+                                                    <div class="radio radio-success col-sm-3">
+                                                        <input type="radio" id="inlineRadio11" value="option1" name="radioInline">
+                                                        <label for="inlineRadio11"> 选项 01 </label>
+                                                    </div>
+                                                    <div class="radio radio-danger col-sm-3">
+                                                        <input type="radio" id="inlineRadio12" value="option2" name="radioInline" checked="checked">
+                                                        <label for="inlineRadio12"> 吴新荣iuv </label>
+                                                    </div>
+                                                    <div class="radio radio-info col-sm-3">
+                                                        <input type="radio" id="inlineRadio13" value="option2" name="radioInline" >
+                                                        <label for="inlineRadio13"> 选项02发 </label>
+                                                    </div>
+                                                    <div class="radio radio-primary col-sm-3">
+                                                        <input type="radio" id="inlineRadio14" value="option2" name="radioInline">
+                                                        <label for="inlineRadio14"> 选项 02 </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <hr>
+                                            <!--
+                                             todo 单选：一行两个
+                                             todo 颜色：绿色
+                                             todo label：5个字符
+                                             todo div 样式 : radio-success  radio-info radio-danger
+                                             -->
+                                            <div class="form-group">
+                                                <label class="col-sm-3 control-label">一行两个:</label>
+                                                <div class=" col-sm-9">
+                                                    <div class="radio success col-sm-6">
+                                                        <input type="radio" name="radio1" id="radio1" value="option1" checked="">
+                                                        <label for="radio1">
+                                                            文本 01
+                                                        </label>
+                                                    </div>
+                                                    <div class="radio success col-sm-6">
+                                                        <input type="radio" name="radio1" id="radio2" value="option2">
+                                                        <label for="radio2">
+                                                            文本 02
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <hr>
+
+                                            <!-- 复选框 -->
+                                            <div class="form-group">
+                                                <div class="col-sm-offset-3 col-sm-9">
+                                                    <div class="checkbox checkbox-success">
+                                                        <input type="checkbox" id="inlineCheckbox4">
+                                                        <label for="inlineCheckbox4">
+                                                            Believe me
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <hr>
+                                            <!--
+                                             todo 复选框：一行两个
+                                             todo 颜色：绿色
+                                             todo label：5个字符
+                                             todo div 样式 : radio-success  radio-info radio-danger
+                                             -->
+                                            <div class="form-group">
+                                                <label class="col-sm-3 control-label">一行两个:</label>
+                                                <div class=" col-sm-9">
+                                                    <div class="checkbox checkbox-danger col-sm-6">
+                                                        <input type="checkbox" id="check_remember1" checked="checked">
+                                                        <label for="check_remember1"> Remember me </label>
+                                                    </div>
+                                                    <div class="checkbox checkbox-group  col-sm-6">
+                                                        <input type="checkbox" id="check_Forget1" checked="checked">
+                                                        <label for="check_Forget1">Forget me </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <hr>
+                                            <!--
+                                             todo 复选框：一行三个
+                                             todo 颜色：绿色
+                                             todo label：5个字符
+                                             todo div 样式 : radio-success  radio-info radio-danger
+                                             -->
+                                            <div class="form-group">
+                                                <label class="col-sm-3 control-label">一行三个:</label>
+                                                <div class=" col-sm-9">
+                                                    <div class="checkbox checkbox-success col-sm-4">
+                                                        <input type="checkbox" id="check_remember2" checked="checked">
+                                                        <label for="check_remember2"> Remember me </label>
+                                                    </div>
+                                                    <div class="checkbox checkbox-info col-sm-4">
+                                                        <input type="checkbox" id="check_Forget2" checked="checked">
+                                                        <label for="check_Forget2">Forget me </label>
+                                                    </div>
+                                                    <div class="checkbox checkbox-primary col-sm-4">
+                                                        <input type="checkbox" id="check_Believe2" checked="checked">
+                                                        <label for="check_Believe2">Believe me </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <hr>
+
+                                            <div class="form-group">
+                                                <label for="labelId141" class="col-sm-3 control-label">省份： </label>
+                                                <div class="col-sm-9">
+                                                    <select class="form-control" id="labelId141">
+                                                        <option>1</option>
+                                                        <option>2</option>
+                                                        <option>3</option>
+                                                        <option>4</option>
+                                                        <option>5</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <hr>
+
+                                            <!-- 一行一个 -->
+                                            <div class="form-group">
+                                                <label for="labelId142" class="col-sm-3 control-label">地市： </label>
+                                                <div class="col-sm-9">
+                                                    <select class="form-control" id="labelId142">
+                                                        <option>1</option>
+                                                        <option>2</option>
+                                                        <option>3</option>
+                                                        <option>4</option>
+                                                        <option>5</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <hr>
+                                            <!-- todo 一行两个 -->
+                                            <div class="form-group">
+                                                <label for="labelId142" class="col-sm-3 control-label">两个SELECT： </label>
+                                                <div class="col-sm-9">
+                                                    <div class="col-sm-6">
+                                                        <select class="form-control" id="labelId241">
+                                                            <option>1</option>
+                                                            <option>2</option>
+                                                            <option>3</option>
+                                                            <option>4</option>
+                                                            <option>5</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="col-sm-6">
+                                                        <select class="form-control" id="labelId242">
+                                                            <option>1</option>
+                                                            <option>2</option>
+                                                            <option>3</option>
+                                                            <option>4</option>
+                                                            <option>5</option>
+                                                        </select>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <hr>
+
+                                            <div class="form-group">
+                                                <label class="control-label col-sm-3" for="textarea1">文本描述</label>
+                                                <div class="col-sm-9">
+                                                    <textarea name="textarea1" id="textarea1" class="textarea" maxlength="395"></textarea>
+                                                </div>
+                                            </div>
+                                            <hr>
+
+                                            <div class="form-group"><label for="id1" class="col-sm-3 control-label">姓名: </label><div class="col-sm-9"><input type="text" class="form-control" id="id1" placeholder="请输入" maxlength="40"></div></div>
+                                            <hr>
+
+                                            <div class="form-group"><label for="id2" class="col-sm-3 control-label">年龄: </label><div class="col-sm-9"><input type="text" class="form-control" id="id2" placeholder="请输入" maxlength="40"></div></div>
+                                            <hr>
+
+                                        </form>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-white" data-dismiss="modal">关闭</button>
+                                        <button type="button" class="btn btn-primary">保存</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- end Demo 模态框 -->
+
+                        <!-- End modal window -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+</div>
+</div>
+<!-- End Panel Other -->
+<script src="js/jquery.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/content.min.js?v=1.0.0"></script>
+<script src="js/plugins/bootstrap-table/bootstrap-table.min.js"></script>
+<script src="js/plugins/bootstrap-table/bootstrap-table-mobile.min.js"></script>
+<script src="js/plugins/bootstrap-table/locale/bootstrap-table-zh-CN.min.js"></script>
+
+<!-- datepicker - 时间选择插件 -->
+<script src="js/plugins/datapicker/bootstrap-datepicker.js"></script>
+<!-- JsonExportExcel -->
+<script src="js/JsonExportExcel.min.js"></script>
+<!-- sweetalert -->
+<script src="js/plugins/sweetalert/sweetalert.min.js"></script>
+
+<!-- 示例 Js 文件 -->
+<script src="js/baseBootstrapTable.js"></script>
+</body>
+</html>

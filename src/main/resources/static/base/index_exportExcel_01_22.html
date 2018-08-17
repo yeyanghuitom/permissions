@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>bootstrapTable_2018-01-22</title>
+
+    <link rel="shortcut icon" href="favicon.ico">
+    <link href="css/bootstrap.min.css?v=3.3.5" rel="stylesheet">
+    <link href="css/font-awesome.min.css?v=4.4.0" rel="stylesheet">
+    <!-- bootstrap-table.css -->
+    <link href="css/plugins/bootstrap-table/bootstrap-table.min.css" rel="stylesheet">
+    <link href="css/animate.min.css" rel="stylesheet">
+    <link href="css/style.min.css?v=4.0.0" rel="stylesheet">
+</head>
+<body>
+<!-- Panel Other -->
+<div class="container">
+    <div class="ibox-content">
+        <div class="row row-lg">
+
+            <div class="col-sm-12">
+                <!-- Example Pagination -->
+                <div class="example-wrap">
+                    <h4 class="example-title">分页：客户端</h4>
+
+                    <div class="example">
+                        <button class="btn btn-group fa fa-file-excel-o exportExcel">一键导出</button>
+
+                        <table id="theBootstraptable" name="http://127.0.0.1:81/new_2018-01/php/demoReturnSuccess.php" class="table bootstrapTable_demo1">
+                            <thead>
+                                <th data-field="state" data-checkbox="true"></th>
+                                <th data-field="id" class="text-center" data-sortable="true">组织ID</th>
+                                <th data-field="name" data-sortable="true">组织名称</th>
+                                <th data-field="department" data-sortable="true">所属部门</th>
+                                <th data-field="message" data-sortable="true">其他</th>
+                                <!--<th data-field="action">操作</th>-->
+                                <th data-field="actions" class="td-actions text-right" data-events="operateEvents" data-formatter="operateFormatter">Actions</th>
+                            </thead>
+                        </table>
+                    </div>
+                </div>
+                <!-- End Example Pagination -->
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End Panel Other -->
+<script src="js/jquery.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<!--<script src="js/content.min.js?v=1.0.0"></script>-->
+<script src="http://127.0.0.1:81/newjzyx_10_17/js/bootstrap-table.js"></script>
+<!--<script src="js/plugins/bootstrap-table/bootstrap-table-mobile.min.js"></script>-->
+<script src="js/plugins/bootstrap-table/locale/bootstrap-table-zh-CN.min.js"></script>
+
+<script src="http://127.0.0.1:81/tableExport/tableExport.js"></script>
+<script src="http://127.0.0.1:81/tableExport/jquery.base64.js"></script>
+<!-- JsonExportExcel -->
+<script src="js/JsonExportExcel.min.js"></script>
+<script src="js/receiveBootstrapTable.js"></script>
+
+
+<script>
+    //var $table = $('#exampleTablePagination');
+    function operateFormatter(value, row, index) {
+        return [
+            '<a rel="tooltip" title="View" class="btn btn-simple btn-info btn-icon table-action view" href="javascript:void(0)">',
+            '<i class="fa fa-image"></i>',
+            '</a>',
+            '<a rel="tooltip" title="Edit" class="btn btn-simple btn-warning btn-icon table-action edit" href="javascript:void(0)">',
+            '<i class="fa fa-edit"></i>',
+            '</a>',
+            '<a rel="tooltip" title="Remove" class="btn btn-simple btn-danger btn-icon table-action remove" href="javascript:void(0)">',
+            '<i class="fa fa-remove"></i>',
+            '</a>'
+        ].join('');
+    }
+
+
+
+    $().ready(function(){
+        window.operateEvents = {
+            'click .view': function (e, value, row, index) {
+                info = JSON.stringify(row);
+
+                swal('You click view icon, row: ', info);
+                console.log(info);
+            },
+            'click .edit': function (e, value, row, index) {
+                info = JSON.stringify(row);
+
+                swal('You click edit icon, row: ', info);
+                console.log(info);
+            },
+            'click .remove': function (e, value, row, index) {
+                console.log(row);
+                $table.bootstrapTable('remove', {
+                    field: 'id',
+                    values: [row.id]
+                });
+            }
+        };
+
+
+        bootTable( {id:'theBootstraptable',list:'',url:'',thead:{"id":"组织ID","name":"组织名称","department":"所属部门","message":"其他"}} );
+        //activate the tooltips after the data table is initialized
+        $('[rel="tooltip"]').tooltip();
+
+        /**/
+
+
+    });
+
+
+
+    //清屏方法：
+    //$table.bootstrapTable('removeAll')
+    // 替换列表
+    /*******
+     * $table.bootstrapTable('load', [
+     {
+     id: 1,
+     name: 'Item 1',
+     price: '$1'
+     },{
+                     id: 2,
+                     name: 'Item 2',
+                     price: '$2'
+                     },{
+                     id: 3,
+                     name: 'Item 3',
+                     price: '$3'
+                     },{
+                     id: 4,
+                     name: 'Item 4',
+                     price: '$4'
+                     }, {
+                     id: 5,
+                     name: 'Item 5',
+                     price: '$5'
+                     }]);
+     */
+    //
+    /**************
+     *   增加一个或多个数据
+     * $table.bootstrapTable('prepend',[{
+                        id:9,
+                        index: 'cache1',
+                        name: 'Item 1',
+                        price: '$1',
+                        actions : ''
+                    },{
+                        id:10,
+                        index: 'cache1',
+                        name: 'Item 1',
+                        price: '$1',
+                        actions : ''
+                    }]);
+     *
+     * *************/
+
+    // 删
+    //$table.bootstrapTable('remove', {field: 'index', values: ["cache3",'cache2']});
+    // 改
+    // 先删，后增
+    /********
+     * function updata(){
+         *      $table.bootstrapTable('remove', {field: 'index', values: ["cache3",'cache2']});
+         *      $table.bootstrapTable('prepend',[object,object])
+         * }
+     *
+     * ******/
+    /*****
+     * 获取项目数据
+     * $table.bootstrapTable('getOptions').data
+     *
+     *
+     * ***/
+    //获得（所有）所选行
+    // $table.bootstrapTable('getAllSelections');
+    // 返回值   '[{"id":2,"index":"cache2","name":"Item 2","price":"$2","actions":"","state":true},{"id":3,"index":"cache3","name":"Item 3","price":"$3","actions":"","state":true}]'
+
+</script>
+<script>
+
+/*    function exportExcel(list){
+        var option={};
+
+        option.fileName = 'exce3';
+        option.datas=[
+            {
+                sheetFilter:['a1','a2'],
+                sheetData:[{a1:'一行一列',a2:'一行二列'},{a1:'二行一列',a2:'二行二列'}],
+                sheetName:'sheet',
+                sheetHeader:['第一列','第二列']
+            },
+            {
+                sheetData:[{a1:'一行一列',a2:'一行二列'},{a1:'二行一列',a2:'二行二列'}]
+            }
+        ];
+        var toExcel=new ExportJsonExcel(option);
+        toExcel.saveExcel();
+    }*/
+</script>
+</body>
+</html>

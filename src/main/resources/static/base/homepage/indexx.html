@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<link rel="stylesheet" href="static/css/bootstrap.min.css">
+<link rel="stylesheet" href="static/css/indexx.css">
+
+<body>
+    <div class="con clearfix">
+        <div class="top">
+            <img src="static/img/top.png" alt="">
+        </div>
+        <div class="enter1">
+            <i class="glyphicon glyphicon-circle-arrow-right"></i>
+            <span>返回首页</span>
+        </div>
+        <div class="toptitle">
+            2018年一季度
+        </div>
+        <div class="img">
+            <img src="static/img/wangluo.png" alt="" class="img1">
+            <img src="static/img/yewu.png" alt="" class="img2">
+            <img src="static/img/fuwu.png" alt="" class="img3">
+        </div>
+        <div id="con1" class="con">
+            <div id="chart1" style="width:700px;height:300px"></div>
+            <div class="tablemx">
+                <div>
+                    <table class="footable foottable_tab">
+                        <tr class="th">
+                            <th width="10%" align="canter">序号</th>
+                            <th width="60%" align="canter">指标</th>
+                            <th width="10%" align="canter">同比</th>
+                            <th width="10%" align="canter">环比</th>
+                            <th width="10%" align="canter">提及率</th>
+                        </tr>
+                    </table>
+                </div>
+                <div style="width:100%;">
+                    <table id="Template_listZ" class="footable foottable_tab">
+                        <tbody id="tplWrapper_TemplateZ">
+                            <tr>
+                                <td width="10%" align="canter"></td>
+                                <td width="60%" align="canter">语音</td>
+                                <td width="10%" align="canter"></td>
+                                <td width="10%" align="canter"></td>
+                                <td width="10%" align="canter"></td>
+                            </tr>
+                            <tr>
+                                <td width="10%" align="canter"></td>
+                                <td width="60%" align="canter">上网</td>
+                                <td width="10%" align="canter"></td>
+                                <td width="10%" align="canter"></td>
+                                <td width="10%" align="canter"></td>
+                            </tr>
+                            <tr>
+                                <td width="10%" align="canter"></td>
+                                <td width="60%" align="canter">语音信号覆盖</td>
+                                <td width="10%" align="canter"></td>
+                                <td width="10%" align="canter"></td>
+                                <td width="10%" align="canter"></td>
+                            </tr>
+                            <tr>
+                                <td width="10%" align="canter"></td>
+                                <td width="60%" align="canter">语音信号稳定性</td>
+                                <td width="10%" align="canter"></td>
+                                <td width="10%" align="canter"></td>
+                                <td width="10%" align="canter"></td>
+                            </tr>
+                            <tr>
+                                <td width="10%" align="canter"></td>
+                                <td width="60%" align="canter">上网信号覆盖</td>
+                                <td width="10%" align="canter"></td>
+                                <td width="10%" align="canter"></td>
+                                <td width="10%" align="canter"></td>
+                            </tr>
+                            <tr>
+                                <td width="10%" align="canter"></td>
+                                <td width="60%" align="canter">上网信号稳定性</td>
+                                <td width="10%" align="canter"></td>
+                                <td width="10%" align="canter"></td>
+                                <td width="10%" align="canter"></td>
+                            </tr>
+                            <tr>
+                                <td width="10%" align="canter"></td>
+                                <td width="60%" align="canter">4G上网信号</td>
+                                <td width="10%" align="canter"></td>
+                                <td width="10%" align="canter"></td>
+                                <td width="10%" align="canter"></td>
+                            </tr>
+                            <tr>
+                                <td width="10%" align="canter"></td>
+                                <td width="60%" align="canter">上网速度</td>
+                                <td width="10%" align="canter"></td>
+                                <td width="10%" align="canter"></td>
+                                <td width="10%" align="canter"></td>
+                            </tr>
+                            <tr>
+                                <td width="10%" align="canter"></td>
+                                <td width="60%" align="canter">室内信号</td>
+                                <td width="10%" align="canter"></td>
+                                <td width="10%" align="canter"></td>
+                                <td width="10%" align="canter"></td>
+                            </tr>
+                            <tr>
+                                <td width="10%" align="canter"></td>
+                                <td width="60%" align="canter">室外信号</td>
+                                <td width="10%" align="canter"></td>
+                                <td width="10%" align="canter"></td>
+                                <td width="10%" align="canter"></td>
+                            </tr>
+                            <tr>
+                                <td width="10%" align="canter"></td>
+                                <td width="60%" align="canter">室内语音信号</td>
+                                <td width="10%" align="canter"></td>
+                                <td width="10%" align="canter"></td>
+                                <td width="10%" align="canter"></td>
+                            </tr>
+                            <tr>
+                                <td width="10%" align="canter"></td>
+                                <td width="60%" align="canter">室外语音信号</td>
+                                <td width="10%" align="canter"></td>
+                                <td width="10%" align="canter"></td>
+                                <td width="10%" align="canter"></td>
+                            </tr>
+                            <tr>
+                                <td width="10%" align="canter"></td>
+                                <td width="60%" align="canter">室内上网信号</td>
+                                <td width="10%" align="canter"></td>
+                                <td width="10%" align="canter"></td>
+                                <td width="10%" align="canter"></td>
+                            </tr>
+                            <tr>
+                                <td width="10%" align="canter"></td>
+                                <td width="60%" align="canter">室外上网信号</td>
+                                <td width="10%" align="canter"></td>
+                                <td width="10%" align="canter"></td>
+                                <td width="10%" align="canter"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+
+        </div>
+        <div id="con2" class="con">
+            <div id="chart3" style="width:700px;height:300px"></div>
+            <div class="tablemx">
+                <div>
+                    <table class="footable foottable_tab">
+                        <tr class="th">
+                            <th width="10%" align="canter">序号</th>
+                            <th width="60%" align="canter">指标</th>
+                            <th width="10%" align="canter">同比</th>
+                            <th width="10%" align="canter">环比</th>
+                            <th width="10%" align="canter">提及率</th>
+                        </tr>
+                    </table>
+                </div>
+                <div style="width:100%;">
+                    <table id="Template_listZ" class="footable foottable_tab">
+                        <tbody id="tplWrapper_TemplateZ">
+                            <tr>
+                                <td width="10%" align="canter"></td>
+                                <td width="60%" align="canter">计费准确</td>
+                                <td width="10%" align="canter"></td>
+                                <td width="10%" align="canter"></td>
+                                <td width="10%" align="canter"></td>
+                            </tr>
+                            <tr>
+                                <td width="10%" align="canter"></td>
+                                <td width="60%" align="canter">不知情定制/乱收费/乱扣费方面</td>
+                                <td width="10%" align="canter"></td>
+                                <td width="10%" align="canter"></td>
+                                <td width="10%" align="canter"></td>
+                            </tr>
+                            <tr>
+                                <td width="10%" align="canter"></td>
+                                <td width="60%" align="canter">价格水平</td>
+                                <td width="10%" align="canter"></td>
+                                <td width="10%" align="canter"></td>
+                                <td width="10%" align="canter"></td>
+                            </tr>
+                            <tr>
+                                <td width="10%" align="canter"></td>
+                                <td width="60%" align="canter">套餐设计</td>
+                                <td width="10%" align="canter"></td>
+                                <td width="10%" align="canter"></td>
+                                <td width="10%" align="canter"></td>
+                            </tr>
+                            <tr>
+                                <td width="10%" align="canter"></td>
+                                <td width="60%" align="canter">流量包</td>
+                                <td width="10%" align="canter"></td>
+                                <td width="10%" align="canter"></td>
+                                <td width="10%" align="canter"></td>
+                            </tr>
+                            <tr>
+                                <td width="10%" align="canter"></td>
+                                <td width="60%" align="canter">定向流量包</td>
+                                <td width="10%" align="canter"></td>
+                                <td width="10%" align="canter"></td>
+                                <td width="10%" align="canter"></td>
+                            </tr>
+                            <tr>
+                                <td width="10%" align="canter"></td>
+                                <td width="60%" align="canter">终端</td>
+                                <td width="10%" align="canter"></td>
+                                <td width="10%" align="canter"></td>
+                                <td width="10%" align="canter"></td>
+                            </tr>
+                            <tr>
+                                <td width="10%" align="canter"></td>
+                                <td width="60%" align="canter">促销活动和宣传</td>
+                                <td width="10%" align="canter"></td>
+                                <td width="10%" align="canter"></td>
+                                <td width="10%" align="canter"></td>
+                            </tr>
+                            <tr>
+                                <td width="10%" align="canter"></td>
+                                <td width="60%" align="canter">促销活动</td>
+                                <td width="10%" align="canter"></td>
+                                <td width="10%" align="canter"></td>
+                                <td width="10%" align="canter"></td>
+                            </tr>
+                            <tr>
+                                <td width="10%" align="canter"></td>
+                                <td width="60%" align="canter">宣传</td>
+                                <td width="10%" align="canter"></td>
+                                <td width="10%" align="canter"></td>
+                                <td width="10%" align="canter"></td>
+                            </tr>
+                            <tr>
+                                <td width="10%" align="canter"></td>
+                                <td width="60%" align="canter">与互联网公司合作的产品</td>
+                                <td width="10%" align="canter"></td>
+                                <td width="10%" align="canter"></td>
+                                <td width="10%" align="canter"></td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+        <div id="con3" class="con">
+            <div id="chart5" style="width:700px;height:300px"></div>
+            <div class="tablemx">
+                <div>
+                    <table class="footable foottable_tab">
+                        <tr class="th">
+                            <th width="10%" align="canter">序号</th>
+                            <th width="60%" align="canter">指标</th>
+                            <th width="10%" align="canter">同比</th>
+                            <th width="10%" align="canter">环比</th>
+                            <th width="10%" align="canter">提及率</th>
+                        </tr>
+                    </table>
+                </div>
+                <div style="width:100%;">
+                    <table id="Template_listZ" class="footable foottable_tab">
+                        <tbody id="tplWrapper_TemplateZ">
+                            <tr>
+                                <td width="10%" align="canter"></td>
+                                <td width="60%" align="canter">营业厅整体服务</td>
+                                <td width="10%" align="canter"></td>
+                                <td width="10%" align="canter"></td>
+                                <td width="10%" align="canter"></td>
+                            </tr>
+                            <tr>
+                                <td width="10%" align="canter"></td>
+                                <td width="60%" align="canter">电子渠道整体服务</td>
+                                <td width="10%" align="canter"></td>
+                                <td width="10%" align="canter"></td>
+                                <td width="10%" align="canter"></td>
+                            </tr>
+                            <tr>
+                                <td width="10%" align="canter"></td>
+                                <td width="60%" align="canter">营业厅整体服务</td>
+                                <td width="10%" align="canter"></td>
+                                <td width="10%" align="canter"></td>
+                                <td width="10%" align="canter"></td>
+                            </tr>
+                            <tr>
+                                <td width="10%" align="canter"></td>
+                                <td width="60%" align="canter">——营业厅服务人员态度和技能</td>
+                                <td width="10%" align="canter"></td>
+                                <td width="10%" align="canter"></td>
+                                <td width="10%" align="canter"></td>
+                            </tr>
+                            <tr>
+                                <td width="10%" align="canter"></td>
+                                <td width="60%" align="canter">——营业厅业务办理方便快捷</td>
+                                <td width="10%" align="canter"></td>
+                                <td width="10%" align="canter"></td>
+                                <td width="10%" align="canter"></td>
+                            </tr>
+                            <tr>
+                                <td width="10%" align="canter"></td>
+                                <td width="60%" align="canter">——营业厅现场运营服务</td>
+                                <td width="10%" align="canter"></td>
+                                <td width="10%" align="canter"></td>
+                                <td width="10%" align="canter"></td>
+                            </tr>
+                            <tr>
+                                <td width="10%" align="canter"></td>
+                                <td width="60%" align="canter">电子渠道整体服务（在线客服仅2I）</td>
+                                <td width="10%" align="canter"></td>
+                                <td width="10%" align="canter"></td>
+                                <td width="10%" align="canter"></td>
+                            </tr>
+                            <tr>
+                                <td width="10%" align="canter"></td>
+                                <td width="60%" align="canter">电子渠道整体服务</td>
+                                <td width="10%" align="canter"></td>
+                                <td width="10%" align="canter"></td>
+                                <td width="10%" align="canter"></td>
+                            </tr>
+                            <tr>
+                                <td width="10%" align="canter"></td>
+                                <td width="60%" align="canter">——电子渠道在线服务人员态度和技能（全客户）</td>
+                                <td width="10%" align="canter"></td>
+                                <td width="10%" align="canter"></td>
+                                <td width="10%" align="canter"></td>
+                            </tr>
+                            <tr>
+                                <td width="10%" align="canter"></td>
+                                <td width="60%" align="canter">——电子渠道在线服务人员态度和技能（仅2I）</td>
+                                <td width="10%" align="canter"></td>
+                                <td width="10%" align="canter"></td>
+                                <td width="10%" align="canter"></td>
+                            </tr>
+                            <tr>
+                                <td width="10%" align="canter"></td>
+                                <td width="60%" align="canter">——电子渠道业务办理方便快捷</td>
+                                <td width="10%" align="canter"></td>
+                                <td width="10%" align="canter"></td>
+                                <td width="10%" align="canter"></td>
+                            </tr>
+                            <tr>
+                                <td width="10%" align="canter"></td>
+                                <td width="60%" align="canter">——电子渠道界面设计、业务告知</td>
+                                <td width="10%" align="canter"></td>
+                                <td width="10%" align="canter"></td>
+                                <td width="10%" align="canter"></td>
+                            </tr>
+                            <tr>
+                                <td width="10%" align="canter"></td>
+                                <td width="60%" align="canter">热线整体服务</td>
+                                <td width="10%" align="canter"></td>
+                                <td width="10%" align="canter"></td>
+                                <td width="10%" align="canter"></td>
+                            </tr>
+                            <tr>
+                                <td width="10%" align="canter"></td>
+                                <td width="60%" align="canter">——热线服务人员态度和技能</td>
+                                <td width="10%" align="canter"></td>
+                                <td width="10%" align="canter"></td>
+                                <td width="10%" align="canter"></td>
+                            </tr>
+                            <tr>
+                                <td width="10%" align="canter"></td>
+                                <td width="60%" align="canter">——10010热线业务办理方便快捷</td>
+                                <td width="10%" align="canter"></td>
+                                <td width="10%" align="canter"></td>
+                                <td width="10%" align="canter"></td>
+                            </tr>
+                            <tr>
+                                <td width="10%" align="canter"></td>
+                                <td width="60%" align="canter">——10010热线运营服务</td>
+                                <td width="10%" align="canter"></td>
+                                <td width="10%" align="canter"></td>
+                                <td width="10%" align="canter"></td>
+                            </tr>
+                            <tr>
+                                <td width="10%" align="canter"></td>
+                                <td width="60%" align="canter">服务人员态度、技能</td>
+                                <td width="10%" align="canter"></td>
+                                <td width="10%" align="canter"></td>
+                                <td width="10%" align="canter"></td>
+                            </tr>
+                            <tr>
+                                <td width="10%" align="canter"></td>
+                                <td width="60%" align="canter">营业厅体验</td>
+                                <td width="10%" align="canter"></td>
+                                <td width="10%" align="canter"></td>
+                                <td width="10%" align="canter"></td>
+                            </tr>
+                            <tr>
+                                <td width="10%" align="canter"></td>
+                                <td width="60%" align="canter">电子渠道体验</td>
+                                <td width="10%" align="canter"></td>
+                                <td width="10%" align="canter"></td>
+                                <td width="10%" align="canter"></td>
+                            </tr>
+                            <tr>
+                                <td width="10%" align="canter"></td>
+                                <td width="60%" align="canter">热线体验服务</td>
+                                <td width="10%" align="canter"></td>
+                                <td width="10%" align="canter"></td>
+                                <td width="10%" align="canter"></td>
+                            </tr>
+                            <tr>
+                                <td width="10%" align="canter"></td>
+                                <td width="60%" align="canter">账详单、发票方便获取，收费明晰</td>
+                                <td width="10%" align="canter"></td>
+                                <td width="10%" align="canter"></td>
+                                <td width="10%" align="canter"></td>
+                            </tr>
+                            <tr>
+                                <td width="10%" align="canter"></td>
+                                <td width="60%" align="canter">账详单、发票方便获取，收费明晰（含渠道查询）</td>
+                                <td width="10%" align="canter"></td>
+                                <td width="10%" align="canter"></td>
+                                <td width="10%" align="canter"></td>
+                            </tr>
+                            <tr>
+                                <td width="10%" align="canter"></td>
+                                <td width="60%" align="canter">——账详单、发票获取便捷</td>
+                                <td width="10%" align="canter"></td>
+                                <td width="10%" align="canter"></td>
+                                <td width="10%" align="canter"></td>
+                            </tr>
+                            <tr>
+                                <td width="10%" align="canter"></td>
+                                <td width="60%" align="canter">——账详单、发票清晰明了能看懂</td>
+                                <td width="10%" align="canter"></td>
+                                <td width="10%" align="canter"></td>
+                                <td width="10%" align="canter"></td>
+                            </tr>
+                            <tr>
+                                <td width="10%" align="canter"></td>
+                                <td width="60%" align="canter">——各渠道查询结果一致</td>
+                                <td width="10%" align="canter"></td>
+                                <td width="10%" align="canter"></td>
+                                <td width="10%" align="canter"></td>
+                            </tr>
+                            <tr>
+                                <td width="10%" align="canter"></td>
+                                <td width="60%" align="canter">信息安全</td>
+                                <td width="10%" align="canter"></td>
+                                <td width="10%" align="canter"></td>
+                                <td width="10%" align="canter"></td>
+                            </tr>
+                            <tr>
+                                <td width="10%" align="canter"></td>
+                                <td width="60%" align="canter">充值缴费方便快捷</td>
+                                <td width="10%" align="canter"></td>
+                                <td width="10%" align="canter"></td>
+                                <td width="10%" align="canter"></td>
+                            </tr>
+                            <tr>
+                                <td width="10%" align="canter"></td>
+                                <td width="60%" align="canter">业务办理方便快捷</td>
+                                <td width="10%" align="canter"></td>
+                                <td width="10%" align="canter"></td>
+                                <td width="10%" align="canter"></td>
+                            </tr>
+                            <tr>
+                                <td width="10%" align="canter"></td>
+                                <td width="60%" align="canter">业务办理方便快捷（三渠道含业务规则）</td>
+                                <td width="10%" align="canter"></td>
+                                <td width="10%" align="canter"></td>
+                                <td width="10%" align="canter"></td>
+                            </tr>
+                            <tr>
+                                <td width="10%" align="canter"></td>
+                                <td width="60%" align="canter">——业务规则设计合理</td>
+                                <td width="10%" align="canter"></td>
+                                <td width="10%" align="canter"></td>
+                                <td width="10%" align="canter"></td>
+                            </tr>
+                            <tr>
+                                <td width="10%" align="canter"></td>
+                                <td width="60%" align="canter">业务办理成功率</td>
+                                <td width="10%" align="canter"></td>
+                                <td width="10%" align="canter"></td>
+                                <td width="10%" align="canter"></td>
+                            </tr>
+                            <tr>
+                                <td width="10%" align="canter"></td>
+                                <td width="60%" align="canter">提醒服务</td>
+                                <td width="10%" align="canter"></td>
+                                <td width="10%" align="canter"></td>
+                                <td width="10%" align="canter"></td>
+                            </tr>
+                            <tr>
+                                <td width="10%" align="canter"></td>
+                                <td width="60%" align="canter">投诉解决</td>
+                                <td width="10%" align="canter"></td>
+                                <td width="10%" align="canter"></td>
+                                <td width="10%" align="canter"></td>
+                            </tr>
+                            <tr>
+                                <td width="10%" align="canter"></td>
+                                <td width="60%" align="canter">支持第三方充值缴费或第三方充值缴费使用非常方便</td>
+                                <td width="10%" align="canter"></td>
+                                <td width="10%" align="canter"></td>
+                                <td width="10%" align="canter"></td>
+                            </tr>
+                            <tr>
+                                <td width="10%" align="canter"></td>
+                                <td width="60%" align="canter">沃钱包方便快捷、优惠活动多</td>
+                                <td width="10%" align="canter"></td>
+                                <td width="10%" align="canter"></td>
+                                <td width="10%" align="canter"></td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+    <script src="static/js/jquery-1.9.1.min.js"></script>
+    <script src="static/js/bootstrap.min.js"></script>
+    <script src="static/js/echarts.min.js"></script>
+    <script src="static/js/indexx.js"></script>
+</body>
+
+</html>

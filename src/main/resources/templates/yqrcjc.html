@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="cache-control" content="no-cache,no-store, must-revalidate"/>
+    <meta http-equiv="pragma" content="no-cache"/>
+    <meta http-equiv="Expires" content="0"/>
+    <title>舆情日常监测</title>
+    <link rel="stylesheet" href="lib/bootstrap-3.3.7-dist/css/bootstrap.css">
+    <link rel="stylesheet" href="lib/bootstrap-3.3.7-dist/table/bootstrap-table.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link href="lib/bootstrap-3.3.7-dist/time/bootstrap-datetimepicker.min.css" rel="stylesheet" media="screen">
+    <link href="css/htmlCss/yqrcjc.css" rel="stylesheet" media="screen">
+    <link href="css/styleTable.css" rel="stylesheet" media="screen">
+    <!--zTree-->
+    <link rel="stylesheet" href="lib/ztree/zTreeStyle/zTreeStyle.css">
+    <!--[if lt IE 9]>
+    <script src="lib/bootstrap-3.3.7-dist/js/html5shiv.min.js"></script>
+    <script src="lib/bootstrap-3.3.7-dist/js/respond.min.js"></script>
+    <![endif]-->
+    <!--[if IE 6]>
+    <script type="text/javascript" src="lib/bootstrap-3.3.7-dist/js/DD_belatedPNG_0.0.8a-min.js"></script>
+    <script>DD_belatedPNG.fix('*');</script>
+    <![endif]-->
+    <style type="">
+        .ztree * {
+            font-size: 10pt;
+            font-family: "Microsoft Yahei", Verdana, Simsun, "Segoe UI Web Light", "Segoe UI Light", "Segoe UI Web Regular", "Segoe UI", "Segoe UI Symbol", "Helvetica Neue", Arial
+        }
+
+        .ztree li ul {
+            margin: 0;
+            padding: 0
+        }
+
+        .ztree li {
+            line-height: 30px;
+        }
+
+        .ztree li a {
+            width: 100%;
+            height: 30px;
+            padding-top: 0px;
+        }
+
+        .ztree li a:hover {
+            text-decoration: none;
+            background-color: #E7E7E7;
+        }
+
+        .ztree li a span.button.switch {
+            visibility: hidden
+        }
+
+        .ztree.showIcon li a span.button.switch {
+            visibility: visible
+        }
+
+        .ztree li a.curSelectedNode {
+            background-color: #dddddd;
+            border: 0;
+            height: 30px;
+        }
+
+        .ztree li span {
+            line-height: 30px;
+        }
+
+        .ztree li span.button {
+            margin-top: -7px;
+        }
+
+        .ztree li span.button.switch {
+            width: 16px;
+            height: 16px;
+        }
+
+        .ztree li a.level0 span {
+            font-size: 110%;
+            font-weight: bold;
+        }
+
+        .ztree li span.button {
+            background-image: url("lib/ztree/zTreeStyle/img/left_menuForOutLook.png");
+            background-image: url("lib/ztree/zTreeStyle/img/left_menuForOutLook.gif")
+        }
+
+        .ztree li span.button.switch.level0 {
+            width: 20px;
+            height: 20px
+        }
+
+        .ztree li span.button.switch.level1 {
+            width: 20px;
+            height: 20px
+        }
+
+        .ztree li span.button.noline_open {
+            background-position: 0 0;
+        }
+
+        .ztree li span.button.noline_close {
+            background-position: -18px 0;
+        }
+
+        .ztree li span.button.noline_open.level0 {
+            background-position: 0 -18px;
+        }
+
+        .ztree li span.button.noline_close.level0 {
+            background-position: -18px -18px;
+        }
+
+        #treeDemo .remove {
+            margin: 7px 0 0 0;
+            float: right;
+            background-image: url(lib/ztree/zTreeStyle/img/zTreeStandard.png);
+        }
+    </style>
+</head>
+<body>
+<div class="header">
+    <div class="header-content" id="header-content">
+
+    </div>
+</div>
+<div class="nav">
+    <div class="nav-content">
+        <ul class="nav-ul" id="navUrl">
+
+        </ul>
+    </div>
+</div>
+<div class="navResult">
+    <div class="navResult-content">
+        <div class="navResult-left">
+            <button type="button" class="btn btn-danger redBtn" data-toggle="modal" data-target="#tjfaModal"
+                    style="width: 100%">添加方案
+            </button>
+            <button type="button" class="btn btn-danger redBtn" data-toggle="modal" data-target="#flModal"
+                    style="width: 100%;margin-top: 10px">添加分类
+            </button>
+            <div class="form-group">
+                <div class="input-group" style="margin-top: 10px">
+                    <input type="text" id="ssjcfa" class="form-control" placeholder="搜索检测方案">
+                    <span class="input-group-btn">
+        <button class="btn btn-default" onclick="ssjcfa_btn()" type="button"><span class="glyphicon glyphicon-search"
+                                                                                   aria-hidden="true"></span></button>
+      </span>
+                </div>
+            </div>
+            <div>
+                <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                    <div class="panel panel-default">
+                        <div class="panel-heading" role="tab" id="headingOne"
+                             style="background-color: #f13d3c;color: #ffffff;border-color: #f13d3c">
+                            <h4 class="panel-title">
+                                <a id="fa_btn"><span class="glyphicon glyphicon-triangle-bottom"
+                                                     aria-hidden="true"></span></a>
+                                <span>  方案</span>
+                            </h4>
+                        </div>
+                        <div id="fa_content" class="panel-collapse collapse in" role="tabpanel"
+                             aria-labelledby="headingOne" style="height: 190px;overflow: auto">
+                            <ul id="treeDemo" class="ztree"></ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="navResult-right">
+            <ul class="navResult-right-nav">
+                <li class="menucur">信息监测</li>
+                <li>统计图表</li>
+                <li>修改方案</li>
+            </ul>
+
+            <div class="right-nav-content">
+                <div style="background-color: #ffffff;padding: 20px 40px">
+                    <table id="xxjc-query">
+                        <tr>
+                            <td>时间范围</td>
+                            <td id="sjfw"><span class="sjfw">今天</span><span class="sjfw">2天</span><span
+                                    class="sjfw">7天</span>
+                                <span class="sjfw">自定义</span>
+                                <div id="zdysj">
+                                    <div id="datetimeStart" style="width: 220px;float: left"
+                                         class="input-group date form_datetime col-md-5"
+                                         data-link-field="dtp_input1">
+                                        <input class="form-control" size="16" type="text" value="" readonly
+                                               placeholder="开始时间">
+                                        <span class="input-group-addon"><span
+                                                class="glyphicon glyphicon-th"></span></span>
+                                    </div>
+                                    <span class="timeSpan" style="float: left">—</span>
+                                    <div id="datetimeEnd" style="width: 220px;float: left"
+                                         class="input-group date form_datetime col-md-5"
+                                         data-link-field="dtp_input1">
+                                        <input class="form-control" size="16" type="text" value="" readonly
+                                               placeholder="结束时间">
+                                        <span class="input-group-addon"><span
+                                                class="glyphicon glyphicon-th"></span></span>
+                                    </div>
+                                </div>
+
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>声调属性</td>
+                            <td id="sdsx">
+                                <span><label><input type="checkbox" value="全选"> 全选(<i
+                                        class="xs_item"></i>)</label></span>
+                                <span><label><input type="checkbox" value="正向"> 正向(<i
+                                        class="xs_item"></i>)</label></span>
+                                <span><label><input type="checkbox" value="中向"> 中向(<i
+                                        class="xs_item"></i>)</label></span>
+                                <span><label><input type="checkbox" value="负向"> 负向(<i
+                                        class="xs_item"></i>)</label></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>来源渠道</td>
+                            <td id="lyqd">
+                                <span><label><input type="checkbox" value="全选"> 全选(<i
+                                        class="xs_item"></i>)</label></span>
+                                <span><label><input type="checkbox" value="微博"> 微博(<i
+                                        class="xs_item"></i>)</label></span>
+                                <span><label><input type="checkbox" value="微信"> 微信(<i
+                                        class="xs_item"></i>)</label></span>
+                                <span><label><input type="checkbox" value="新闻"> 新闻(<i
+                                        class="xs_item"></i>)</label></span>
+                                <span><label><input type="checkbox" value="博客"> 博客(<i
+                                        class="xs_item"></i>)</label></span>
+                                <span><label><input type="checkbox" value="论坛"> 论坛(<i
+                                        class="xs_item"></i>)</label></span>
+                                <span><label><input type="checkbox" value="纸媒"> 纸媒(<i
+                                        class="xs_item"></i>)</label></span>
+                                <span><label><input type="checkbox" value="APP"> APP(<i class="xs_item">11</i>)</label></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td align="right">
+                                <button type="button" onclick="cxxxjc_btn()" class="btn btn-danger redBtn btn-sm">查询</button>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div style="background-color: #ffffff;padding: 0px 40px">
+                    <table id="table"></table>
+                </div>
+            </div>
+            <div id="tjtb" class="right-nav-content hideMes" style="padding: 20px 40px;background-color: #ffffff">
+                <div id="yqqdqs" style="min-width:600px;height: 400px;"></div>
+                <div id="txfxzs" style="min-width:600px;height: 400px;margin-top: 30px"></div>
+                <div id="zdmtlyzb" style="min-width:600px;height: 400px;margin-top: 30px"></div>
+                <div style="width: 100%;height: 400px;margin-top: 30px">
+                    <div id="lylx" style="min-width:300px;height: 400px;width: 50%;float: left"></div>
+                    <div id="txfx" style="min-width:300px;height: 400px;width: 50%;float: left"></div>
+                </div>
+                <div style="width: 100%;height: 500px;margin-top: 30px">
+                    <table class="tdConTable" style="width: 100%">
+                        <tr>
+                            <td style="width: 75%;">
+                                <div id="dyfx" style="min-width:400px;height: 496px"></div>
+                            </td>
+                            <td id="dyfx_sj" style="width: 25%;">
+                                <table style="width: 90%;margin-left: 10%">
+                                    <tr>
+                                        <th colspan="2">top10省分</th>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div class="right-nav-content hideMes" style="padding: 20px 40px;background-color: #ffffff">
+                <p>修改监测方案——联通冰激凌</p>
+                <form id="xgForm" class="form-horizontal" style="margin-top: 30px">
+                    <table class="jcfaTable" style="width: 100%">
+                        <tr>
+                            <td style="width: 16%">监测方案名称</td>
+                            <td style="width: 72%">
+                                <input type="text" class="form-control" id="fa_nameU" name="fa_nameU">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>所属监测方案分类</td>
+                            <td>
+                                <select name="fl_nameU" id="fl_nameU" class="form-control">
+                                    <option value="1">联通</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>方案关键词</td>
+                            <td>
+                                <textarea class="form-control" rows="4" id="fa_antistopU"
+                                          name="fa_antistopU"></textarea>
+                            </td>
+                            <td colspan="3">
+                                <button id="tjcy2_btn" type="button" class="btn btn-default btn-sm">推荐词语</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>排除关键词</td>
+                            <td>
+                                <textarea class="form-control" rows="5" id="pc_antistopU"
+                                          name="pc_antistopU"></textarea>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2" align="right">
+                                <button type="submit" class="btn btn-danger redBtn btn-sm">修 改</button>
+                            </td>
+                        </tr>
+                    </table>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--添加方案弹出层-->
+<div class="modal fade bs-example-modal-lg" id="tjfaModal" tabindex="-1" role="dialog"
+     aria-labelledby="myLargeModalLabel">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title" id="exampleModalLabel">监测方案创建</h4>
+            </div>
+            <form id="jcfacjForm" class="form-horizontal">
+                <div class="modal-body">
+                    <table class="jcfaTable" style="width: 100%">
+                        <tr>
+                            <td style="width: 16%">监测方案名称</td>
+                            <td style="width: 72%">
+                                <input type="text" class="form-control" id="fa_name" name="fa_name">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>所属监测方案分类</td>
+                            <td>
+                                <select name="fl_name" id="fl_name" class="form-control"></select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>方案关键词</td>
+                            <td>
+                                <textarea class="form-control" rows="4" id="fa_antistop" name="fa_antistop"></textarea>
+                                <!--<span style="position: absolute;right: 4px;bottom: 8px;color: #e10111;font-weight: bold">输入的关键词请以“、”分开</span>-->
+                            </td>
+                            <td colspan="3">
+                                <button id="tjcy1_btn" type="button" class="btn btn-default btn-sm">推荐词语</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>排除关键词</td>
+                            <td>
+                                <textarea class="form-control" rows="5" id="pc_antistop" name="pc_antistop"></textarea>
+                            </td>
+                        </tr>
+                    </table>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">关闭</button>
+                    <button type="submit" class="btn btn-danger redBtn btn-sm">创建</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!--添加分类弹出层-->
+<div class="modal fade bs-example-modal-lg" id="flModal" tabindex="-1" role="dialog"
+     aria-labelledby="myLargeModalLabel">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title">添加所属监测方案分类</h4>
+            </div>
+            <div class="modal-body">
+                <form id="tjflForm" class="form-horizontal">
+                    <table class="jcfaTable" style="width: 100%">
+                        <tr>
+                            <td style="width: 16%;">所属监测方案分类</td>
+                            <td>
+                                <input type="text" class="form-control" id="tjfl" name="tjfl">
+                            </td>
+                        </tr>
+                    </table>
+                    <input type="submit" id="tjfalx_btn" hidden value="提交">
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">关闭</button>
+                <button type="button" class="btn btn-danger redBtn btn-sm" onclick="tjfalx_btn()">保存</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="js/jquery-3.2.1.min.js"></script>
+<script src="js/style.js"></script>
+<script src="js/hintModal.js"></script>
+<script type="text/javascript" src="js/pageNav.js"></script>
+<script src="lib/ztree/jquery.ztree.core.min.js"></script>
+<script type="text/javascript" src="lib/ztree/jquery.ztree.exedit.js"></script>
+<script src="lib/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+<script src="lib/echarts/echarts.min.js"></script>
+<script type="text/javascript" src="lib/echarts/china.js"></script>
+<!--table-->
+<script src="lib/bootstrap-3.3.7-dist/table/bootstrap-table.js"></script>
+<script src="lib/bootstrap-3.3.7-dist/table/bootstrap-table-zh-CN.js"></script>
+<script src="js/tableData.js"></script>
+<!--表单验证-->
+<script type="text/javascript" src="lib/validation/1.14.0/jquery.validate.js"></script>
+<script type="text/javascript" src="lib/validation/1.14.0/validate-methods.js"></script>
+<script type="text/javascript" src="lib/validation/1.14.0/messages_zh.js"></script>
+<!--time-->
+<script type="text/javascript" src="lib/bootstrap-3.3.7-dist/time/bootstrap-datetimepicker.min.js"
+        charset="UTF-8"></script>
+<script type="text/javascript" src="lib/bootstrap-3.3.7-dist/time/bootstrap-datetimepicker.zh-CN.js"
+        charset="UTF-8"></script>
+<script>
+    $("#navUrl .yqrcjc").addClass("menucur");
+</script>
+<script type="text/javascript" src="js/ajaxJs.js"></script>
+<script type="text/javascript" src="js/htmlJs/yqrcjc.js"></script>
+</body>
+</html>

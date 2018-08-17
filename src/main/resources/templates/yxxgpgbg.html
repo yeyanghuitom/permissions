@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="cache-control" content="no-cache,no-store, must-revalidate" />
+    <meta http-equiv="pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    <title>营销效果评估</title>
+    <link rel="stylesheet" href="lib/bootstrap-3.3.7-dist/css/bootstrap.css">
+    <link rel="stylesheet" href="lib/bootstrap-3.3.7-dist/table/bootstrap-table.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link href="lib/bootstrap-3.3.7-dist/time/bootstrap-datetimepicker.min.css" rel="stylesheet" media="screen">
+    <link href="css/htmlCss/yxxgpgbg.css" rel="stylesheet" media="screen">
+    <!--[if lt IE 9]>
+    <script src="lib/bootstrap-3.3.7-dist/js/html5shiv.min.js"></script>
+    <script src="lib/bootstrap-3.3.7-dist/js/respond.min.js"></script>
+    <![endif]-->
+    <!--[if IE 6]>
+    <script type="text/javascript" src="lib/bootstrap-3.3.7-dist/js/DD_belatedPNG_0.0.8a-min.js"></script>
+    <script>DD_belatedPNG.fix('*');</script>
+    <![endif]-->
+
+    <style>
+        .ztfxContent li {
+            transition: All 0.4s ease-in-out;
+            -webkit-transition: All 0.4s ease-in-out;
+            -moz-transition: All 0.4s ease-in-out;
+            -o-transition: All 0.4s ease-in-out;
+        }
+
+        .ztfxContent li:hover {
+            transform: translate(0, -10px);
+            -webkit-transform: translate(0, -10px);
+            -moz-transform: translate(0, -10px);
+            -o-transform: translate(0, -10px);
+            -ms-transform: translate(0, -10px);
+        }
+    </style>
+</head>
+<body>
+<div class="header">
+    <div class="header-content" id="header-content">
+
+    </div>
+</div>
+<div class="nav">
+    <div class="nav-content">
+        <ul class="nav-ul" id="navUrl">
+
+        </ul>
+    </div>
+</div>
+<div class="navResult">
+    <div class="navResult-content">
+        <div class="navResult-left">
+            <p>营销效果分析</p>
+            <ul id="navResult-leftBtn">
+                <li><a href="#ztfx">整体分析</a></li>
+                <li><a href="#slfx">声量分析</a></li>
+                <li><a href="#rdfx">热度分析</a></li>
+                <li><a href="#plfx">评论分析</a></li>
+                <li><a href="#yhfx">用户分析</a></li>
+            </ul>
+        </div>
+        <div class="navResult-right">
+            <p class="titleR">“百倍用心 10分满意”活动分析</p>
+            <p class="downloadR"><img src="static/img/wd_download.png" alt=""><img src="static/img/ftp_download.png"
+                                                                                   alt=""></p>
+            <ul class="smR">
+                <li class="smTitle">围绕关键词“百倍用心，10分满意”对微博文章进行相关数据分析，整理““百倍用心 10分满意”活动分析”的报告内容如下：</li>
+                <li class="smTime">分析周期：<span>2018年06月29日 - 2018年07月05日</span></li>
+            </ul>
+            <div id="ztfx">
+                <p class="contentTitle">整体分析</p>
+                <ul class="ztfxContent">
+                    <li class="col-sm-2 col-sm-offset-1">
+                        <div>
+                            <p class="fxbt">微博量</p>
+                            <p class="fxsl">23</p>
+                        </div>
+                    </li>
+                    <li class="col-sm-2">
+                        <div><p class="fxbt">转发量</p>
+                            <p class="fxsl">4234</p></div>
+                    </li>
+                    <li class="col-sm-2">
+                        <div><p class="fxbt">评论量</p>
+                            <p class="fxsl">342</p></div>
+                    </li>
+                    <li class="col-sm-2">
+                        <div><p class="fxbt">点赞量</p>
+                            <p class="fxsl">423</p></div>
+                    </li>
+                    <li class="col-sm-2">
+                        <div><p class="fxbt">覆盖量</p>
+                            <p class="fxsl">4234234</p></div>
+                    </li>
+                </ul>
+            </div>
+            <div id="slfx">
+                <p class="contentTitle">声量分析</p>
+                <div id="slfxT" style="min-width:600px;height: 400px;"></div>
+            </div>
+            <div id="rdfx">
+                <p class="contentTitle">热度分析</p>
+                <div id="rdfxT">
+                    <ul class="rdfxContent">
+                        <li id="cblph" class="col-sm-6">
+                            <p>传播力排行<span class="glyphicon glyphicon-question-sign" aria-hidden="true"></span></p>
+                            <div class="tableData">
+
+                            </div>
+                        </li>
+                        <li id="yxlph" class="col-sm-6">
+                            <p>影响力排行<span class="glyphicon glyphicon-question-sign" aria-hidden="true"></span></p>
+                            <div class="tableData">
+
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div id="plfx">
+                <p class="contentTitle">评论分析</p>
+                <div id="plfxT" style="min-width:600px;height: 400px;"></div>
+            </div>
+            <div id="yhfx">
+                <p class="contentTitle">用户分析</p>
+                <div id="yhfxT" style="min-width:500px;height: 500px;width: 75%;float: left"></div>
+                <div id="yhfx_sj" style="min-width:200px;height: 500px;width: 20%;float: left;overflow: auto">
+                    <table style="width: 90%;margin-left: 10%">
+                        <tr>
+                            <th colspan="2">top5省分</th>
+                        </tr>
+                    </table>
+                </div>
+                <div id="xbfxT" style="min-width:500px;height: 500px;width: 75%;float: left"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="js/jquery-3.2.1.min.js"></script>
+<script src="js/hintModal.js"></script>
+<script type="text/javascript" src="js/pageNav.js"></script>
+<script src="lib/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+<script src="lib/echarts/echarts.min.js"></script>
+<script src="lib/echarts/echarts-wordcloud.min.js"></script>
+<script type="text/javascript" src="lib/echarts/china.js"></script>
+<script>
+    $("#navUrl .yxxgpg").addClass("menucur");
+</script>
+<script type="text/javascript" src="js/htmlJs/yxxgpgbg.js"></script>
+</body>
+</html>
